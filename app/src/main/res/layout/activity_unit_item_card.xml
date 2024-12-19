@@ -1,0 +1,83 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="201dp"
+    android:padding="16dp"
+    android:layout_marginBottom="16dp"
+    android:background="@drawable/unit_rounded_card_background">
+
+    <!-- Left Side: Text and Progress Bar -->
+
+
+    <LinearLayout
+        android:layout_width="313dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:paddingTop="15dp"
+        android:orientation="vertical"
+        >
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/unitTitle"
+            android:layout_width="201dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Common Greetings and Phrases"
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
+
+        <!-- Progress Bar -->
+        <LinearLayout
+            android:layout_width="211dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ProgressBar
+                android:id="@+id/unitProgressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="4dp"
+                android:layout_weight="1"
+                android:max="100"
+                android:progress="100"
+                android:progressDrawable="@drawable/unit_progressbar" />
+
+            <TextView
+                android:id="@+id/progressText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="100%"
+                android:textColor="@android:color/black"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <!-- Action Button -->
+        <Button
+            android:id="@+id/unitActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="#FF6E6E"
+            android:fontFamily="@font/poppins_medium"
+            android:padding="8dp"
+            android:text="Replay"
+            android:textColor="@android:color/black" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/unitImage"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_gravity="end"
+
+        android:src="@drawable/unit_greeting"
+        android:contentDescription="Unit Image" />
+</LinearLayout>

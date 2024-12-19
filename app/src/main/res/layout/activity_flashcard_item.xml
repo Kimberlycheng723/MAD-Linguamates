@@ -1,0 +1,108 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:backgroundTint="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- Left Blue Box -->
+
+    <View
+        android:id="@+id/leftBlueBox"
+        android:layout_width="64dp"
+        android:layout_height="219dp"
+        android:background="@drawable/flashcard_left_blue_box_background"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="10dp"
+        android:layout_alignParentStart="true" />
+
+    <!-- Right Blue Box -->
+    <View
+        android:id="@+id/rightBlueBox"
+        android:layout_width="64dp"
+        android:background="@drawable/flashcard_right_blue_box_background"
+        android:layout_height="219dp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="10dp"
+        android:layout_alignParentEnd="true" />
+
+    <RelativeLayout
+        android:id="@+id/card_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@android:color/transparent">
+
+        <!-- Front Card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_front"
+            android:layout_width="270dp"
+            android:layout_height="258dp"
+            app:cardCornerRadius="20dp"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:src="@drawable/flashcard_morning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+
+            <ImageButton
+                android:id="@+id/volumeButton"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_horizontal|bottom"
+                android:layout_marginBottom="40dp"
+                android:background="@null"
+                android:src="@drawable/flashcard_volume_icon"
+                android:contentDescription="Play Sound"/>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Back Card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_back"
+            android:layout_width="270dp"
+            android:layout_height="165dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            android:background="@android:color/transparent"
+            >
+
+            <ImageView
+                android:id="@+id/backImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center_horizontal|bottom"
+                android:layout_marginBottom="-10dp"
+                android:background="@null"
+                android:contentDescription="hello"
+                android:src="@drawable/flashcard_drop_button"/>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Description Card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_description"
+            android:layout_width="270dp"
+            android:layout_height="165dp"
+            app:cardCornerRadius="20dp"
+            android:layout_below="@id/card_back"
+            android:layout_marginTop="10dp"
+            android:visibility="gone">
+
+            <!-- Description Image View -->
+            <ImageView
+                android:id="@+id/descriptionImageView"
+                android:src="@drawable/flashcard_description_morning"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY" />
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+</RelativeLayout>

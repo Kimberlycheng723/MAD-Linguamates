@@ -1,0 +1,31 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
+
+    <!-- Background Image (Green Checkmark and Well Done) -->
+    <ImageView
+        android:id="@+id/wrongBackgroundImage"
+        android:layout_width="400dp"
+        android:layout_height="283dp"
+        android:layout_marginTop="600dp"
+        android:src="@drawable/quiz_wrong"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Continue Button -->
+    <ImageButton
+        android:id="@+id/tryAgainImageButton"
+        android:layout_width="302dp"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:src="@drawable/quiz_wrong_button"
+        app:layout_constraintTop_toBottomOf="@id/wrongBackgroundImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="-80dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,70 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@android:color/white">
+
+    <!-- Instruction Text -->
+    <TextView
+        android:id="@+id/questionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Which translation is correct?"
+        android:textSize="20sp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/quicksand_medium" />
+
+    <!-- Dolphin and Speech Bubble Section -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp">
+
+        <ImageView
+            android:id="@+id/speechBubble"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="32dp"
+            android:src="@drawable/lesson_single_option_speech_bubble" />
+
+        <TextView
+            android:id="@+id/speechText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="188dp"
+            android:layout_marginTop="80dp"
+            android:fontFamily="@font/quicksand_semibold"
+            android:text="Good Morning"
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/dolphinImage"
+            android:layout_width="163dp"
+            android:layout_height="181dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="80dp"
+            android:src="@drawable/lesson_single_option_dolphin" />
+    </RelativeLayout>
+
+    <!-- Options Container -->
+    <LinearLayout
+        android:id="@+id/optionsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="16dp"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="32dp" />
+
+    <!-- Check Button -->
+    <ImageView
+        android:id="@+id/checkButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/lesson_check_button"
+        android:layout_marginTop="16dp" />
+</LinearLayout>

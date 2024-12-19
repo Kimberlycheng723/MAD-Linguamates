@@ -1,0 +1,57 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        >
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:titleTextColor="@color/black"
+            android:title="Transcriptions"
+            android:navigationIcon="@drawable/up_button" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <ImageButton
+            android:id="@+id/toggle_translation"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/read_only_translation"
+            android:background="@null"
+
+            android:layout_gravity="end"
+            android:paddingBottom="8dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/transcription_list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:paddingTop="16dp"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:id="@+id/finish_reading_button"
+           android:src="@drawable/module_finish"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:fontFamily="@font/quicksand_medium"
+            android:backgroundTint="#67D6EE"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:layout_height="56dp"
+            android:layout_width="264dp"/>
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

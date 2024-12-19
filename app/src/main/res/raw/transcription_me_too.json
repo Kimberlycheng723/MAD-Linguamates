@@ -1,0 +1,80 @@
+[
+  {
+    "start_time": "00:00:00.000",
+    "end_time": "00:00:09.000",
+    "chinese": "我也做。",
+    "english": "I also do."
+  },
+  {
+    "start_time": "00:00:09.000",
+    "end_time": "00:00:13.000",
+    "chinese": "妈妈做菜。",
+    "english": "Mom cooks."
+  },
+  {
+    "start_time": "00:00:13.000",
+    "end_time": "00:00:23.000",
+    "chinese": "我也做菜。",
+    "english": "I also cook."
+  },
+  {
+    "start_time": "00:00:23.000",
+    "end_time": "00:00:28.000",
+    "chinese": "爸爸画画。",
+    "english": "Dad draws."
+  },
+  {
+    "start_time": "00:00:28.000",
+    "end_time": "00:00:38.000",
+    "chinese": "我也画画。",
+    "english": "I also draw."
+  },
+  {
+    "start_time": "00:00:38.000",
+    "end_time": "00:00:44.000",
+    "chinese": "妈妈开车。",
+    "english": "Mom drives."
+  },
+  {
+    "start_time": "00:00:44.000",
+    "end_time": "00:00:50.000",
+    "chinese": "我也开车。",
+    "english": "I also drive."
+  },
+  {
+    "start_time": "00:00:50.000",
+    "end_time": "00:01:06.000",
+    "chinese": "爸爸看书。",
+    "english": "Dad reads."
+  },
+  {
+    "start_time": "00:01:06.000",
+    "end_time": "00:01:13.000",
+    "chinese": "我也看书。",
+    "english": "I also read."
+  },
+  {
+    "start_time": "00:01:13.000",
+    "end_time": "00:01:19.000",
+    "chinese": "妈妈清扫。",
+    "english": "Mom cleans."
+  },
+  {
+    "start_time": "00:01:19.000",
+    "end_time": "00:01:32.000",
+    "chinese": "我也清扫。",
+    "english": "I also clean."
+  },
+  {
+    "start_time": "00:01:32.000",
+    "end_time": "00:01:39.000",
+    "chinese": "爸爸睡觉。",
+    "english": "Dad sleeps."
+  },
+  {
+    "start_time": "00:01:39.000",
+    "end_time": "00:01:45.000",
+    "chinese": "我也睡觉。",
+    "english": "I also sleep."
+  }
+]

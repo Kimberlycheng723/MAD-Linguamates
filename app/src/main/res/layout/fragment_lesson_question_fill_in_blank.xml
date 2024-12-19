@@ -1,0 +1,129 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/fill_in_blank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fill in the blank"
+        android:layout_marginStart="25dp"
+        android:textSize="20sp"
+        android:fontFamily="@font/quicksand_medium"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Question Image -->
+    <ImageView
+        android:id="@+id/questionImage"
+        android:layout_width="252dp"
+        android:layout_height="246dp"
+        android:layout_gravity="center"
+        android:src="@drawable/lesson_fill_in_blank_question_image"
+        android:scaleType="centerCrop"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Question Text -->
+    <TextView
+        android:id="@+id/questionText"
+        android:layout_width="343dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="When entering a store in the morning, I greet the clerk with _____"
+        android:textSize="20sp"
+        android:fontFamily="@font/quicksand_medium"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="32dp" />
+
+    <!-- Answer Options -->
+    <LinearLayout
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_marginBottom="32dp">
+
+        <!-- Option 1 -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginBottom="16dp">
+
+            <ImageView
+                android:id="@+id/option1Background"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/lesson_button_not_selected"
+                android:scaleType="fitXY" />
+
+            <TextView
+                android:id="@+id/option1Text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="谢谢"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/quicksand_medium" />
+        </FrameLayout>
+
+        <!-- Option 2 -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginBottom="16dp">
+
+            <ImageView
+                android:id="@+id/option2Background"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/lesson_button_not_selected"
+                android:scaleType="fitXY" />
+
+            <TextView
+                android:id="@+id/option2Text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="晚上好"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/quicksand_medium" />
+        </FrameLayout>
+
+        <!-- Option 3 -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginBottom="8dp">
+
+            <ImageView
+                android:id="@+id/option3Background"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/lesson_button_not_selected"
+                android:scaleType="fitXY" />
+
+            <TextView
+                android:id="@+id/option3Text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="早上好"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/quicksand_medium" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <!-- Submit Button -->
+    <ImageView
+        android:id="@+id/checkButton"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:src="@drawable/lesson_check_button"
+        android:scaleType="fitCenter" />
+</LinearLayout>

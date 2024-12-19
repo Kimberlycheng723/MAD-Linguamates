@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MAD asignment</string>
+    <string-array name="difficulty_options">
+        <item>Easy</item>
+        <item>Medium</item>
+        <item>Hard</item>
+    </string-array>
+</resources>

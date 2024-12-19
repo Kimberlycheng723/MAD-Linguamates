@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="16dp"
+
+    android:paddingBottom="0dp">
+
+    <!-- Language Flag and Quote -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingLeft="16dp"
+        android:layout_marginBottom="16dp">
+
+        <ImageView
+            android:id="@+id/flagIcon"
+            android:layout_width="73dp"
+            android:layout_height="47dp"
+            android:src="@drawable/flag_chinese" />
+
+        <TextView
+            android:id="@+id/motivationalQuote"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="20dp"
+            android:textSize="20sp"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@android:color/black"
+            android:textAlignment="viewStart"
+            android:text="The more you practice,\nThe easier it gets!" />
+    </LinearLayout>
+
+    <!-- Difficulty Level Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="start"
+        android:paddingLeft="16dp"
+        android:layout_marginBottom="16dp">
+
+        <Button
+            android:id="@+id/btnBeginner"
+            android:layout_width="122dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="16dp"
+            style="@style/CustomUnitButton"
+            android:text="Beginner"
+            android:textSize="11sp"
+            android:fontFamily="@font/poppins_semibold" />
+
+        <Button
+            android:id="@+id/btnIntermediate"
+            android:layout_width="122dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="16dp"
+            style="@style/CustomUnitButton"
+            android:text="Intermediate"
+            android:textSize="11sp"
+            android:fontFamily="@font/poppins_semibold" />
+
+        <Button
+            android:id="@+id/btnAdvanced"
+            android:layout_width="122dp"
+            android:layout_height="50dp"
+            style="@style/CustomUnitButton"
+            android:text="Advanced"
+            android:textSize="11sp"
+            android:fontFamily="@font/poppins_semibold" />
+    </LinearLayout>
+
+    <!-- Lesson Units RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/unitsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingLeft="16dp"
+
+        android:paddingRight="16dp"
+        android:clipToPadding="false"
+        android:layout_marginBottom="16dp"
+       />
+
+    <!-- Bottom Navigation Bar -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        style="@style/CustomBottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="0dp"
+        android:padding="0dp"
+        app:menu="@menu/bottom_navigation_menu" />
+
+</LinearLayout>

@@ -1,0 +1,148 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:backgroundTint="@color/white"
+    tools:context=".MainActivity">
+
+    <!-- AppBar with Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+    android:elevation="4dp">
+
+    <!-- Centered Title -->
+    <TextView
+        android:id="@+id/toolbarTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Remember Words"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <!-- Navigation Icon -->
+    <ImageView
+        android:id="@+id/navigationIcon"
+        android:layout_width="41dp"
+        android:layout_height="34dp"
+        android:layout_gravity="start|center_vertical"
+        android:src="@drawable/up_button"
+        android:contentDescription="Back" />
+</androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/tapToFlipText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:layout_marginTop="0dp"
+        android:layout_centerHorizontal="true"
+        android:text="Tap to flip the card"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/white"
+        android:background="@color/white"
+        android:textSize="16sp"
+        android:textStyle="italic" />
+
+
+    <!-- ViewPager2 for Horizontal Scrolling -->
+    <androidx.viewpager2.widget.ViewPager2
+
+
+
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_below="@id/tapToFlipText"
+        android:layout_above="@id/navigationLayout"
+        android:layout_marginTop="0dp"
+        android:orientation="horizontal"
+        android:background="@color/white" />
+
+    <!-- Progress Bar Layout -->
+    <RelativeLayout
+        android:id="@+id/progressLayout"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:padding="16dp">
+
+    <!-- Progress Bar -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="300dp"
+        android:layout_height="8dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:max="5"
+        android:progress="5"
+        android:progressDrawable="@drawable/flashcard_progress_drawable"
+        style="@android:style/Widget.ProgressBar.Horizontal" />
+
+    <!-- Dolphin Image -->
+    <ImageView
+        android:id="@+id/dolphinImage"
+        android:layout_width="78dp"
+        android:layout_height="75dp"
+        android:layout_alignTop="@id/progressBar"
+        android:layout_alignEnd="@id/progressBar"
+        android:layout_marginTop="-40dp"
+        android:layout_marginEnd="-50dp"
+        android:src="@drawable/dolphin"
+        android:contentDescription="Dolphin" />
+
+    <!-- Progress Text -->
+    <TextView
+        android:id="@+id/progressText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/progressBar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp"
+        android:text="5/5"
+        android:textColor="@color/dark_blue"
+        android:textSize="16sp"
+         />
+</RelativeLayout>
+
+
+    <!-- Navigation Buttons -->
+    <LinearLayout
+        android:id="@+id/navigationLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/progressLayout"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:padding="36dp">
+
+        <!-- Previous Button -->
+        <ImageButton
+            android:id="@+id/prevButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:contentDescription="back"
+            android:src="@drawable/flashcard_back_button"
+            android:text="Back" />
+
+        <!-- Next Button -->
+        <ImageButton
+            android:id="@+id/nextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:background="@null"
+            android:contentDescription="next"
+            android:src="@drawable/flashcard_next_button"
+            android:text="Next" />
+    </LinearLayout>
+    </RelativeLayout>

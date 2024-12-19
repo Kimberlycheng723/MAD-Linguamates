@@ -1,0 +1,24 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="32dp"
+    android:layout_gravity="center">
+
+    <!-- Background Image -->
+<ImageView
+android:id="@+id/matchingOptionButton"
+android:layout_width="180dp"
+android:layout_height="66dp"
+android:background="@drawable/lesson_matching_not_selected" />
+
+    <!-- Text Overlay -->
+<TextView
+android:id="@+id/matchingOptionText"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+    android:layout_gravity="center"
+android:gravity="center"
+    android:textColor="@android:color/black"
+    android:textSize="20sp"
+    android:fontFamily="@font/quicksand_medium" />
+    </FrameLayout>

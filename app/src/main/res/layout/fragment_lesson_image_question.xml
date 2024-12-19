@@ -1,0 +1,39 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/white">
+
+    <!-- Question Text -->
+    <TextView
+        android:id="@+id/questionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Which images matches '\你好'?"
+        android:textSize="20sp"
+        android:fontFamily="@font/quicksand_medium"
+        android:layout_marginBottom="32dp"
+        android:textColor="@android:color/black" />
+
+    <!-- Options Container -->
+    <GridLayout
+        android:id="@+id/imageOptions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="2"
+        android:rowCount="2"
+        android:layout_marginBottom="43dp">
+
+        <!-- Placeholder for dynamically added options -->
+    </GridLayout>
+
+    <!-- Check Button -->
+    <ImageView
+        android:id="@+id/checkButton"
+        android:layout_width="388dp"
+        android:layout_height="56dp"
+        android:background="@drawable/lesson_check_button"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center_horizontal"/>
+</LinearLayout>

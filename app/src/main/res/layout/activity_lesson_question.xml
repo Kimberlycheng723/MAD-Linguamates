@@ -1,0 +1,32 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Close Quiz Button -->
+    <ImageView
+        android:id="@+id/closeQuizButton"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/quiz_close"
+        android:contentDescription="Close Quiz Button"
+        android:layout_gravity="start|top"
+        android:layout_margin="16dp" />
+
+    <!-- Progress Bar -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:layout_marginTop="56dp"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:progress="0" />
+
+    <!-- Fragment Container -->
+    <FrameLayout
+        android:id="@+id/fragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="72dp" />
+
+</FrameLayout>
+

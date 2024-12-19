@@ -1,0 +1,25 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/navi_home"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/nav_lessons"
+        android:icon="@drawable/navi_module"
+        android:title="Lessons" />
+
+    <item
+        android:id="@+id/nav_progress"
+        android:icon="@drawable/navi_progress"
+
+        android:title="Progress" />
+    <item
+        android:id="@+id/nav_forum"
+        android:icon="@drawable/navi_forum"
+        android:title="Forum" />
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/navi_profile"
+        android:title="Profile" />
+</menu>

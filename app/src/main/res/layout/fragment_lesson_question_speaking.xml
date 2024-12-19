@@ -1,0 +1,74 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@android:color/white">
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pronounce the word below"
+        android:textSize="20sp"
+        android:fontFamily="@font/quicksand_medium"
+        android:layout_marginBottom="64dp"
+        android:textColor="@android:color/black" />
+
+    <!-- Image -->
+    <ImageView
+        android:id="@+id/pronounceImage"
+        android:layout_width="322dp"
+        android:layout_height="255dp"
+        android:src="@drawable/image_lesson_good_night"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="64dp" />
+
+    <!-- Chinese Word -->
+    <TextView
+        android:id="@+id/chineseText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="晚上好"
+        android:textSize="26sp"
+        android:fontFamily="@font/quicksand_medium"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="8dp"
+        android:textColor="@android:color/black" />
+
+    <!-- Pinyin -->
+    <TextView
+        android:id="@+id/pinyinText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="wǎn shàng hǎo"
+        android:textSize="24sp"
+        android:fontFamily="@font/quicksand_medium"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="155dp"
+        android:textColor="@android:color/black" />
+
+    <!-- Microphone Button -->
+    <ImageView
+        android:id="@+id/micButton"
+        android:layout_width="87dp"
+        android:layout_height="83dp"
+        android:src="@drawable/lesson_speaking_mic"
+        android:layout_gravity="center_horizontal"
+
+    android:layout_marginBottom="8dp" />
+
+    <!-- Can't Speak Now -->
+    <TextView
+        android:id="@+id/cantSpeakNow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Can't Speak Now"
+        android:layout_gravity="center_horizontal"
+        android:textSize="16sp"
+        android:fontFamily="@font/quicksand_medium"
+        android:textColor="#717070"
+        android:layout_marginTop="24dp" />
+
+</LinearLayout>

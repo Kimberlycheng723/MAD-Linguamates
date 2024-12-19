@@ -1,0 +1,33 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="180dp"
+    android:layout_height="226dp"
+    android:layout_margin="8dp"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginBottom="16dp"
+    android:background="@drawable/lesson_image_button_not_selected"
+    android:elevation="4dp">
+
+    <!-- Option Image -->
+    <ImageView
+        android:id="@+id/optionImage"
+        android:layout_width="145dp"
+        android:layout_height="165dp"
+        android:layout_gravity="center_horizontal"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="10dp"
+        android:contentDescription="Option Image" />
+
+    <!-- Option Text -->
+    <TextView
+        android:id="@+id/optionText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="180dp"
+        android:gravity="center"
+        android:text="Option Text"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:fontFamily="@font/quicksand_medium"
+        android:padding="4dp" />
+</FrameLayout>

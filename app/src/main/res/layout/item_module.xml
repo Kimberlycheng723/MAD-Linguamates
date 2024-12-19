@@ -1,0 +1,66 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="8dp"
+    android:paddingEnd="8dp">
+
+    <!-- Module Image -->
+    <ImageView
+        android:id="@+id/moduleImage"
+        android:layout_width="84dp"
+        android:layout_height="84dp"
+        android:src="@drawable/module1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Module Title -->
+    <TextView
+        android:id="@+id/moduleTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/poppins_medium"
+        android:gravity="start"
+        android:text="Module Title"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/completedIcon"
+        app:layout_constraintStart_toEndOf="@id/moduleImage"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Completed Icon (Tick) -->
+    <ImageView
+        android:id="@+id/completedIcon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/module_blue_icon"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/moduleTitle"
+        app:layout_constraintEnd_toStartOf="@id/readIcon"
+        app:layout_constraintStart_toEndOf="@id/moduleTitle"
+        app:layout_constraintTop_toTopOf="@id/moduleTitle" />
+
+    <!-- Read Icon -->
+    <ImageView
+        android:id="@+id/readIcon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/module_read"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/listenIcon"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Listen Icon -->
+    <ImageView
+        android:id="@+id/listenIcon"
+        android:layout_width="25dp"
+        android:layout_height="30dp"
+        android:src="@drawable/module_listen"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

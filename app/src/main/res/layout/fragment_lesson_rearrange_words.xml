@@ -1,0 +1,65 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Question Text -->
+    <TextView
+        android:id="@+id/questionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rearrange the words to form the correct translation"
+        android:textSize="20sp"
+        android:fontFamily="@font/quicksand_medium"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Good Morning Image -->
+    <ImageView
+        android:layout_width="177dp"
+        android:layout_height="177dp"
+        android:src="@drawable/image_lesson_good_morning"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center" />
+
+    <!-- Instruction Text -->
+    <TextView
+        android:id="@+id/instructionText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Good Morning"
+        android:textSize="20sp"
+        android:textColor="@android:color/black"
+        android:gravity="center"
+        android:fontFamily="@font/quicksand_medium" />
+
+    <!-- Drop Zone for Correct Sentence -->
+    <LinearLayout
+        android:id="@+id/dropZone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_margin="16dp"
+        android:background="@drawable/lesson_rearrange_drop_box" />
+
+    <!-- Words Container -->
+    <LinearLayout
+        android:id="@+id/wordsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_margin="16dp"
+        android:layout_marginTop="32dp" />
+
+    <!-- Submit Button (ImageView) -->
+    <ImageView
+        android:id="@+id/submitButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/lesson_check_button"
+        android:layout_gravity="center"
+        android:layout_marginTop="52dp" />
+</LinearLayout>

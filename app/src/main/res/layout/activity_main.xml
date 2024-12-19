@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp">
+
+    <!-- Button to Flashcard Activity -->
+    <Button
+        android:id="@+id/btnFlashcard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Go to Flashcard"
+        android:background="@null"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Button to Video Activity -->
+    <Button
+        android:id="@+id/listen_and_read_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="🎧 Listen and Read"
+        android:layout_marginBottom="16dp" />
+    <Button
+        android:id="@+id/read_only_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="📖 Read Only" />
+
+    <Button
+        android:id="@+id/btnUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:text="Go to Unit" />
+
+    <Button
+        android:id="@+id/btnLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:text="Go to Level" />
+
+    <Button
+        android:id="@+id/startQuizButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Quiz"
+        android:padding="16dp"
+        android:layout_marginTop="16dp"
+
+        android:textColor="@android:color/white" />
+
+</LinearLayout>
