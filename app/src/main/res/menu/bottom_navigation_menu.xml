@@ -15,7 +15,7 @@
 
         android:title="@string/progress" />
     <item
-        android:id="@+id/nav_forum"
+        android:id="@+id/nav_community"
         android:icon="@drawable/navi_forum"
         android:title="@string/community" />
     <item
