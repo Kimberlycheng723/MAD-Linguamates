@@ -20,7 +20,13 @@
             android:exported="false" />
         <activity
             android:name=".lesson_unit.LessonUnit"
-            android:exported="false" />
+            android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
+
         <activity
             android:name=".levels.LevelsActivity"
             android:exported="false" />
@@ -31,7 +37,11 @@
             android:name=".flashcard.Flashcard"
             android:exported="false" />
 
-        <activity android:name=".Module.Module" />
+        <activity
+            android:name=".Module.Module"
+            android:exported="false">
+
+        </activity>
 
         <activity
             android:name=".read.ReadOnlyActivity"
@@ -41,15 +51,7 @@
             android:exported="false" />
         <activity android:name=".flashcard.FlashcardSplashScreenActivity" />
         <activity android:name=".flashcard.FinishSplashActivity" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>
