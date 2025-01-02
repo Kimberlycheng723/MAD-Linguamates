@@ -7,5 +7,8 @@
     <color name="grey">#D9D9D9</color>
 
 
-    <color name="light_blue">#E0F7FA</color> <!-- Light blue -->
+
+    <color name="light_blue">#E0F7FA</color>
+    <color name="quiz_blue">#2196F3</color>
+    <color name="quiz_button_blue">#03A9F4</color>
 </resources>

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 import com.example.madasignment.R;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class LessonQuestionFragmentFactory {
@@ -22,7 +23,7 @@ public class LessonQuestionFragmentFactory {
                         R.drawable.image_lesson_thank_you
                 }
         ));
-/*
+
         fragments.add(LessonFillInBlankQuestionFragment.newInstance(
                 "When entering a store in the morning, I greet the clerk with _____",
                 R.drawable.lesson_fill_in_blank_question_image,
@@ -58,7 +59,7 @@ public class LessonQuestionFragmentFactory {
                 R.drawable.image_lesson_good_night
         ));
 
-*/
+
 
 
 
