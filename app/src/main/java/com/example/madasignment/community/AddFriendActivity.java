@@ -1,5 +1,6 @@
 package com.example.madasignment.community;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,7 +34,13 @@ public class AddFriendActivity extends AppCompatActivity {
         searchFriendInput = findViewById(R.id.searchFriendInput);
 
         // Set Back Button Functionality
-        btnBack.setOnClickListener(v -> finish());
+        btnBack.setOnClickListener(v -> {
+            Intent intent = new Intent(AddFriendActivity.this, FriendlistActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
+            finish();
+
+        });
 
         // Initialize RecyclerView
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

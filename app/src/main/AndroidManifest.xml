@@ -15,37 +15,63 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MADAsignment"
         tools:targetApi="31">
-
-        <activity android:name=".SignUp"
+        <activity
+            android:name=".community.NewPostActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SignUp"
             android:exported="true">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity android:name=".LoginTry"
-            android:exported="false"/>
-        <activity android:name=".ForgetActivity"
-            android:exported="false"/>
-        <activity android:name=".profile"
-            android:exported="false"/>
-        <activity android:name=".test.TestResultsActivity"
-            android:exported="false"/>
+        <activity
+            android:name=".community.CommunityFrontPageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".community.DiscussionForumActivity"
+            android:exported="false" />
+        <activity
+            android:name=".community.SpecificDiscussionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".community.ReportDiscussionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".community.ReportSubmitActivity"
+            android:exported="false" />
+        <activity
+            android:name=".community.FriendlistActivity"
+            android:exported="false" />
+        <activity
+            android:name=".community.AddFriendActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginTry"
+            android:exported="false" />
+        <activity
+            android:name=".ForgetActivity"
+            android:exported="false" />
+        <activity
+            android:name=".profile"
+            android:exported="false" />
+        <activity
+            android:name=".test.TestResultsActivity"
+            android:exported="false" />
         <activity
             android:name=".test.TestActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
-
         <activity
             android:name=".lesson_quiz.LessonCompletionActivity"
             android:exported="false" />
         <activity
             android:name=".lesson_unit.LessonUnit"
-            android:exported="true"/>
-
+            android:exported="true" />
         <activity
             android:name=".levels.LevelsActivity"
             android:exported="false" />

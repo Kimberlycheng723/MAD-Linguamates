@@ -1,5 +1,6 @@
 package com.example.madasignment.community;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
@@ -24,7 +25,16 @@ public class DiscussionForumActivity extends AppCompatActivity {
 
         Button btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(v -> {
-            // Finish the activity to return to the front page
+            Intent intent = new Intent(DiscussionForumActivity.this, CommunityFrontPageActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
+            finish();
+        });
+        Button btnNewPost = findViewById(R.id.btnNewPost);
+        btnNewPost.setOnClickListener(v -> {
+            Intent intent = new Intent(DiscussionForumActivity.this, NewPostActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
             finish();
         });
 
