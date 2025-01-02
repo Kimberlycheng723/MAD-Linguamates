@@ -15,15 +15,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MADAsignment"
         tools:targetApi="31">
-
-        <activity android:name=".QuizResultsActivity"
-            android:exported="false"/>
+        <activity
+            android:name=".community.FriendlistActivity"
+            android:exported="false" />
+        <activity
+            android:name=".community.CommunityFrontPageActivity"
+            android:exported="false"
+            android:theme="@style/Theme.MADAsignment" />
+        <activity
+            android:name=".QuizResultsActivity"
+            android:exported="false" />
         <activity
             android:name=".QuizActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,8 +42,7 @@
             android:exported="false" />
         <activity
             android:name=".lesson_unit.LessonUnit"
-            android:exported="true"/>
-
+            android:exported="true" />
         <activity
             android:name=".levels.LevelsActivity"
             android:exported="false" />
