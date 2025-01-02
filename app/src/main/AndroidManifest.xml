@@ -16,20 +16,29 @@
         android:theme="@style/Theme.MADAsignment"
         tools:targetApi="31">
 
-        <activity android:name=".QuizResultsActivity"
+        <activity android:name=".SignUp"
+            android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
+        <activity android:name=".LoginTry"
+            android:exported="false"/>
+        <activity android:name=".ForgetActivity"
+            android:exported="false"/>
+        <activity android:name=".profile"
+            android:exported="false"/>
+        <activity android:name=".test.TestResultsActivity"
             android:exported="false"/>
         <activity
-            android:name=".QuizActivity"
+            android:name=".test.TestActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="false" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".lesson_quiz.LessonCompletionActivity"
             android:exported="false" />
