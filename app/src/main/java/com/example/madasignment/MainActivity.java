@@ -1,11 +1,13 @@
 package com.example.madasignment;
 
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.madasignment.lesson_unit.LessonUnit;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         // Handle button click to navigate to QuizResultsActivity
         btnStartQuiz.setOnClickListener(v -> {
             // Pass a score to the results page as an example
-            Intent intent = new Intent(MainActivity.this, QuizActivity.class);
+            Intent intent = new Intent(MainActivity.this, LessonUnit.class);
             intent.putExtra("score", 20); // Pass the score (20 XP in this case)
             startActivity(intent);
         });
