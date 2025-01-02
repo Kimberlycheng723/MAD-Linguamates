@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splash">
+
+    <TextView
+        android:id="@+id/tv_password_p"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="120dp"
+        android:text="Password"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_privacy_pr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:text="Privacy"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.472"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_pass_pr"
+        android:layout_width="295dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="84dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.369"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_privacy_pr"
+        app:srcCompat="@drawable/long_rect_pp" />
+
+    <EditText
+        android:id="@+id/etp_password_pr"
+        android:layout_width="238dp"
+        android:layout_height="49dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:text="password"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_pass_pr"
+        app:layout_constraintEnd_toEndOf="@+id/iv_pass_pr"
+        app:layout_constraintHorizontal_bias="0.456"
+        app:layout_constraintStart_toStartOf="@+id/iv_pass_pr"
+        app:layout_constraintTop_toTopOf="@+id/iv_pass_pr"
+        app:layout_constraintVertical_bias="0.304" />
+
+    <Button
+        android:id="@+id/btn_back_pr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="40dp"
+        android:text="back"
+        android:background="@drawable/short_rect_pp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "779444425621",
+    "project_id": "mad-linguamates",
+    "storage_bucket": "mad-linguamates.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:779444425621:android:a473804aaa47f6b32d9c9c",
+        "android_client_info": {
+          "package_name": "com.example.profile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGg_FPm7P0BhAExoCwsWu2SnE7QWBtcnk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

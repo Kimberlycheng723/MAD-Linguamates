@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/CsLayout_P"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splash">
+
+    <TextView
+        android:id="@+id/tv_pref_p"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="158dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="178dp"
+        android:text="Preferences"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.187"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_lesson_p"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="156dp"
+        android:text="Lesson"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_back_p"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="52dp"
+        android:background="@drawable/short_rect_pp"
+        android:text="back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_listeningex_p"
+        android:layout_width="327dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.547"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_sound_p"
+        app:srcCompat="@drawable/long_rect_pp" />
+
+    <ImageView
+        android:id="@+id/iv_sound_p"
+        android:layout_width="324dp"
+        android:layout_height="98dp"
+        android:layout_marginTop="112dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.574"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_pref_p"
+        app:srcCompat="@drawable/long_rect_pp" />
+
+    <Switch
+        android:id="@+id/sw_listen_p"
+        android:layout_width="188dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="4dp"
+        android:text="Listening Exercises"
+        app:layout_constraintEnd_toEndOf="@+id/iv_listeningex_p"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="@+id/iv_listeningex_p"
+        app:layout_constraintTop_toTopOf="@+id/iv_listeningex_p" />
+
+    <Switch
+        android:id="@+id/sw_sound_p"
+        android:layout_width="201dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:text="Sound Effects     "
+        app:layout_constraintEnd_toEndOf="@+id/iv_sound_p"
+        app:layout_constraintHorizontal_bias="0.544"
+        app:layout_constraintStart_toStartOf="@+id/iv_sound_p"
+        app:layout_constraintTop_toTopOf="@+id/iv_sound_p" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
