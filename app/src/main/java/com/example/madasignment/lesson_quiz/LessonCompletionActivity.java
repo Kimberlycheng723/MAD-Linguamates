@@ -1,7 +1,7 @@
 package com.example.madasignment.lesson_quiz;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -12,7 +12,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.madasignment.test.TestActivity;
 import com.example.madasignment.R;
+import com.example.madasignment.lesson_unit.LessonUnit;
 
 public class LessonCompletionActivity extends AppCompatActivity {
 
@@ -60,13 +62,13 @@ public class LessonCompletionActivity extends AppCompatActivity {
 
         // Button logic
         takeQuizButton.setOnClickListener(v -> {
-            Log.d("Navigation", "Take A Quiz button clicked");
-            finish(); // Replace with Intent to open quiz activity
+            Intent i = new Intent(LessonCompletionActivity.this, TestActivity.class);
+            startActivity(i);
         });
 
         backToHomeButton.setOnClickListener(v -> {
-            Log.d("Navigation", "Back To Home button clicked");
-            finish(); // Replace with Intent to open home activity
+            Intent i = new Intent(LessonCompletionActivity.this, LessonUnit.class);
+            startActivity(i);
         });
     }
 }

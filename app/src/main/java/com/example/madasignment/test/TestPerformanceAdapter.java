@@ -1,4 +1,4 @@
-package com.example.madasignment;
+package com.example.madasignment.test;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,14 +8,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.madasignment.R;
+
 import java.util.List;
 
-public class PerformanceAdapter extends RecyclerView.Adapter<PerformanceAdapter.PerformanceViewHolder> {
+public class TestPerformanceAdapter extends RecyclerView.Adapter<TestPerformanceAdapter.PerformanceViewHolder> {
 
     private Context context;
-    private List<PerformanceItem> performanceItems; // A list to hold performance data
+    private List<TestPerformanceItem> performanceItems; // A list to hold performance data
 
-    public PerformanceAdapter(Context context, List<PerformanceItem> performanceItems) {
+    public TestPerformanceAdapter(Context context, List<TestPerformanceItem> performanceItems) {
         this.context = context;
         this.performanceItems = performanceItems;
     }
@@ -23,13 +26,13 @@ public class PerformanceAdapter extends RecyclerView.Adapter<PerformanceAdapter.
     @NonNull
     @Override
     public PerformanceViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_performance_breakup, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.test_item_performance_breakup, parent, false);
         return new PerformanceViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull PerformanceViewHolder holder, int position) {
-        PerformanceItem item = performanceItems.get(position);
+        TestPerformanceItem item = performanceItems.get(position);
 
         // Set data in the view
         holder.questionText.setText(item.getQuestionText());

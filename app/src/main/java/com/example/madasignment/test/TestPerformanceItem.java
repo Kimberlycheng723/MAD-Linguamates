@@ -1,13 +1,13 @@
-package com.example.madasignment;
+package com.example.madasignment.test;
 
-public class PerformanceItem {
+public class TestPerformanceItem {
 
     private String questionText;
     private String userAnswer;
     private String correctAnswer;
     private boolean isCorrect;
 
-    public PerformanceItem(String questionText, String userAnswer, String correctAnswer, boolean isCorrect) {
+    public TestPerformanceItem(String questionText, String userAnswer, String correctAnswer, boolean isCorrect) {
         this.questionText = questionText;
         this.userAnswer = userAnswer;
         this.correctAnswer = correctAnswer;

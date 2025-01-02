@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.madasignment.Module.Module;
 import com.example.madasignment.R;
+import com.example.madasignment.profile;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
@@ -100,7 +101,8 @@ public class LessonUnit extends AppCompatActivity {
                 Toast.makeText(this, "Forum Selected", Toast.LENGTH_SHORT).show();
                 return true;
             } else if (id == R.id.nav_profile) {
-                Toast.makeText(this, "Profile Selected", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(LessonUnit.this, profile.class);
+                startActivity(intent);
                 return true;
             } else {
                 return false;

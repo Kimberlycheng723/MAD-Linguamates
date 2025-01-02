@@ -1,5 +1,6 @@
-package com.example.madasignment;
+package com.example.madasignment.test;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.widget.ProgressBar;
@@ -7,13 +8,17 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.madasignment.R;
 import com.google.android.material.button.MaterialButton;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class QuizActivity extends AppCompatActivity {
+public class TestActivity extends AppCompatActivity {
 
     private ProgressBar quizProgressBar;
     private TextView questionCounter, questionText, timerText, correctCount;
@@ -33,7 +38,7 @@ public class QuizActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quiz);
+        setContentView(R.layout.activity_test);
 
         // Initialize views
         quizProgressBar = findViewById(R.id.quizProgressBar);
@@ -133,7 +138,7 @@ public class QuizActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-                Toast.makeText(QuizActivity.this, "Time's up!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(TestActivity.this, "Time's up!", Toast.LENGTH_SHORT).show();
                 endQuiz();
             }
         };
@@ -143,7 +148,9 @@ public class QuizActivity extends AppCompatActivity {
     private void endQuiz() {
         if (countDownTimer != null) countDownTimer.cancel();
         Toast.makeText(this, "Quiz Finished! Correct answers: " + correctAnswers, Toast.LENGTH_LONG).show();
-        finish();
+        Intent i = new Intent(TestActivity.this, TestResultsActivity.class);
+        startActivity(i);
+
     }
 
     // Question class to represent a question
