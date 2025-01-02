@@ -14,10 +14,6 @@ import java.util.List;
 
 public class DiscussionForumActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
-    private DiscussionAdapter discussionAdapter;
-    private DiscussionRepository discussionRepository;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,15 +35,15 @@ public class DiscussionForumActivity extends AppCompatActivity {
         });
 
         // Initialize RecyclerView
-        recyclerView = findViewById(R.id.recyclerViewDiscussion);
+        RecyclerView recyclerView = findViewById(R.id.recyclerViewDiscussion);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Initialize Repository
-        discussionRepository = new DiscussionRepository();
+        DiscussionRepository discussionRepository = new DiscussionRepository();
 
         // Fetch data and set the adapter
         List<DiscussionPost> discussionPostList = discussionRepository.getDiscussionPosts();
-        discussionAdapter = new DiscussionAdapter(discussionPostList);
+        DiscussionAdapter discussionAdapter = new DiscussionAdapter(discussionPostList);
         recyclerView.setAdapter(discussionAdapter);
     }
 }

@@ -17,7 +17,6 @@ import java.util.List;
 
 public class AddFriendActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
     private AddFriendAdapter adapter;
     private List<Friend> friendList;
     private EditText searchFriendInput;
@@ -28,7 +27,7 @@ public class AddFriendActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_friend);
 
         // Initialize Views
-        recyclerView = findViewById(R.id.recyclerAddFriend);
+        RecyclerView recyclerView = findViewById(R.id.recyclerAddFriend);
         ImageButton btnBack = findViewById(R.id.btnBack);
         Button btnSearch = findViewById(R.id.btnSearch);
         searchFriendInput = findViewById(R.id.searchFriendInput);
