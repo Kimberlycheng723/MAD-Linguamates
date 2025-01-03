@@ -88,27 +88,24 @@
         android:id="@+id/iv_china_pp"
         android:layout_width="62dp"
         android:layout_height="32dp"
-        android:layout_marginTop="216dp"
-        android:layout_marginEnd="36dp"
-        app:layout_constraintBottom_toTopOf="@+id/bt_share_pp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_bio_pp"
         app:srcCompat="@drawable/flag_chinese" />
 
     <Button
         android:id="@+id/bt_share_pp"
         android:layout_width="62dp"
         android:layout_height="48dp"
-        android:layout_marginStart="6dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/short_rect_pp"
         android:text="S"
         android:textColor="#00000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.222"
-        app:layout_constraintStart_toEndOf="@+id/Bt_editProfile"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.385" />
+        app:layout_constraintVertical_bias="0.379" />
 
     <TextView
         android:id="@+id/tv_bio_pp"
@@ -146,28 +143,29 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="62dp"
         android:layout_height="48dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginTop="268dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/short_rect_pp"
         android:text="E"
         android:textColor="#00000000"
         android:textColorLink="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/bt_addFriend_pp"
+        app:layout_constraintBottom_toTopOf="@+id/iv_statleague_pp"
+        app:layout_constraintEnd_toStartOf="@+id/bt_share_pp"
+        app:layout_constraintStart_toEndOf="@+id/iv_china_pp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.385" />
+        app:layout_constraintVertical_bias="0.206" />
 
     <TextView
         android:id="@+id/tv_statistics_pp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="168dp"
         android:text="Statistics"
         android:textColor="#0D0D0D"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt_addFriend_pp" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_dolphin_pp" />
 
     <ImageView
         android:id="@+id/iv_share_pp"
@@ -175,23 +173,11 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/bt_share_pp"
         app:layout_constraintEnd_toEndOf="@+id/bt_share_pp"
+        app:layout_constraintHorizontal_bias="0.578"
         app:layout_constraintStart_toStartOf="@+id/bt_share_pp"
         app:layout_constraintTop_toTopOf="@+id/bt_share_pp"
+        app:layout_constraintVertical_bias="0.333"
         app:srcCompat="@drawable/share" />
-
-    <Button
-        android:id="@+id/bt_addFriend_pp"
-        android:layout_width="213dp"
-        android:layout_height="48dp"
-        android:background="@drawable/long_rect_pp"
-        android:text="Add Friend"
-        android:textColor="#98000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.08"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.385" />
 
     <TextView
         android:id="@+id/tv_statlanguage_pp"
@@ -293,11 +279,13 @@
         android:id="@+id/iv_achievements_pp"
         android:layout_width="375dp"
         android:layout_height="114dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintHorizontal_bias="0.527"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_achievements_pp"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/stat_rect_pp" />
 
     <Button
@@ -307,8 +295,10 @@
         android:layout_marginTop="52dp"
         android:layout_marginEnd="44dp"
         android:background="@drawable/settings"
-        android:text="Button"
+        android:backgroundTint="#423D3D"
+        android:text="btn"
         android:textColor="#00FFFFFF"
+        app:iconTint="#3A3535"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

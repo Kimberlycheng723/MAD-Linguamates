@@ -1,6 +1,8 @@
 package com.example.madasignment.profile;
 
+import android.content.Context;
 import android.content.Intent;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Switch;
@@ -20,6 +22,7 @@ public class PreferencesActivity extends AppCompatActivity {
     private Switch soundEffectSwitch, listeningExerciseSwitch;
     private DatabaseReference preferencesRef;
     private String userId;
+    private AudioManager audioManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,19 +36,28 @@ public class PreferencesActivity extends AppCompatActivity {
         userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         preferencesRef = FirebaseDatabase.getInstance().getReference("AccountSettings").child(userId);
 
+        // Initialize AudioManager
+        audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+
         // Load switch states
         preferencesRef.child("soundEffect").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                soundEffectSwitch.setChecked(snapshot.getValue(Boolean.class));
+                Boolean isSoundOn = snapshot.getValue(Boolean.class);
+                if (isSoundOn != null) {
+                    soundEffectSwitch.setChecked(isSoundOn);
+                    toggleSoundEffects(isSoundOn);
+                }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {}
         });
 
-        soundEffectSwitch.setOnCheckedChangeListener((buttonView, isChecked) ->
-                preferencesRef.child("soundEffect").setValue(isChecked));
+        soundEffectSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            preferencesRef.child("soundEffect").setValue(isChecked);
+            toggleSoundEffects(isChecked);
+        });
 
         listeningExerciseSwitch.setOnCheckedChangeListener((buttonView, isChecked) ->
                 preferencesRef.child("listeningExercises").setValue(isChecked));
@@ -55,5 +67,20 @@ public class PreferencesActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         });
+    }
+
+    /**
+     * Toggles sound effects on or off based on the given state.
+     *
+     * @param isOn True to enable sound effects, false to mute.
+     */
+    private void toggleSoundEffects(boolean isOn) {
+        if (audioManager != null) {
+            if (isOn) {
+                audioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_UNMUTE, 0);
+            } else {
+                audioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_MUTE, 0);
+            }
+        }
     }
 }
