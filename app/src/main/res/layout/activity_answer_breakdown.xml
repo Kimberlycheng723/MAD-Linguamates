@@ -1,0 +1,96 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@drawable/splash_screen_background">
+
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/answerBreakdownHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Answer Breakdown"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="53dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/dolphin" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linear"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Great Job! You've answered most of the question correctly."
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textColor="#32689A" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linear"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Click question to review"
+        android:textAlignment="center"
+        android:textColor="#4D1E2124" />
+
+    <GridLayout
+        android:id="@+id/questionGridLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="260dp"
+        android:columnCount="5"
+        android:orientation="horizontal"
+        android:foregroundGravity="center"
+        android:padding="16dp"
+        android:rowCount="3"
+        android:layout_marginBottom="180dp"> <!-- Added space between grid and buttons -->
+    </GridLayout>
+
+    <Button
+        android:id="@+id/reviewPreviousLessonButton"
+        android:layout_width="344dp"
+        android:layout_height="77dp"
+        android:layout_below="@id/questionGridLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+    android:backgroundTint="#26ABC7"
+    android:text="Back to Result"
+        android:textSize="20sp"
+    android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/buttonEnd"
+        android:layout_width="344dp"
+        android:layout_height="77dp"
+        android:layout_below="@id/reviewPreviousLessonButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#26ABC7"
+        android:text="End Test"
+        android:textSize="20sp"
+        android:fontFamily="@font/quicksand_semibold"
+        android:textColor="@color/white" />
+</RelativeLayout>

@@ -1,0 +1,258 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/resultTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Your Feedback Summary"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
+
+        <!-- Subtitle -->
+        <TextView
+            android:id="@+id/resultSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Here's how you did!"
+            android:textColor="#307CD4"
+            android:textSize="24sp" />
+
+        <!-- Circular Percentage -->
+        <FrameLayout
+            android:layout_width="230dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center">
+
+            <!-- Circle Background -->
+            <ImageView
+                android:layout_width="225dp"
+                android:layout_height="214dp"
+                android:src="@drawable/test_circle" />
+
+            <!-- Percentage Text -->
+            <TextView
+                android:id="@+id/percentageTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="10dp"
+                android:text="70%"
+                android:textColor="@android:color/holo_blue_dark"
+                android:textSize="38sp"
+                android:textStyle="bold" />
+        </FrameLayout>
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+        <!-- Pass/Fail Feedback -->
+        <TextView
+            android:id="@+id/passFailText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="50dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="You Passed!"
+            android:textColor="#307CD4"
+            android:textSize="24sp" />
+
+    <ImageView
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:src="@drawable/dolphin5"></ImageView>
+</LinearLayout>
+    </LinearLayout>
+
+    <!-- Correct Answers -->
+    <TextView
+        android:id="@+id/correctAnswersLabel"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/unit_rounded_card_background"
+        android:backgroundTint="#92F5FD"
+        android:fontFamily="@font/poppins_medium"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="Correct Answers: _"
+        android:textSize="20sp" />
+
+    <!-- Points Earned -->
+    <TextView
+        android:id="@+id/pointsEarnedLabel"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/unit_rounded_card_background"
+        android:backgroundTint="#5CFCA7"
+        android:fontFamily="@font/poppins_medium"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="Points Earned: _"
+        android:textSize="20sp" />
+
+    <!-- Vocabulary/Grammar/Listening Section -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="20dp">
+
+        <!-- Vocabulary -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:gravity="center">
+
+            <!-- Circle -->
+            <FrameLayout
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/test_circle">
+
+                <TextView
+                    android:id="@+id/vocabularyTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="74%"
+                    android:textColor="@android:color/holo_orange_dark"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </FrameLayout>
+
+            <!-- Label -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Vocabulary"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Grammar -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:gravity="center">
+
+            <!-- Circle -->
+            <FrameLayout
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/test_circle">
+
+                <TextView
+                    android:id="@+id/speakingTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="85%"
+                    android:textColor="@android:color/holo_green_dark"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </FrameLayout>
+
+            <!-- Label -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Speaking"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Listening -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <!-- Circle -->
+            <FrameLayout
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/test_circle">
+
+                <TextView
+                    android:id="@+id/listeningTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="47%"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </FrameLayout>
+
+            <!-- Label -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Listening"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Answer Breakdown Button -->
+    <ImageButton
+        android:id="@+id/answerBreakdownButton"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="56dp"
+        android:gravity="center"
+        android:background="@color/white"
+        android:src="@drawable/test_answer_breakdown_button"
+     />
+
+    <!-- Retry Quiz Button -->
+    <ImageButton
+        android:id="@+id/retryQuizButton"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:background="@color/white"
+        android:src="@drawable/test_retry_button"/>
+</LinearLayout>

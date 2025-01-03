@@ -13,15 +13,21 @@
         android:layout_margin="16dp" />
 
     <!-- Progress Bar -->
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="match_parent"
-        android:layout_height="8dp"
-        android:layout_marginTop="56dp"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:progress="0" />
 
     <!-- Fragment Container -->
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="360dp"
+        android:layout_height="12dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginStart="65dp"
+
+        android:max="100"
+        android:progress="50"
+        android:progressDrawable="@drawable/progress_bar_custom" />
+
     <FrameLayout
         android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"

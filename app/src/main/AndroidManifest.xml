@@ -15,11 +15,35 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MADAsignment"
         tools:targetApi="31">
+
+
+
+        <activity android:name=".LoginTry"
+            android:exported="false"/>
+        <activity android:name=".ForgetActivity"
+            android:exported="false"/>
+        <activity android:name=".test.TestCompletionActivity"
+            android:exported="false"/>
+        <activity android:name=".editProfile"
+            android:exported="false"/>
+        <activity android:name=".profile"
+            android:exported="false"/>
+
         <activity
-            android:name=".community.NewPostActivity"
+            android:name=".test.TestSplashScreen"
+            android:exported="false" />
+        <activity
+            android:name=".test.LessonTestActivity"
             android:exported="false" />
         <activity
             android:name=".SignUp"
+            android:exported="false" />
+
+        <activity
+            android:name=".lesson_quiz.LessonCompletionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".lesson_unit.LessonUnit"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,51 +51,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".community.CommunityFrontPageActivity"
-            android:exported="false" />
-        <activity
-            android:name=".community.DiscussionForumActivity"
-            android:exported="false" />
-        <activity
-            android:name=".community.SpecificDiscussionActivity"
-            android:exported="false" />
-        <activity
-            android:name=".community.ReportDiscussionActivity"
-            android:exported="false" />
-        <activity
-            android:name=".community.ReportSubmitActivity"
-            android:exported="false" />
-        <activity
-            android:name=".community.FriendlistActivity"
-            android:exported="false" />
-        <activity
-            android:name=".community.AddFriendActivity"
-            android:exported="false" />
-        <activity
-            android:name=".LoginTry"
-            android:exported="false" />
-        <activity
-            android:name=".ForgetActivity"
-            android:exported="false" />
-        <activity
-            android:name=".profile"
-            android:exported="false" />
-        <activity
-            android:name=".test.TestResultsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".test.TestActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
-        <activity
-            android:name=".lesson_quiz.LessonCompletionActivity"
-            android:exported="false" />
-        <activity
-            android:name=".lesson_unit.LessonUnit"
-            android:exported="true" />
+
         <activity
             android:name=".levels.LevelsActivity"
             android:exported="false" />
@@ -81,6 +61,16 @@
         <activity
             android:name=".flashcard.Flashcard"
             android:exported="false" />
+        <activity
+            android:name=".test.ResultActivity"
+            android:exported="false" />
+        <activity
+            android:name=".test.TestResult"
+            android:exported="false" />
+        <activity
+            android:name=".test.AnswerBreakdownActivity"
+            android:exported="false" />
+
         <activity
             android:name=".Module.Module"
             android:exported="false" />

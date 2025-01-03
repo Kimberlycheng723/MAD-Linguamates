@@ -32,6 +32,9 @@ public class LessonQuestionActivity extends AppCompatActivity implements LessonQ
         progressBar = findViewById(R.id.progressBar);
         closeQuizButton = findViewById(R.id.closeQuizButton);
 
+        // Set initial progress to 0
+        progressBar.setProgress(0);
+
         // Handle Close Button
         closeQuizButton.setOnClickListener(v -> new AlertDialog.Builder(this)
                 .setMessage("Are you sure you want to exit the quiz?")
@@ -49,8 +52,8 @@ public class LessonQuestionActivity extends AppCompatActivity implements LessonQ
 
     private void loadNextQuestion() {
         if (currentQuestionIndex < questionFragments.size()) {
-            // Calculate progress percentage
-            int progress = (currentQuestionIndex + 1) * 100 / questionFragments.size();
+            // Update progress dynamically
+            int progress = (currentQuestionIndex) * 100 / questionFragments.size(); // Start at 0 for the first question
             updateProgress(progress);
 
             // Load the fragment
@@ -86,6 +89,7 @@ public class LessonQuestionActivity extends AppCompatActivity implements LessonQ
             showWrongDialog();
         }
     }
+
     @Override
     public void onQuestionSkipped() {
         // Skip the current question and load the next one
@@ -110,7 +114,6 @@ public class LessonQuestionActivity extends AppCompatActivity implements LessonQ
         dialog.show(); // Display the dialog
     }
 
-
     private void showWrongDialog() {
         // Create a dialog with a translucent theme
         final Dialog dialog = new Dialog(this, android.R.style.Theme_Translucent_NoTitleBar);
@@ -125,7 +128,4 @@ public class LessonQuestionActivity extends AppCompatActivity implements LessonQ
         dialog.setCancelable(false); // Prevent accidental dismiss
         dialog.show(); // Display the dialog
     }
-
-
-
 }
