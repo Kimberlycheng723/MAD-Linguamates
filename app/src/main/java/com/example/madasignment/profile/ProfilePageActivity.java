@@ -1,8 +1,11 @@
 package com.example.madasignment.profile;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,6 +30,19 @@ public class ProfilePageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_page);
+
+        Button btnset = findViewById(R.id.btn_set_pp);
+        Button editPage = findViewById(R.id.Bt_editProfile);
+
+        btnset.setOnClickListener(v -> {
+            Intent intent = new Intent(ProfilePageActivity.this, SettingsActivity.class);
+            startActivity(intent);
+        });
+
+        editPage.setOnClickListener(v -> {
+            Intent intent = new Intent(ProfilePageActivity.this, EditProfileActivity.class);
+            startActivity(intent);
+        });
 
         // Initialize Firebase Database Reference
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://mad-linguamates-default-rtdb.asia-southeast1.firebasedatabase.app");
@@ -68,11 +84,11 @@ public class ProfilePageActivity extends AppCompatActivity {
 
                     Log.d("ProfilePageActivity", "Snapshot: " + snapshot.toString());
 
-                    // Update ImageViews (Optional: use dynamic images based on values)
-                    ivStatStreak.setImageResource(R.drawable.streakl); // Example
-                    ivStatLeague.setImageResource(R.drawable.ranking); // Example
-                    ivStatLang.setImageResource(R.drawable.bookmark);  // Example
-                    ivStatLessons.setImageResource(R.drawable.level);  // Example
+                    // Update ImageViews
+                    ivStatStreak.setImageResource(R.drawable.streakl);
+                    ivStatLeague.setImageResource(R.drawable.ranking);
+                    ivStatLang.setImageResource(R.drawable.bookmark);
+                    ivStatLessons.setImageResource(R.drawable.level);
                 } else {
                     // Handle no data found for the mobile
                     tvStatStreak.setText("No data found");
