@@ -16,6 +16,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.568"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/long_rect_pp" />
 
     <ImageView
@@ -92,7 +94,10 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="224dp"
         android:background="@drawable/short_rect_pp"
+        android:backgroundTint="#00AF2121"
         android:text="Log In"
+        android:textColor="#646060"
+        android:textColorLink="#9B8B8B"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.206"
@@ -175,8 +180,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Sign Up"
         android:background="@drawable/long_rect_pp"
+        android:text="Sign Up"
+        android:textColor="#5B5656"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
