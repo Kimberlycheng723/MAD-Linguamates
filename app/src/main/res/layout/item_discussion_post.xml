@@ -39,7 +39,7 @@
                     android:textSize="16sp" />
 
                 <TextView
-                    android:id="@+id/postContent"
+                    android:id="@+id/tvContent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Post Content"

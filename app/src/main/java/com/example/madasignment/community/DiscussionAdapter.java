@@ -1,84 +1,85 @@
 package com.example.madasignment.community;
 
+import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.madasignment.R;
+import com.example.madasignment.community.ReportDiscussionActivity;
+import com.example.madasignment.community.SpecificDiscussionActivity;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DiscussionAdapter extends RecyclerView.Adapter<DiscussionAdapter.DiscussionViewHolder> {
+    private Context context;
+    private List<DocumentSnapshot> discussionPostSnapshots = new ArrayList<>();
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    private List<DiscussionPost> discussionPostList;
-
-    public DiscussionAdapter(List<DiscussionPost> discussionPostList) {
-        this.discussionPostList = discussionPostList;
+    public DiscussionAdapter(Context context) {
+        this.context = context;
     }
 
-    public void setData(List<DiscussionPost> newDiscussionPosts) {
-        this.discussionPostList = newDiscussionPosts;
+    public void setData(List<DocumentSnapshot> snapshots) {
+        discussionPostSnapshots = snapshots;
         notifyDataSetChanged();
     }
 
     @NonNull
     @Override
     public DiscussionViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_discussion_post, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_discussion_post, parent, false);
         return new DiscussionViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull DiscussionViewHolder holder, int position) {
-        DiscussionPost post = discussionPostList.get(position);
+        DocumentSnapshot snapshot = discussionPostSnapshots.get(position);
+        String title = snapshot.getString("title");
+        String content = snapshot.getString("content");
+        String userName = snapshot.getString("UserName");
 
-        // Set data to views
-        holder.userName.setText(post.getUserName());
-        holder.postContent.setText(post.getContent());
-        holder.answersCount.setText(post.getAnswersCount() + " answers");
+        holder.tvTitle.setText(title);
+        holder.tvContent.setText(content);
+        holder.tvUserName.setText(userName);
 
-
-
-        // Navigate to SpecificDiscussionActivity when the "Answer" button is clicked
+        // Button Actions
         holder.btnAnswer.setOnClickListener(v -> {
-            Intent intent = new Intent(holder.itemView.getContext(), SpecificDiscussionActivity.class);
-            intent.putExtra("post_UserName", post.getUserName());
-            intent.putExtra("post_content", post.getContent());
-            holder.itemView.getContext().startActivity(intent);
+            Intent intent = new Intent(context, SpecificDiscussionActivity.class);
+            intent.putExtra("discussionId", snapshot.getId()); // Pass Firestore Document ID
+            context.startActivity(intent);
         });
 
         holder.btnReport.setOnClickListener(v -> {
-            Intent intent = new Intent(holder.itemView.getContext(), ReportDiscussionActivity.class);
-            intent.putExtra("user_name", post.getUserName());
-            intent.putExtra("post_content", post.getContent());
-            holder.itemView.getContext().startActivity(intent);
+            Intent intent = new Intent(context, ReportDiscussionActivity.class);
+            intent.putExtra("discussionId", snapshot.getId());
+            context.startActivity(intent);
         });
-
     }
 
     @Override
     public int getItemCount() {
-        return discussionPostList.size();
+        return discussionPostSnapshots.size();
     }
 
     public static class DiscussionViewHolder extends RecyclerView.ViewHolder {
-        TextView userName, postContent, answersCount;
-        ImageView profileImage;
+        TextView tvTitle, tvContent, tvUserName;
         Button btnAnswer, btnReport;
 
         public DiscussionViewHolder(@NonNull View itemView) {
             super(itemView);
-            userName = itemView.findViewById(R.id.userName);
-            postContent = itemView.findViewById(R.id.postContent);
-            answersCount = itemView.findViewById(R.id.answersCount);
-            profileImage = itemView.findViewById(R.id.profileImage);
+            tvTitle = itemView.findViewById(R.id.tvTitle);
+            tvContent = itemView.findViewById(R.id.tvContent);
+            tvUserName = itemView.findViewById(R.id.tvUserName);
             btnAnswer = itemView.findViewById(R.id.btnAnswer);
             btnReport = itemView.findViewById(R.id.btnReport);
         }

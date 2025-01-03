@@ -36,7 +36,7 @@
                 android:id="@+id/tvReplyContent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="This is a reply content"
+                android:hint="This is a reply content"
                 android:textSize="14sp"
                 android:layout_marginTop="4dp"
                 android:textColor="#757575" />

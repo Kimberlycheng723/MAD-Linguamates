@@ -31,10 +31,15 @@ public class FriendlistAdapter extends RecyclerView.Adapter<FriendlistAdapter.Fr
     @Override
     public void onBindViewHolder(@NonNull FriendViewHolder holder, int position) {
         Friend friend = friendList.get(position);
-        holder.ivProfile.setImageResource(friend.getProfileImage());
+
+        // Set name and XP
         holder.tvName.setText(friend.getName());
         holder.tvXP.setText(friend.getXp() + " XP");
+
+        // Remove image-related code
+        // holder.ivProfile.setImageResource(R.drawable.ic_profile); // No image handling
     }
+
 
     @Override
     public int getItemCount() {

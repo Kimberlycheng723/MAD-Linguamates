@@ -16,7 +16,15 @@
         android:theme="@style/Theme.MADAsignment"
         tools:targetApi="31">
 
-
+        <activity
+            android:name=".community.NewPostActivity"
+            android:exported="false" />
+        <activity
+            android:name=".community.DiscussionForumActivity"
+            android:exported="false" />
+        <activity
+            android:name=".community.CommunityFrontPageActivity"
+            android:exported="false" />
         <activity
             android:name=".profile.SignInActivity"
             android:exported="true">

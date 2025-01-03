@@ -5,12 +5,19 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.madasignment.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +27,9 @@ public class AddFriendActivity extends AppCompatActivity {
     private AddFriendAdapter adapter;
     private List<Friend> friendList;
     private EditText searchFriendInput;
+
+    private DatabaseReference usersRef;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,15 +48,19 @@ public class AddFriendActivity extends AppCompatActivity {
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(intent);
             finish();
-
         });
+
+        // Initialize Firebase Reference
+        usersRef = FirebaseDatabase.getInstance().getReference("Users");
 
         // Initialize RecyclerView
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         friendList = new ArrayList<>();
-        loadMockData(); // Load mock data
-        adapter = new AddFriendAdapter(friendList);
+        adapter = new AddFriendAdapter(this, friendList);
         recyclerView.setAdapter(adapter);
+
+        // Load Users from Firebase
+        loadUsers();
 
         // Search Button Functionality
         btnSearch.setOnClickListener(v -> {
@@ -55,12 +69,31 @@ public class AddFriendActivity extends AppCompatActivity {
         });
     }
 
-    private void loadMockData() {
-        friendList.add(new Friend("John Doe", 1000, R.drawable.ic_profile));
-        friendList.add(new Friend("Jane Smith", 800, R.drawable.ic_profile));
-        friendList.add(new Friend("Emily Johnson", 1200, R.drawable.ic_profile));
-        friendList.add(new Friend("Chris Brown", 500, R.drawable.ic_profile));
-        friendList.add(new Friend("Sophia Davis", 700, R.drawable.ic_profile));
+    private void loadUsers() {
+        usersRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                friendList.clear();
+                for (DataSnapshot userSnapshot : snapshot.getChildren()) {
+                    String id = userSnapshot.getKey();
+                    String name = userSnapshot.child("name").getValue(String.class);
+                    int xp = userSnapshot.child("xp").getValue(Integer.class) != null ?
+                            userSnapshot.child("xp").getValue(Integer.class) : 0;
+
+//                    String profileImage = userSnapshot.child("profileImage").getValue(String.class);
+
+                    if (name != null) {
+                        friendList.add(new Friend(id, name, xp));
+                    }
+                }
+                adapter.updateList(friendList);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(AddFriendActivity.this, "Failed to load users.", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void filterFriends(String query) {
@@ -72,4 +105,5 @@ public class AddFriendActivity extends AppCompatActivity {
         }
         adapter.updateList(filteredList);
     }
+
 }

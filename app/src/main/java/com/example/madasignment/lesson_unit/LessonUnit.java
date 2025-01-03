@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.madasignment.Module.Module;
 import com.example.madasignment.R;
+import com.example.madasignment.community.CommunityFrontPageActivity;
 import com.example.madasignment.profile.ProfilePageActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -99,6 +100,8 @@ public class LessonUnit extends AppCompatActivity {
                 return true;
             } else if (id == R.id.nav_forum) {
                 Toast.makeText(this, "Forum Selected", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(LessonUnit.this, CommunityFrontPageActivity.class);
+                startActivity(intent);
                 return true;
             } else if (id == R.id.nav_profile) {
                 Intent i = new Intent(LessonUnit.this, ProfilePageActivity.class);
