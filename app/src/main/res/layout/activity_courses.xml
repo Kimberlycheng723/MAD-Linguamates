@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/CSLayout_C"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splash">
+
+    <TextView
+        android:id="@+id/tv_courses_c"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:text="Courses"
+        android:textColor="#1F1E1E"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_back_c"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/short_rect_pp"
+        android:text="back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_course_c"
+        android:layout_width="336dp"
+        android:layout_height="94dp"
+        android:layout_marginTop="68dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_courses_c"
+        app:srcCompat="@drawable/long_rect_pp" />
+
+    <TextView
+        android:id="@+id/tv_courseName_s"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="Chinese"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_course_c"
+        app:layout_constraintStart_toStartOf="@+id/iv_course_c"
+        app:layout_constraintTop_toTopOf="@+id/iv_course_c"
+        app:layout_constraintVertical_bias="0.466" />
+
+    <Button
+        android:id="@+id/btn_remove_c"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="28dp"
+        android:text="remove"
+        android:textColor="#CA0C0C"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_course_c"
+        app:layout_constraintEnd_toEndOf="@+id/iv_course_c" />
+
+    <TextView
+        android:id="@+id/tv_reminder_c"
+        android:layout_width="289dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="56dp"
+        android:text="Removing a course deletes all your progress and cannot be undone"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.565"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
