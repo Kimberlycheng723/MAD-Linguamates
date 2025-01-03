@@ -208,11 +208,12 @@
         android:id="@+id/tv_stat_dayStreak_pp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="36dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="24dp"
         android:text="Day Streak"
         app:layout_constraintBottom_toBottomOf="@+id/iv_statstreak_pp"
-        app:layout_constraintEnd_toStartOf="@+id/iv_statleague_pp" />
+        app:layout_constraintEnd_toStartOf="@+id/iv_statleague_pp"
+        app:layout_constraintTop_toTopOf="@+id/iv_statstreak_pp"
+        app:layout_constraintVertical_bias="0.76" />
 
     <ImageView
         android:id="@+id/iv_streak_pp"
@@ -310,6 +311,48 @@
         android:textColor="#00FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_streakValue_pp"
+        android:layout_width="29dp"
+        android:layout_height="26dp"
+        android:layout_marginEnd="80dp"
+        android:text="0"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_statstreak_pp"
+        app:layout_constraintEnd_toStartOf="@+id/iv_statleague_pp"
+        app:layout_constraintTop_toTopOf="@+id/iv_statstreak_pp"
+        app:layout_constraintVertical_bias="0.279" />
+
+    <TextView
+        android:id="@+id/tv_leagueValue_pp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="100dp"
+        android:text="#0"
+        app:layout_constraintEnd_toEndOf="@+id/iv_statleague_pp"
+        app:layout_constraintTop_toTopOf="@+id/iv_statleague_pp" />
+
+    <TextView
+        android:id="@+id/tv_languageValue_pp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="96dp"
+        android:text="0"
+        app:layout_constraintEnd_toStartOf="@+id/iv_statlessons_pp"
+        app:layout_constraintTop_toTopOf="@+id/iv_statlang_pp" />
+
+    <TextView
+        android:id="@+id/tv_lessonValue_pp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="112dp"
+        android:text="0"
+        app:layout_constraintEnd_toEndOf="@+id/iv_statlessons_pp"
+        app:layout_constraintTop_toTopOf="@+id/iv_statlessons_pp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
