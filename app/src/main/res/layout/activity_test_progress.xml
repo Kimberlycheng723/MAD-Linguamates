@@ -7,8 +7,18 @@
     android:background="@drawable/splash_screen_background">
 
     <!-- Back Button -->
+    <ImageView
+        android:id="@+id/backButton"
+        android:layout_width="35dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="Back Button"
+        android:src="@drawable/up_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Title -->
+    <!-- Title Text -->
 
     <!-- Dolphin Image -->
 
@@ -16,65 +26,76 @@
         android:id="@+id/titleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="22dp"
+        android:fontFamily="@font/poppins_semibold"
         android:text="Progress Quiz"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/backButton"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Quiz King Text -->
+
+    <!-- Description Text -->
+
+    <!-- Start Quiz Button -->
 
     <ImageView
         android:id="@+id/dolphinImage"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="207dp"
+        android:layout_height="205dp"
+        android:layout_marginTop="228dp"
+        android:contentDescription="Dolphin Image"
         android:src="@drawable/dolphin_finish_flash"
-        app:layout_constraintTop_toBottomOf="@id/titleText"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="48dp" />
+        app:layout_constraintHorizontal_bias="0.012"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleText" />
 
-    <!-- Quiz King Text -->
     <TextView
         android:id="@+id/quizKingText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="354dp"
+        android:fontFamily="@font/poppins_semibold"
         android:text="Quiz King"
         android:textColor="@color/quiz_blue"
-        android:textSize="24sp"
+        android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/dolphinImage"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        app:layout_constraintHorizontal_bias="0.732"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Description Text -->
     <TextView
         android:id="@+id/descriptionText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="112dp"
+        android:fontFamily="@font/poppins_semibold"
         android:text="Time to test your skills!"
         android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@id/quizKingText"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/quizKingText" />
 
-    <!-- Start Quiz Button -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/startQuizButton"
         android:layout_width="200dp"
-        android:layout_height="56dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="56dp"
+        android:backgroundTint="#26ABC7"
         android:text="START QUIZ"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:cornerRadius="28dp"
-        android:backgroundTint="@color/quiz_button_blue"
-        app:layout_constraintTop_toBottomOf="@id/descriptionText"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="48dp" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/descriptionText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

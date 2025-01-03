@@ -12,7 +12,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class profile extends AppCompatActivity {
 
-    Button signOut;
+    Button signOut, editProfile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +20,7 @@ public class profile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         signOut = findViewById(R.id.button);
+        editProfile = findViewById(R.id.buttonEditProfile);
 
         signOut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -28,6 +29,14 @@ public class profile extends AppCompatActivity {
                 Intent i = new Intent(profile.this, SignUp.class);
                 startActivity(i);
                 finish();
+            }
+        });
+
+        editProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(profile.this, com.example.madasignment.editProfile.class);
+                startActivity(i);
             }
         });
 

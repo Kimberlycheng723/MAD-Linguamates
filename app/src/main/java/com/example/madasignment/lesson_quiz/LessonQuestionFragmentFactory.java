@@ -42,7 +42,7 @@ public class LessonQuestionFragmentFactory {
                 Arrays.asList("你好", "早上好", "欢迎", "晚上好")
         ));
 
-        fragments.add(LessonRearrangeWordsQuestionFragment.newInstance(
+       fragments.add(LessonRearrangeWordsQuestionFragment.newInstance(
                 "Rearrange the words to form the correct translation for 'Good Morning':",
                 "早上好"
         ));
@@ -65,4 +65,7 @@ public class LessonQuestionFragmentFactory {
 
         return fragments;
     }
+
 }
+
+

@@ -1,4 +1,5 @@
-package com.example.madasignment.lesson_quiz;
+package com.example.madasignment.test;
+
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,9 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.madasignment.R;
 import com.example.madasignment.lesson_unit.LessonUnit;
-import com.example.madasignment.test.TestSplashScreen;
 
-public class LessonCompletionActivity extends AppCompatActivity {
+public class TestCompletionActivity extends AppCompatActivity {
 
     private static final String EXTRA_SCORE = "extra_score"; // Key for passing score
     private int score = 0; // Default score placeholder
@@ -24,7 +24,7 @@ public class LessonCompletionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lesson_completion);
+        setContentView(R.layout.activity_test_completion);
 
         // Initialize views
         ImageView fireworkLeft = findViewById(R.id.fireworkLeft);
@@ -32,7 +32,6 @@ public class LessonCompletionActivity extends AppCompatActivity {
         LinearLayout scoreContainer =findViewById(R.id.scoreContainer);
 
         TextView scoreText = findViewById(R.id.scoreText);
-        Button takeQuizButton = findViewById(R.id.takeQuizButton);
         Button backToHomeButton = findViewById(R.id.backToHomeButton);
 
         // Temporary score for testing UI
@@ -60,14 +59,10 @@ public class LessonCompletionActivity extends AppCompatActivity {
             fireworkRight.startAnimation(animationRight);
         }, 500);
 
-        // Button logic
-        takeQuizButton.setOnClickListener(v -> {
-            Intent i = new Intent(LessonCompletionActivity.this, TestSplashScreen.class);
-            startActivity(i);
-        });
+
 
         backToHomeButton.setOnClickListener(v -> {
-            Intent i = new Intent(LessonCompletionActivity.this, LessonUnit.class);
+            Intent i = new Intent(com.example.madasignment.test.TestCompletionActivity.this, LessonUnit.class);
             startActivity(i);
         });
     }

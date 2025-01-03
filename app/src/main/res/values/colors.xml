@@ -11,4 +11,12 @@
     <color name="light_blue">#E0F7FA</color>
     <color name="quiz_blue">#2196F3</color>
     <color name="quiz_button_blue">#03A9F4</color>
+
+    <color name="button_blue">#26ABC7</color>
+    <color name="button_light_blue">#E6F7FB</color>
+    <color name="custom_orange">#FF9800</color>
+
+    <color name="background_light_blue">#F0F8FF</color>
+    <color name="green">#28A745</color>
+    <color name="red">#DC3545</color>
 </resources>

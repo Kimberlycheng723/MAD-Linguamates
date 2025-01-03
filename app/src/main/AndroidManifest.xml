@@ -16,7 +16,7 @@
         android:theme="@style/Theme.MADAsignment"
         tools:targetApi="31">
 
-        <activity android:name=".SignUp"
+        <activity android:name=".MainActivity"
             android:exported="true">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
@@ -28,15 +28,21 @@
             android:exported="false"/>
         <activity android:name=".ForgetActivity"
             android:exported="false"/>
+        <activity android:name=".test.TestCompletionActivity"
+            android:exported="false"/>
+        <activity android:name=".editProfile"
+            android:exported="false"/>
         <activity android:name=".profile"
             android:exported="false"/>
-        <activity android:name=".test.TestResultsActivity"
-            android:exported="false"/>
+
         <activity
-            android:name=".test.TestActivity"
+            android:name=".test.TestSplashScreen"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".test.LessonTestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SignUp"
             android:exported="false" />
 
         <activity
@@ -55,6 +61,16 @@
         <activity
             android:name=".flashcard.Flashcard"
             android:exported="false" />
+        <activity
+            android:name=".test.ResultActivity"
+            android:exported="false" />
+        <activity
+            android:name=".test.TestResult"
+            android:exported="false" />
+        <activity
+            android:name=".test.AnswerBreakdownActivity"
+            android:exported="false" />
+
         <activity
             android:name=".Module.Module"
             android:exported="false" />
