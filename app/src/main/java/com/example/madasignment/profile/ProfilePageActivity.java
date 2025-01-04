@@ -29,7 +29,7 @@ public class ProfilePageActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private DatabaseReference databaseReference;
     private TextView tvStreakValue, tvLeagueValue, tvLessonValue, tvLanguageValue;
-    private TextView tvnameValue, tvusernameValue;
+    private TextView tvnameValue, tvusernameValue, tvBioValue;
     private BottomNavigationView bottomNavigationView; // Declare as a private variable
 
     @Override
@@ -69,6 +69,7 @@ public class ProfilePageActivity extends AppCompatActivity {
 
         tvnameValue = findViewById(R.id.tv_name_pp);
         tvusernameValue = findViewById(R.id.tv_username_pp);
+        tvBioValue = findViewById(R.id.tv_bio_pp);
 
         // Fetch and Display Data
         fetchUserData();
@@ -83,10 +84,6 @@ public class ProfilePageActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.exists()) {
-
-                            // Retrieve data
-                            String name = snapshot.child("name").getValue(String.class);
-                            tvnameValue.setText(name != null ? name : "0");
 
                             String streak = snapshot.child("iv_statstreak_pp").getValue(String.class);
                             tvStreakValue.setText(streak != null ? streak : "0");
@@ -128,7 +125,10 @@ public class ProfilePageActivity extends AppCompatActivity {
                             tvnameValue.setText(name != null ? name : "0");
 
                             String username = snapshot.child("username").getValue(String.class);
-                            tvusernameValue.setText(name != null ? username : "0");
+                            tvusernameValue.setText(username != null ? username : "0");
+
+                            String bio = snapshot.child("Bio").getValue(String.class);
+                            tvBioValue.setText(bio != null ? bio : "No bio available");
 
                             Log.d("ProfilePageActivity", "Snapshot: " + snapshot.toString());
 
@@ -139,6 +139,7 @@ public class ProfilePageActivity extends AppCompatActivity {
                     public void onCancelled(@NonNull DatabaseError error) {
                         // Handle Database Error
                         Log.d("ProfilePageActivity", "Error: " + error.getMessage());
+                        Toast.makeText(ProfilePageActivity.this, "Failed to load data. Please try again.", Toast.LENGTH_SHORT).show();
                     }
                 });
             } catch (Exception e) {
