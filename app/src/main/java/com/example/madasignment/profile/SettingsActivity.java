@@ -2,6 +2,7 @@ package com.example.madasignment.profile;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +19,7 @@ public class SettingsActivity extends AppCompatActivity {
         Button btnPrivacy = findViewById(R.id.btn_privacy_s);
         Button btnCourses = findViewById(R.id.btn_courses_s);
         Button btnBack = findViewById(R.id.btn_back_s);
+        Button btnSO = findViewById(R.id.btn_signout_s);
 
         btnPreferences.setOnClickListener(v -> {
             Intent intent = new Intent(SettingsActivity.this, PreferencesActivity.class);
@@ -34,6 +36,14 @@ public class SettingsActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        btnBack.setOnClickListener(v -> finish());
+        btnBack.setOnClickListener(v -> {
+            Intent intent = new Intent(SettingsActivity.this, ProfilePageActivity.class);
+            startActivity(intent);
+        });
+
+        btnSO.setOnClickListener(v -> {
+            Intent intent = new Intent(SettingsActivity.this, LogInActivity.class);
+            startActivity(intent);
+        });
     }
 }

@@ -23,8 +23,8 @@ public class EditProfileActivity extends AppCompatActivity {
 
     private FirebaseAuth auth;
     private DatabaseReference databaseReference;
-    private EditText etName, etUsername, etBirthday, etEmail, etPhoneNumber;
-    private Button btnDeleteAccount, btnBack;
+    private EditText etName, etUsername, etEmail, etPhoneNumber;
+    private Button btnDeleteAccount, btnBack, btnSave;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,14 +39,19 @@ public class EditProfileActivity extends AppCompatActivity {
         // Initialize views
         etName = findViewById(R.id.et_name_ep);
         etUsername = findViewById(R.id.et_username_ep);
-        etBirthday = findViewById(R.id.et_birthday_ep);
         etEmail = findViewById(R.id.et_email_ep);
         etPhoneNumber = findViewById(R.id.et_num_ep);
         btnDeleteAccount = findViewById(R.id.blt_dlt_ep);
         btnBack = findViewById(R.id.btn_back_ep);
+        btnSave = findViewById(R.id.btn_save_ep);
 
         // Fetch and Display Data
         fetchUserData();
+
+        // Save button click listener
+        btnSave.setOnClickListener(v -> {
+            saveUserData();
+        });
 
         // Set up back button
         btnBack.setOnClickListener(v -> {
@@ -60,6 +65,8 @@ public class EditProfileActivity extends AppCompatActivity {
             deleteAccount();
         });
     }
+
+
 
     private void fetchUserData() {
         FirebaseUser firebaseUser = auth.getCurrentUser();
@@ -84,9 +91,6 @@ public class EditProfileActivity extends AppCompatActivity {
                             String num = snapshot.child("phone_number").getValue(String.class);
                             etPhoneNumber.setText(num != null ? num : "None");
 
-                            String bday = snapshot.child("birthday").getValue(String.class);
-                            etBirthday.setText(bday != null ? bday : "None");
-
                             Log.d("ProfilePageActivity", "Snapshot: " + snapshot.toString());
 
                         }
@@ -104,14 +108,56 @@ public class EditProfileActivity extends AppCompatActivity {
         }
     }
 
-    private void deleteAccount() {
-        // Add Firebase account deletion logic
-        Toast.makeText(this, "Account deleted successfully!", Toast.LENGTH_SHORT).show();
+    private void saveUserData() {
+        FirebaseUser firebaseUser = auth.getCurrentUser();
+        if (firebaseUser != null) {
+            String userId = firebaseUser.getUid();
+            try {
+                // Get updated data from EditTexts
+                String updatedName = etName.getText().toString().trim();
+                String updatedUsername = etUsername.getText().toString().trim();
+                String updatedEmail = etEmail.getText().toString().trim();
+                String updatedPhoneNumber = etPhoneNumber.getText().toString().trim();
 
-        // Redirect to the login page or main page
-        Intent intent = new Intent(EditProfileActivity.this, LogInActivity.class);
-        startActivity(intent);
-        finish();
+                // Update data in Firebase
+                databaseReference.child("User").child(userId).child("name").setValue(updatedName);
+                databaseReference.child("User").child(userId).child("username").setValue(updatedUsername);
+                databaseReference.child("User").child(userId).child("email").setValue(updatedEmail);
+                databaseReference.child("User").child(userId).child("phone_number").setValue(updatedPhoneNumber)
+                        .addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(EditProfileActivity.this, "Profile updated successfully!", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(EditProfileActivity.this, "Failed to update profile. Try again.", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+            } catch (Exception e) {
+                Log.d("EditProfileActivity", "Exception: " + e.getMessage());
+            }
+        } else {
+            Toast.makeText(this, "User not logged in!", Toast.LENGTH_SHORT).show();
+        }
     }
+
+
+    private void deleteAccount() {
+        FirebaseUser firebaseUser = auth.getCurrentUser();
+        if (firebaseUser != null) {
+            firebaseUser.delete().addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    Toast.makeText(this, "Account deleted successfully!", Toast.LENGTH_SHORT).show();
+                    // Redirect to the login page or main page
+                    Intent intent = new Intent(EditProfileActivity.this, LogInActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    Toast.makeText(this, "Failed to delete account. Try again.", Toast.LENGTH_SHORT).show();
+                }
+            });
+        } else {
+            Toast.makeText(this, "User not logged in!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }
 
