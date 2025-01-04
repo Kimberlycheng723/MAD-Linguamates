@@ -12,7 +12,7 @@ public class DiscussionPost {
     }
 
     // Full constructor
-    public DiscussionPost(String postId, String title, String content, String userName, String timestamp) {
+    public DiscussionPost(String postId, String title, String content, String userName,String timestamp) {
         this.content = content;
         this.postId = postId;
         this.timestamp = timestamp;
@@ -52,6 +52,10 @@ public class DiscussionPost {
     public void setUserName(String userName) {
         this.userName = userName;
     }
+    public void setEmail(String userName) {
+        this.userName = userName;
+    }
+
 
     public String getTimestamp() {
         return timestamp;

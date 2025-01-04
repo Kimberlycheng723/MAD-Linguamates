@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.madasignment.R;
 
-
 import java.util.List;
 
 public class RepliesAdapter extends RecyclerView.Adapter<RepliesAdapter.ReplyViewHolder> {
@@ -32,28 +31,25 @@ public class RepliesAdapter extends RecyclerView.Adapter<RepliesAdapter.ReplyVie
     @Override
     public void onBindViewHolder(@NonNull ReplyViewHolder holder, int position) {
         Reply reply = replyList.get(position);
-        holder.tvUserName.setText(reply.getUserName());
-        holder.tvReplyContent.setText(reply.getContent());
-    }
 
+        // Bind data to views based on the correct format
+        holder.tvReplyUserName.setText(reply.getUserName() != null ? reply.getUserName() : "Anonymous");
+        holder.tvReplyContent.setText(reply.getContent() != null ? reply.getContent() : "No content available");
+    }
 
     @Override
     public int getItemCount() {
         return replyList.size();
     }
 
-    public void updateReplies(List<Reply> replies) {
-        this.replyList.clear();
-        this.replyList.addAll(replies);
-        notifyDataSetChanged();
-    }
-
-    static class ReplyViewHolder extends RecyclerView.ViewHolder {
-        TextView tvUserName, tvReplyContent;
+    public static class ReplyViewHolder extends RecyclerView.ViewHolder {
+        TextView tvReplyUserName, tvReplyContent;
 
         public ReplyViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvUserName = itemView.findViewById(R.id.tvUserName);
+
+            // Initialize views with matching IDs from item_reply.xml
+            tvReplyUserName = itemView.findViewById(R.id.tvReplyUserName);
             tvReplyContent = itemView.findViewById(R.id.tvReplyContent);
         }
     }
