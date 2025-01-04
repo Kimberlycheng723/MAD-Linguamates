@@ -15,7 +15,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MADAsignment"
         tools:targetApi="31">
-
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity
             android:name=".community.ReportSubmitActivity"
             android:exported="false" />
@@ -38,12 +45,15 @@
             android:name=".community.CommunityFrontPageActivity"
             android:exported="false" />
         <activity
+            android:name=".community.FriendlistActivity"
+            android:exported="false" />
+        <activity
+            android:name=".community.AddFriendActivity"
+            android:exported="false" />
+        <activity
             android:name=".profile.SignInActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false">
+
         </activity>
 
         <activity android:name=".test.TestCompletionActivity"
@@ -62,6 +72,13 @@
             android:name=".profile.ProfilePageActivity"
             android:exported="true">
         </activity>
+
+        <activity android:name=".profile.SettingsActivity" />
+        <activity android:name=".profile.EditProfileActivity" />
+        <activity android:name=".profile.PreferencesActivity" />
+        <activity android:name=".profile.PrivacyActivity" />
+        <activity android:name=".profile.CoursesActivity" />
+
 
         <activity
             android:name=".lesson_quiz.LessonCompletionActivity"

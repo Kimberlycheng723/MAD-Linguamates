@@ -28,6 +28,7 @@
         android:layout_marginTop="48dp"
         android:background="@drawable/short_rect_pp"
         android:text="back"
+        android:textColor="#242222"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

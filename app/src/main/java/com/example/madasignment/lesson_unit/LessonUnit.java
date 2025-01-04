@@ -57,13 +57,16 @@ public class LessonUnit extends AppCompatActivity {
             flagIcon.setImageResource(R.drawable.flag_chinese);
             motivationalQuote.setText("¡Cuanto más practicas, más fácil se vuelve!");
         }
-
+        btnBeginner.setText("Beginner");
+        btnIntermediate.setText("Intermediate");
+        btnAdvanced.setText("Advanced");
         updateButtonSelection(btnBeginner);
         // Set up RecyclerView
         unitsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         unitList = new ArrayList<>();
         unitsAdapter = new LessonUnitsAdapter(unitList);
         unitsRecyclerView.setAdapter(unitsAdapter);
+
 
         // Load Beginner Units by Default
         loadUnits("Beginner");
@@ -99,7 +102,6 @@ public class LessonUnit extends AppCompatActivity {
                 Toast.makeText(this, "Progress Selected", Toast.LENGTH_SHORT).show();
                 return true;
             } else if (id == R.id.nav_forum) {
-                Toast.makeText(this, "Forum Selected", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(LessonUnit.this, CommunityFrontPageActivity.class);
                 startActivity(intent);
                 return true;

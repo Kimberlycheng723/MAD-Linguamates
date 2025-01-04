@@ -70,19 +70,19 @@ public class SignInActivity extends AppCompatActivity {
 
         // Validate inputs
         if (TextUtils.isEmpty(name)) {
-            etName.setError("Name is required");
+            etName.setError(getString(R.string.name_required));
             return;
         }
         if (TextUtils.isEmpty(email)) {
-            etEmail.setError("Email is required");
+            etEmail.setError(getString(R.string.email_required));
             return;
         }
         if (TextUtils.isEmpty(password)) {
-            etPassword.setError("Password is required");
+            etPassword.setError(getString(R.string.password_required));
             return;
         }
         if (password.length() < 6) {
-            etPassword.setError("Password must be at least 6 characters");
+            etPassword.setError(getString(R.string.password_minimum));
             return;
         }
 
