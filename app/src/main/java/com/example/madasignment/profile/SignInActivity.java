@@ -3,17 +3,14 @@ package com.example.madasignment.profile;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.madasignment.R;
-import com.example.madasignment.profile.LogInActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -24,10 +21,10 @@ import java.util.HashMap;
 public class SignInActivity extends AppCompatActivity {
 
     // Declare variables
-    private EditText etName, etEmail, etPassword;
+    private EditText etName, etEmail, etPassword, etPhone;
     private Button btnSignup, btnLogin;
     private FirebaseAuth auth;
-    private DatabaseReference database;
+    private DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +33,15 @@ public class SignInActivity extends AppCompatActivity {
 
         // Initialize Firebase
         auth = FirebaseAuth.getInstance();
-        database = FirebaseDatabase.getInstance().getReference();
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://mad-linguamates-default-rtdb.asia-southeast1.firebasedatabase.app");
+        databaseReference = database.getReference();
 
         // Initialize UI components
         etName = findViewById(R.id.et_name_si);
         etEmail = findViewById(R.id.et_email_si);
         etPassword = findViewById(R.id.et_pass_si);
+        etPhone = findViewById(R.id.et_num_si);
+
         btnSignup = findViewById(R.id.btn_signup_si);
         btnLogin = findViewById(R.id.btn_login_si);
 
@@ -67,6 +67,7 @@ public class SignInActivity extends AppCompatActivity {
         String name = etName.getText().toString().trim();
         String email = etEmail.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
+        String phone = etPhone.getText().toString().trim();
 
         // Validate inputs
         if (TextUtils.isEmpty(name)) {
@@ -85,7 +86,35 @@ public class SignInActivity extends AppCompatActivity {
             etPassword.setError("Password must be at least 6 characters");
             return;
         }
+        if(TextUtils.isEmpty(phone)){
+            etPhone.setError("Phone number is required");
+            return;
+        }
 
+        createUser(name, email, password, phone);
+
+        // Check if the phone number is already registered
+//        databaseReference.child("User").orderByChild("phone").equalTo(phone)
+//                .addListenerForSingleValueEvent(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                        if (snapshot.exists()) {
+//                            etPhone.setError("Phone number already registered");
+//                        } else {
+//                            // Proceed to register the user
+//                            createUser(name, email, password, phone);
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError error) {
+//                        Toast.makeText(SignInActivity.this, "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+    }
+
+    // Create a new user
+    private void createUser(String name, String email, String password, String phone) {
         // Register user with Firebase Authentication
         auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(task -> {
@@ -99,17 +128,34 @@ public class SignInActivity extends AppCompatActivity {
                             HashMap<String, Object> userMap = new HashMap<>();
                             userMap.put("name", name);
                             userMap.put("email", email);
+                            userMap.put("phone", phone);
 
-                            database.child("users").child(userId).setValue(userMap).addOnCompleteListener(task1 -> {
-                                if (task1.isSuccessful()) {
-                                    Toast.makeText(SignInActivity.this, "Sign-Up Successful", Toast.LENGTH_SHORT).show();
-                                    // Redirect to Login Activity
-                                    startActivity(new Intent(SignInActivity.this, LogInActivity.class));
-                                    finish();
-                                } else {
-                                    Toast.makeText(SignInActivity.this, "Failed to store user data", Toast.LENGTH_SHORT).show();
-                                }
-                            });
+                            // Prepare default user statistics
+                            HashMap<String, Object> statsMap = new HashMap<>();
+                            statsMap.put("iv_statlang_pp", "None");
+                            statsMap.put("iv_statleague_pp", "None");
+                            statsMap.put("iv_statlessons_pp", "0");
+                            statsMap.put("iv_statstreak_pp", "0");
+
+                            // Save User data
+                            databaseReference.child("User").child(userId).setValue(userMap)
+                                    .addOnCompleteListener(userTask  -> {
+                                        if (userTask .isSuccessful()) {
+                                            // Save User Stats data
+                                            databaseReference.child("UserStats").child(userId).setValue(statsMap)
+                                                    .addOnCompleteListener(statsTask -> {
+                                                        if (statsTask.isSuccessful()) {
+                                                            Toast.makeText(SignInActivity.this, "Sign-Up Successful", Toast.LENGTH_SHORT).show();
+                                                            startActivity(new Intent(SignInActivity.this, LogInActivity.class));
+                                                            finish();
+                                                        } else {
+                                                            Toast.makeText(SignInActivity.this, "Failed to save user statistics", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    });
+                                        } else {
+                                            Toast.makeText(SignInActivity.this, "Failed to store user data", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
                         }
                     } else {
                         // Show error message
@@ -118,6 +164,7 @@ public class SignInActivity extends AppCompatActivity {
                 });
     }
 
+    // Navigate to Login Activity
     private void navigateToLogin() {
         // Redirect to Login Activity
         Intent intent = new Intent(SignInActivity.this, LogInActivity.class);
