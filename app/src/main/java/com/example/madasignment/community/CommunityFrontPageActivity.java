@@ -10,15 +10,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.madasignment.Module.Module;
 import com.example.madasignment.R;
 import com.example.madasignment.lesson_unit.LessonUnit;
+import com.example.madasignment.profile.ProfilePageActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class CommunityFrontPageActivity extends AppCompatActivity {
+
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_community_front_page);
 
+        // Initialize BottomNavigationView
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+
+        // Set up Bottom Navigation
+        setupBottomNavigation();
+        bottomNavigationView.setBackgroundColor(getResources().getColor(R.color.nav_blue));
         // Navigate to Discussion Forum
         findViewById(R.id.BtnDiscussionForum).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,17 +41,16 @@ public class CommunityFrontPageActivity extends AppCompatActivity {
         findViewById(R.id.BtnFriendList).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Toast.makeText(CommunityFrontPageActivity.this, "Navigating to Friendlist", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(CommunityFrontPageActivity.this, FriendlistActivity.class);
                 startActivity(intent);
             }
         });
+    }
 
-
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+    private void setupBottomNavigation() {
+        // Ensure BottomNavigationView is properly initialized
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
-
             if (id == R.id.nav_home) {
                 Intent intent = new Intent(CommunityFrontPageActivity.this, LessonUnit.class);
                 startActivity(intent);
@@ -55,15 +63,16 @@ public class CommunityFrontPageActivity extends AppCompatActivity {
                 Toast.makeText(this, "Progress Selected", Toast.LENGTH_SHORT).show();
                 return true;
             } else if (id == R.id.nav_forum) {
-
-                return true;
+                return true; // Already on Community Page
             } else if (id == R.id.nav_profile) {
-                Toast.makeText(this, "Profile Selected", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(CommunityFrontPageActivity.this, ProfilePageActivity.class);
+                startActivity(intent);
                 return true;
-            } else {
-                return false;
             }
+            return false;
         });
 
+        // Set default selected item
+        bottomNavigationView.setSelectedItemId(R.id.nav_forum);
     }
 }
