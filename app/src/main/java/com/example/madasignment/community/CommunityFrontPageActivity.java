@@ -55,7 +55,6 @@ public class CommunityFrontPageActivity extends AppCompatActivity {
                 Toast.makeText(this, "Progress Selected", Toast.LENGTH_SHORT).show();
                 return true;
             } else if (id == R.id.nav_forum) {
-
                 return true;
             } else if (id == R.id.nav_profile) {
                 Toast.makeText(this, "Profile Selected", Toast.LENGTH_SHORT).show();
