@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
         android:text="Courses"
+        android:fontFamily="@font/poppins_semibold"
         android:textColor="#1F1E1E"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,6 +29,7 @@
         android:layout_marginTop="48dp"
         android:background="@drawable/short_rect_pp"
         android:text="back"
+        android:fontFamily="@font/poppins_semibold"
         android:textColor="#242222"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -49,35 +51,23 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:text="Chinese"
+        android:fontFamily="@font/poppins_semibold"
         app:layout_constraintBottom_toBottomOf="@+id/iv_course_c"
         app:layout_constraintStart_toStartOf="@+id/iv_course_c"
         app:layout_constraintTop_toTopOf="@+id/iv_course_c"
         app:layout_constraintVertical_bias="0.466" />
 
-    <Button
-        android:id="@+id/btn_remove_c"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="28dp"
-        android:text="remove"
-        android:textColor="#CA0C0C"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_course_c"
-        app:layout_constraintEnd_toEndOf="@+id/iv_course_c" />
-
-    <TextView
-        android:id="@+id/tv_reminder_c"
-        android:layout_width="289dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="56dp"
-        android:text="Removing a course deletes all your progress and cannot be undone"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.565"
-        app:layout_constraintStart_toStartOf="parent" />
+    <ImageView
+        android:id="@+id/iv_chineseFlag_c"
+        android:layout_width="54dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="@+id/iv_course_c"
+        app:layout_constraintHorizontal_bias="0.844"
+        app:layout_constraintStart_toEndOf="@+id/tv_courseName_s"
+        app:layout_constraintTop_toTopOf="@+id/iv_course_c"
+        app:srcCompat="@drawable/flag_chinese" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
