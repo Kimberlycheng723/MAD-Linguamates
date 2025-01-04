@@ -18,23 +18,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/dolphin2" />
 
-    <Button
-        android:id="@+id/blt_dlt_ep"
-        android:layout_width="211dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="88dp"
-        android:layout_marginTop="148dp"
-        android:layout_marginEnd="112dp"
-        android:background="@drawable/long_rect_pp"
-        android:text="Delete Account"
-        android:fontFamily="@font/poppins_semibold"
-        android:textColor="#AFBA0404"
-        android:textColorLink="#B6BAB4B4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_num_ep" />
-
     <TextView
         android:id="@+id/tv_name_ep"
         android:layout_width="wrap_content"
@@ -114,21 +97,10 @@
         app:layout_constraintBottom_toTopOf="@+id/iv_username_ep"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/iv_email_ep"
-        android:layout_width="318dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="44dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_username_ep"
-        app:srcCompat="@drawable/long_rect_pp" />
-
     <EditText
         android:id="@+id/et_num_ep"
-        android:layout_width="284dp"
-        android:layout_height="49dp"
+        android:layout_width="295dp"
+        android:layout_height="61dp"
         android:background="@null"
         android:ems="10"
         android:fontFamily="@font/poppins_semibold"
@@ -136,7 +108,7 @@
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="@+id/iv_num_ep"
         app:layout_constraintEnd_toEndOf="@+id/iv_num_ep"
-        app:layout_constraintHorizontal_bias="0.826"
+        app:layout_constraintHorizontal_bias="0.814"
         app:layout_constraintStart_toStartOf="@+id/iv_num_ep"
         app:layout_constraintTop_toTopOf="@+id/iv_num_ep"
         app:layout_constraintVertical_bias="0.0" />
@@ -146,7 +118,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="4dp"
         android:fontFamily="@font/poppins_semibold"
         android:text="Phone Number"
         android:textColor="#000000"
@@ -156,10 +128,10 @@
 
     <ImageView
         android:id="@+id/iv_num_ep"
-        android:layout_width="307dp"
-        android:layout_height="60dp"
+        android:layout_width="322dp"
+        android:layout_height="72dp"
         android:layout_marginStart="44dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_email_ep"
         app:srcCompat="@drawable/long_rect_pp" />
@@ -168,8 +140,8 @@
         android:id="@+id/tv_email_ep"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginBottom="8dp"
         android:fontFamily="@font/poppins_semibold"
         android:text="Email"
         android:textColor="#000000"
@@ -181,7 +153,6 @@
         android:id="@+id/et_email_ep"
         android:layout_width="271dp"
         android:layout_height="48dp"
-        android:layout_marginBottom="8dp"
         android:background="@null"
         android:ems="10"
         android:fontFamily="@font/poppins_semibold"
@@ -190,7 +161,20 @@
         app:layout_constraintBottom_toBottomOf="@+id/iv_email_ep"
         app:layout_constraintEnd_toEndOf="@+id/iv_email_ep"
         app:layout_constraintHorizontal_bias="0.34"
-        app:layout_constraintStart_toStartOf="@+id/iv_email_ep" />
+        app:layout_constraintStart_toStartOf="@+id/iv_email_ep"
+        app:layout_constraintTop_toTopOf="@+id/iv_email_ep"
+        app:layout_constraintVertical_bias="0.8" />
+
+    <ImageView
+        android:id="@+id/iv_email_ep"
+        android:layout_width="318dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="36dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_username_ep"
+        app:srcCompat="@drawable/long_rect_pp" />
 
     <Button
         android:id="@+id/btn_back_ep"
@@ -209,15 +193,32 @@
         android:id="@+id/btn_save_ep"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save"
-        android:fontFamily="@font/poppins_semibold"
-        android:textColor="#4B4444"
+        android:layout_marginBottom="32dp"
         android:background="@drawable/short_rect_pp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Save"
+        android:textColor="#4B4444"
         app:layout_constraintBottom_toTopOf="@+id/blt_dlt_ep"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.481"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_num_ep" />
+        app:layout_constraintHorizontal_bias="0.461"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/blt_dlt_ep"
+        android:layout_width="211dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginEnd="112dp"
+        android:layout_marginBottom="44dp"
+        android:background="@drawable/long_rect_pp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Delete Account"
+        android:textColor="#AFBA0404"
+        android:textColorLink="#B6BAB4B4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/iv_bubble_ep"
@@ -254,5 +255,42 @@
         app:layout_constraintStart_toEndOf="@+id/btn_back_ep"
         app:layout_constraintTop_toBottomOf="@+id/btn_back_ep"
         app:srcCompat="@drawable/bubble" />
+
+    <TextView
+        android:id="@+id/tv_bio_ep"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginBottom="12dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Bio"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/et_bio_ep"
+        android:layout_width="291dp"
+        android:layout_height="54dp"
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:fontFamily="@font/poppins_semibold"
+        android:hint="this is my bio and my bio is me "
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView5"
+        app:layout_constraintEnd_toEndOf="@+id/imageView5"
+        app:layout_constraintStart_toStartOf="@+id/imageView5"
+        app:layout_constraintTop_toTopOf="@+id/imageView5" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="315dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="36dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.458"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_num_ep"
+        app:srcCompat="@drawable/long_rect_pp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

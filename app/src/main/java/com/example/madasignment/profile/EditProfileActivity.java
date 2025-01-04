@@ -23,7 +23,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
     private FirebaseAuth auth;
     private DatabaseReference databaseReference;
-    private EditText etName, etUsername, etEmail, etPhoneNumber;
+    private EditText etName, etUsername, etEmail, etPhoneNumber, etBio;
     private Button btnDeleteAccount, btnBack, btnSave;
 
     @Override
@@ -41,6 +41,7 @@ public class EditProfileActivity extends AppCompatActivity {
         etUsername = findViewById(R.id.et_username_ep);
         etEmail = findViewById(R.id.et_email_ep);
         etPhoneNumber = findViewById(R.id.et_num_ep);
+        etBio = findViewById(R.id.et_bio_ep);
         btnDeleteAccount = findViewById(R.id.blt_dlt_ep);
         btnBack = findViewById(R.id.btn_back_ep);
         btnSave = findViewById(R.id.btn_save_ep);
@@ -88,8 +89,11 @@ public class EditProfileActivity extends AppCompatActivity {
                             String email = snapshot.child("email").getValue(String.class);
                             etEmail.setText(email != null ? email : "None");
 
-                            String num = snapshot.child("phone_number").getValue(String.class);
+                            String num = snapshot.child("phone").getValue(String.class);
                             etPhoneNumber.setText(num != null ? num : "None");
+
+                            String bio = snapshot.child("Bio").getValue(String.class);
+                            etBio.setText(bio != null ? bio : "None");
 
                             Log.d("ProfilePageActivity", "Snapshot: " + snapshot.toString());
 
@@ -118,12 +122,14 @@ public class EditProfileActivity extends AppCompatActivity {
                 String updatedUsername = etUsername.getText().toString().trim();
                 String updatedEmail = etEmail.getText().toString().trim();
                 String updatedPhoneNumber = etPhoneNumber.getText().toString().trim();
+                String updatedBio = etBio.getText().toString().trim();
 
                 // Update data in Firebase
                 databaseReference.child("User").child(userId).child("name").setValue(updatedName);
                 databaseReference.child("User").child(userId).child("username").setValue(updatedUsername);
                 databaseReference.child("User").child(userId).child("email").setValue(updatedEmail);
-                databaseReference.child("User").child(userId).child("phone_number").setValue(updatedPhoneNumber)
+                databaseReference.child("User").child(userId).child("phone").setValue(updatedPhoneNumber);
+                databaseReference.child("User").child(userId).child("Bio").setValue(updatedBio)
                         .addOnCompleteListener(task -> {
                             if (task.isSuccessful()) {
                                 Toast.makeText(EditProfileActivity.this, "Profile updated successfully!", Toast.LENGTH_SHORT).show();
