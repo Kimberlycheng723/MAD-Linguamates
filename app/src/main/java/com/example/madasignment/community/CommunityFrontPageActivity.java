@@ -29,7 +29,7 @@ public class CommunityFrontPageActivity extends AppCompatActivity {
         });
 
         // Navigate to Friendlist
-        findViewById(R.id.BtnFriendlist).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.BtnFriendList).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                Toast.makeText(CommunityFrontPageActivity.this, "Navigating to Friendlist", Toast.LENGTH_SHORT).show();
