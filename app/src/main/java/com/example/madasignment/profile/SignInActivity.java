@@ -21,7 +21,7 @@ import java.util.HashMap;
 public class SignInActivity extends AppCompatActivity {
 
     // Declare variables
-    private EditText etName, etEmail, etPassword, etPhone;
+    private EditText etName, etEmail, etPassword, etPhone, etuserName;
     private Button btnSignup, btnLogin;
     private FirebaseAuth auth;
     private DatabaseReference databaseReference;
@@ -41,6 +41,7 @@ public class SignInActivity extends AppCompatActivity {
         etEmail = findViewById(R.id.et_email_si);
         etPassword = findViewById(R.id.et_pass_si);
         etPhone = findViewById(R.id.et_num_si);
+        etuserName = findViewById(R.id.et_username_si);
 
         btnSignup = findViewById(R.id.btn_signup_si);
         btnLogin = findViewById(R.id.btn_login_si);
@@ -68,6 +69,7 @@ public class SignInActivity extends AppCompatActivity {
         String email = etEmail.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
         String phone = etPhone.getText().toString().trim();
+        String username = etuserName.getText().toString().trim();
 
         // Validate inputs
         if (TextUtils.isEmpty(name)) {
@@ -90,31 +92,15 @@ public class SignInActivity extends AppCompatActivity {
             etPhone.setError("Phone number is required");
             return;
         }
-
-        createUser(name, email, password, phone);
-
-        // Check if the phone number is already registered
-//        databaseReference.child("User").orderByChild("phone").equalTo(phone)
-//                .addListenerForSingleValueEvent(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                        if (snapshot.exists()) {
-//                            etPhone.setError("Phone number already registered");
-//                        } else {
-//                            // Proceed to register the user
-//                            createUser(name, email, password, phone);
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//                        Toast.makeText(SignInActivity.this, "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
-//                    }
-//                });
+        if(TextUtils.isEmpty(username)){
+            etuserName.setError("Username is required");
+            return;
+        }
+        createUser(name, email, password, phone, username);
     }
 
     // Create a new user
-    private void createUser(String name, String email, String password, String phone) {
+    private void createUser(String name, String email, String password, String phone, String username) {
         // Register user with Firebase Authentication
         auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(task -> {
@@ -129,6 +115,7 @@ public class SignInActivity extends AppCompatActivity {
                             userMap.put("name", name);
                             userMap.put("email", email);
                             userMap.put("phone", phone);
+                            userMap.put("username", username);
 
                             // Prepare default user statistics
                             HashMap<String, Object> statsMap = new HashMap<>();
