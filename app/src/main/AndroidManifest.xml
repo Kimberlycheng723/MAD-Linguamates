@@ -20,11 +20,13 @@
         <activity
             android:name=".profile.SplashActivity"
             android:exported="true">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
+
 
 
         <!-- Home -->
@@ -44,8 +46,19 @@
 
         <!-- Lessons -->
         <activity android:name=".lessons.Module.video.video" />
-        <activity android:name=".lessons.Module.module.Module" />
+
         <activity android:name=".lessons.Module.read.ReadOnlyActivity" />
+
+        <!-- Gamification -->
+        <activity android:name=".gamification.AchievementSplash" />
+        <activity android:name=".gamification.AchievementOverviewActivity" />
+        <activity android:name=".gamification.MyBadgesActivity" />
+        <activity android:name=".gamification.LeaderboardActivity" />
+        <activity android:name=".gamification.DailyStreakActivity" />
+
+        <activity android:name=".lessons.Module.module.Module"
+            android:exported="false"/>
+
 
         <!-- Community -->
         <activity android:name=".community.ReportSubmitActivity"/>

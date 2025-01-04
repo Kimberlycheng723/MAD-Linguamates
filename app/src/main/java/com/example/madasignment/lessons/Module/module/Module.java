@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.madasignment.R;
 import com.example.madasignment.community.CommunityFrontPageActivity;
+import com.example.madasignment.gamification.AchievementOverviewActivity;
 import com.example.madasignment.home.lesson_unit.lesson_unit.LessonUnit;
 import com.example.madasignment.profile.ProfilePageActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -134,7 +135,8 @@ public class Module extends AppCompatActivity {
             } else if (id == R.id.nav_lessons) {
                 return true; // Stay on this page
             } else if (id == R.id.nav_progress) {
-                Toast.makeText(this, "Progress Selected", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Module.this, AchievementOverviewActivity.class);
+                startActivity(intent);
                 return true;
             } else if (id == R.id.nav_forum) {
                 Intent intent = new Intent(Module.this, CommunityFrontPageActivity.class);

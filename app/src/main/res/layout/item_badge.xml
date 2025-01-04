@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="8dp">
+
+    <!-- Badge Image -->
+    <ImageView
+        android:id="@+id/badgeImage"
+        android:layout_width="100dp"
+    android:layout_height="170dp"
+    android:scaleType="fitCenter"
+    android:src="@drawable/badge_locked" />
+
+    <!-- Badge Name -->
+    <TextView
+        android:id="@+id/badgeName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Badge Name"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <!-- Badge Description -->
+    <TextView
+        android:id="@+id/badgeDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="Badge Description"
+        android:textAlignment="center"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="12sp" />
+
+    <!-- Badge Progress -->
+    <TextView
+        android:id="@+id/badgeProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="In Progress"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textAlignment="center"
+        android:textSize="12sp" />
+</LinearLayout>
