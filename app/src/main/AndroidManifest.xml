@@ -15,7 +15,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MADAsignment"
         tools:targetApi="31">
-
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
+        <activity
+            android:name=".community.ReportSubmitActivity"
+            android:exported="false" />
+        <activity
+            android:name=".community.ReportDiscussionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".community.AddFriendActivity"
+            android:exported="false" />
+        <activity
+            android:name=".community.FriendlistActivity"
+            android:exported="false" />
         <activity
             android:name=".community.NewPostActivity"
             android:exported="false" />
@@ -27,11 +46,8 @@
             android:exported="false" />
         <activity
             android:name=".profile.SignInActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false">
+
         </activity>
 
         <activity android:name=".test.TestCompletionActivity"
@@ -46,10 +62,7 @@
             android:exported="false" />
 
         <activity android:name=".profile.LogInActivity" />
-        <activity
-            android:name=".profile.ProfilePageActivity"
-            android:exported="true">
-        </activity>
+        <activity android:name=".profile.ProfilePageActivity" />
 
         <activity android:name=".profile.SettingsActivity" />
         <activity android:name=".profile.EditProfileActivity" />

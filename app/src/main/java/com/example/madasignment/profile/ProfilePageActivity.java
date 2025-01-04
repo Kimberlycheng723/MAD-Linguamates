@@ -5,13 +5,19 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import com.example.madasignment.Module.Module;
 import com.example.madasignment.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.example.madasignment.community.CommunityFrontPageActivity;
+import com.example.madasignment.lesson_unit.LessonUnit;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,6 +30,7 @@ public class ProfilePageActivity extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private TextView tvStreakValue, tvLeagueValue, tvLessonValue, tvLanguageValue;
     private TextView tvnameValue, tvusernameValue;
+    private BottomNavigationView bottomNavigationView; // Declare as a private variable
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +42,16 @@ public class ProfilePageActivity extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://mad-linguamates-default-rtdb.asia-southeast1.firebasedatabase.app");
         databaseReference = database.getReference();
 
-        Button btnset = findViewById(R.id.btn_set_pp);
+        // Initialize BottomNavigationView
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.nav_blue));
+        setupBottomNavigation();
+
+        // Initialize buttons
+        Button btnSet = findViewById(R.id.btn_set_pp);
         Button editPage = findViewById(R.id.Bt_editProfile);
 
-        btnset.setOnClickListener(v -> {
+        btnSet.setOnClickListener(v -> {
             Intent intent = new Intent(ProfilePageActivity.this, SettingsActivity.class);
             startActivity(intent);
         });
@@ -48,6 +61,7 @@ public class ProfilePageActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        // Initialize text views
         tvStreakValue = findViewById(R.id.tv_streakValue_pp);
         tvLeagueValue = findViewById(R.id.tv_leagueValue_pp);
         tvLanguageValue = findViewById(R.id.tv_languageValue_pp);
@@ -70,7 +84,7 @@ public class ProfilePageActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.exists()) {
 
-                            // Retrieve Data
+                            // Retrieve data
                             String name = snapshot.child("name").getValue(String.class);
                             tvnameValue.setText(name != null ? name : "0");
 
@@ -99,7 +113,7 @@ public class ProfilePageActivity extends AppCompatActivity {
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        // Handle Database Error
+                        // Handle database error
                         Log.d("ProfilePageActivity", "Error: " + error.getMessage());
                     }
                 });
@@ -134,4 +148,32 @@ public class ProfilePageActivity extends AppCompatActivity {
         }
     }
 
+    private void setupBottomNavigation() {
+        // Set listener for bottom navigation
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.nav_home) {
+                Intent intent = new Intent(ProfilePageActivity.this, LessonUnit.class);
+                startActivity(intent);
+                return true;
+            } else if (id == R.id.nav_lessons) {
+                Intent intent = new Intent(ProfilePageActivity.this, Module.class);
+                startActivity(intent);
+                return true;
+            } else if (id == R.id.nav_progress) {
+                Toast.makeText(this, "Progress Selected", Toast.LENGTH_SHORT).show();
+                return true;
+            } else if (id == R.id.nav_forum) {
+                Intent intent = new Intent(ProfilePageActivity.this, CommunityFrontPageActivity.class);
+                startActivity(intent);
+                return true;
+            } else if (id == R.id.nav_profile) {
+                return true; // Current activity
+            }
+            return false;
+        });
+
+        // Set the current selected item to the profile page
+        bottomNavigationView.setSelectedItemId(R.id.nav_profile);
+    }
 }

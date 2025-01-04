@@ -1,60 +1,75 @@
 package com.example.madasignment.community;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.madasignment.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class NewPostActivity extends AppCompatActivity {
 
-    private DatabaseReference databaseReference;
-    private EditText edtPostContent;
+    private EditText edtPostTitle, edtPostContent;
+    private Button btnSubmitPost;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_post);
 
+        edtPostTitle = findViewById(R.id.edtPostTitle); // Added for title
         edtPostContent = findViewById(R.id.edtPostContent);
-        Button btnSubmitPost = findViewById(R.id.btnSubmitPost);
-
-        // Initialize Firebase reference
-        databaseReference = FirebaseDatabase.getInstance().getReference("DiscussionPosts");
+        btnSubmitPost = findViewById(R.id.btnSubmitPost);
 
         btnSubmitPost.setOnClickListener(v -> {
+            String postTitle = edtPostTitle.getText().toString().trim();
             String postContent = edtPostContent.getText().toString().trim();
-            if (!postContent.isEmpty()) {
-                addNewPost(postContent);
-            } else {
-                Toast.makeText(this, "Post content cannot be empty.", Toast.LENGTH_SHORT).show();
+
+            if (postTitle.isEmpty() || postContent.isEmpty()) {
+                Toast.makeText(this, "Title and content cannot be empty.", Toast.LENGTH_SHORT).show();
+                return;
             }
+
+            addNewPost(postTitle, postContent);
         });
     }
 
-    private void addNewPost(String postContent) {
-        String postId = databaseReference.push().getKey(); // Generate a unique ID for the post
+    private void addNewPost(String postTitle, String postContent) {
+        Log.d("NewPostActivity", "addNewPost triggered");
+        DatabaseReference postsRef = FirebaseDatabase.getInstance().getReference("DiscussionPosts");
+        String postId = postsRef.push().getKey(); // Generate a unique ID for the post
         String timestamp = String.valueOf(System.currentTimeMillis());
 
-        // Create a new post object
-        DiscussionPost post = new DiscussionPost(postId, postContent,"anonymous", timestamp);
+        if (postId == null) {
+            Toast.makeText(this, "Error generating post. Please try again.", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-        // Add the post to the database
-        databaseReference.child(postId).setValue(post)
-                .addOnSuccessListener(aVoid -> {
-                    Toast.makeText(this, "Post added successfully!", Toast.LENGTH_SHORT).show();
-                    // Navigate back to the discussion forum
-                    Intent intent = new Intent(NewPostActivity.this, DiscussionForumActivity.class);
-                    startActivity(intent);
-                    finish();
-                })
-                .addOnFailureListener(e ->
-                        Toast.makeText(this, "Failed to add post.", Toast.LENGTH_SHORT).show());
+        Map<String, Object> postData = new HashMap<>();
+        postData.put("postId", postId);
+        postData.put("title", postTitle); // Include title in the post data
+        postData.put("content", postContent);
+        postData.put("userName", "Anonymous"); // Replace with actual user data
+        postData.put("timestamp", timestamp);
+
+        postsRef.child(postId).setValue(postData).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                Log.d("NewPostActivity", "Post added successfully");
+                Toast.makeText(this, "Post added successfully!", Toast.LENGTH_SHORT).show();
+                finish(); // Close the activity
+            } else {
+                Log.e("NewPostActivity", "Failed to add post", task.getException());
+                Toast.makeText(this, "Failed to add post.", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

@@ -7,7 +7,8 @@
     android:layout_height="fill_parent"
     android:background="@drawable/splash"
     android:orientation="vertical"
-    android:weightSum="1.0">
+    android:weightSum="1.0"
+    tools:menu="@menu/bottom_navigation_menu">
 
     <ImageView
         android:id="@+id/iv_dolphin_pp"
@@ -339,5 +340,16 @@
         app:layout_constraintEnd_toEndOf="@+id/iv_statlessons_pp"
         app:layout_constraintTop_toTopOf="@+id/iv_statlessons_pp" />
 
-
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        style="@style/CustomBottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="0dp"
+        android:padding="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_navigation_menu" />
 </androidx.constraintlayout.widget.ConstraintLayout>

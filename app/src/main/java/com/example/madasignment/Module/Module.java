@@ -14,7 +14,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.madasignment.R;
+import com.example.madasignment.community.CommunityFrontPageActivity;
 import com.example.madasignment.lesson_unit.LessonUnit;
+import com.example.madasignment.profile.ProfilePageActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
@@ -51,6 +53,8 @@ public class Module extends AppCompatActivity {
 
         // Initialize progress bar
         updateProgressBar();
+
+
     }
 
     private void initViews() {
@@ -133,10 +137,12 @@ public class Module extends AppCompatActivity {
                 Toast.makeText(this, "Progress Selected", Toast.LENGTH_SHORT).show();
                 return true;
             } else if (id == R.id.nav_forum) {
-                Toast.makeText(this, "Forum Selected", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Module.this, CommunityFrontPageActivity.class);
+                startActivity(intent);
                 return true;
             } else if (id == R.id.nav_profile) {
-                Toast.makeText(this, "Profile Selected", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Module.this, ProfilePageActivity.class);
+                startActivity(intent);
                 return true;
             }
             return false;

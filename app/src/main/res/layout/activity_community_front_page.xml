@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_gradient">
+    android:background="@drawable/splash_screen_background"
+    tools:menu="@menu/bottom_navigation_menu">
 
     <!-- Title -->
 
@@ -17,54 +18,55 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
+        android:fontFamily="@font/poppins_semibold"
         android:text="Community Page"
-        android:textColor="@color/blue"
-        android:textSize="24sp"
+        android:textColor="#307CD4"
+        android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/BtnDiscussionForum"
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="160dp"
-        android:background="@drawable/rounded_button"
-        android:text="Discussion Forum"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
+
+    <!-- ImageView: Dolphin -->
+
+    <ImageButton
+        android:id="@+id/BtnFriendList"
+        android:layout_width="323dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="40dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:src="@drawable/community_friendlist_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/BtnDiscussionForum" />
+
+    <ImageButton
+        android:id="@+id/BtnDiscussionForum"
+        android:layout_width="323dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="252dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:src="@drawable/community_discussion_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/TVCommunityTitle" />
 
-    <Button
-        android:id="@+id/BtnFriendlist"
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rounded_button"
-        android:text="Friendlist"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/BtnDiscussionForum"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
-
-    <!-- ImageView: Dolphin -->
     <ImageView
         android:id="@+id/IVDolphin"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginBottom="196dp"
-        android:src="@drawable/dolphin2"
+        android:layout_width="169dp"
+        android:layout_height="163dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginBottom="88dp"
+        android:src="@drawable/dolphin6"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.835"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
