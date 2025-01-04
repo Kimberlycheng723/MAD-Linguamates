@@ -13,6 +13,8 @@ import androidx.core.content.ContextCompat;
 
 import com.example.madasignment.lessons.Module.module.Module;
 import com.example.madasignment.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.example.madasignment.community.CommunityFrontPageActivity;
 import com.example.madasignment.home.lesson_unit.lesson_unit.LessonUnit;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -24,15 +26,21 @@ import com.google.firebase.database.ValueEventListener;
 
 public class ProfilePageActivity extends AppCompatActivity {
 
+    private FirebaseAuth auth;
     private DatabaseReference databaseReference;
-    private String mobileNumber = "1234567890";
     private TextView tvStreakValue, tvLeagueValue, tvLessonValue, tvLanguageValue;
+    private TextView tvnameValue, tvusernameValue;
     private BottomNavigationView bottomNavigationView; // Declare as a private variable
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_page);
+
+        // Initialize Firebase
+        auth = FirebaseAuth.getInstance();
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://mad-linguamates-default-rtdb.asia-southeast1.firebasedatabase.app");
+        databaseReference = database.getReference();
 
         // Initialize BottomNavigationView
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
@@ -53,54 +61,91 @@ public class ProfilePageActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        // Initialize Firebase Database Reference
-        FirebaseDatabase database = FirebaseDatabase.getInstance("https://mad-linguamates-default-rtdb.asia-southeast1.firebasedatabase.app");
-        databaseReference = database.getReference("userStats");
-
         // Initialize text views
         tvStreakValue = findViewById(R.id.tv_streakValue_pp);
         tvLeagueValue = findViewById(R.id.tv_leagueValue_pp);
         tvLanguageValue = findViewById(R.id.tv_languageValue_pp);
         tvLessonValue = findViewById(R.id.tv_lessonValue_pp);
 
-        // Fetch and display user data
-        fetchUserData(mobileNumber);
+        tvnameValue = findViewById(R.id.tv_name_pp);
+        tvusernameValue = findViewById(R.id.tv_username_pp);
+
+        // Fetch and Display Data
+        fetchUserData();
     }
 
-    private void fetchUserData(String mobile) {
-        databaseReference.child(mobile).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    // Retrieve data
-                    String streak = snapshot.child("iv_statstreak_pp").getValue(String.class);
-                    tvStreakValue.setText(streak != null ? streak : "0");
+    private void fetchUserData() {
+        FirebaseUser firebaseUser = auth.getCurrentUser();
+        if (firebaseUser != null) {
+            String userId = firebaseUser.getUid();
+            try {
+                databaseReference.child("UserStats").child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
 
-                    String league = snapshot.child("iv_statleague_pp").getValue(String.class);
-                    tvLeagueValue.setText(league != null ? league : "None");
+                            // Retrieve data
+                            String name = snapshot.child("name").getValue(String.class);
+                            tvnameValue.setText(name != null ? name : "0");
 
-                    String languages = snapshot.child("iv_statlang_pp").getValue(String.class);
-                    if (languages != null) {
-                        // Count the number of languages
-                        int languageCount = languages.split(",").length;
-                        tvLanguageValue.setText(String.valueOf(languageCount));
-                    } else {
-                        tvLanguageValue.setText("0");
+                            String streak = snapshot.child("iv_statstreak_pp").getValue(String.class);
+                            tvStreakValue.setText(streak != null ? streak : "0");
+
+                            String league = snapshot.child("iv_statleague_pp").getValue(String.class);
+                            tvLeagueValue.setText(league != null ? league : "None");
+
+                            String languages = snapshot.child("iv_statlang_pp").getValue(String.class);
+                            if (languages != null && !languages.equals("None")) {
+                                // Count the number of languages
+                                int languageCount = languages.split(",").length;
+                                tvLanguageValue.setText(String.valueOf(languageCount));
+                            } else {
+                                tvLanguageValue.setText("0");
+                            }
+
+                            String lessons = snapshot.child("iv_statlessons_pp").getValue(String.class);
+                            tvLessonValue.setText(lessons != null ? lessons : "0");
+
+                            Log.d("ProfilePageActivity", "Snapshot: " + snapshot.toString());
+
+                        }
                     }
 
-                    String lessons = snapshot.child("iv_statlessons_pp").getValue(String.class);
-                    tvLessonValue.setText(lessons != null ? lessons : "0");
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        // Handle database error
+                        Log.d("ProfilePageActivity", "Error: " + error.getMessage());
+                    }
+                });
 
-                    Log.d("ProfilePageActivity", "Snapshot: " + snapshot.toString());
-                }
+                databaseReference.child("User").child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+
+                            // Retrieve Data
+                            String name = snapshot.child("name").getValue(String.class);
+                            tvnameValue.setText(name != null ? name : "0");
+
+                            String username = snapshot.child("username").getValue(String.class);
+                            tvusernameValue.setText(name != null ? username : "0");
+
+                            Log.d("ProfilePageActivity", "Snapshot: " + snapshot.toString());
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        // Handle Database Error
+                        Log.d("ProfilePageActivity", "Error: " + error.getMessage());
+                    }
+                });
+            } catch (Exception e) {
+                Log.d("ProfilePageActivity", "Exception: " + e.getMessage());
             }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                // Handle database error
-                Log.d("ProfilePageActivity", "Error: " + error.getMessage());
-            }
-        });
+        }
     }
 
     private void setupBottomNavigation() {
