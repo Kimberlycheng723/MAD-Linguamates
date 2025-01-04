@@ -15,100 +15,59 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MADAsignment"
         tools:targetApi="31">
+
+
         <activity
-            android:name=".SplashActivity"
+            android:name=".profile.SplashActivity"
             android:exported="true">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
         </activity>
-        <activity
-            android:name=".community.ReportSubmitActivity"
-            android:exported="false" />
-        <activity
-            android:name=".community.ReportDiscussionActivity"
-            android:exported="false" />
-        <activity
-            android:name=".community.AddFriendActivity"
-            android:exported="false" />
-        <activity
-            android:name=".community.FriendlistActivity"
-            android:exported="false" />
-        <activity
-            android:name=".community.NewPostActivity"
-            android:exported="false" />
-        <activity
-            android:name=".community.DiscussionForumActivity"
-            android:exported="false" />
-        <activity
-            android:name=".community.CommunityFrontPageActivity"
-            android:exported="false" />
-        <activity
-            android:name=".profile.SignInActivity"
-            android:exported="false">
-
-        </activity>
-
-        <activity android:name=".test.TestCompletionActivity"
-            android:exported="false"/>
 
 
-        <activity
-            android:name=".test.TestSplashScreen"
-            android:exported="false" />
-        <activity
-            android:name=".test.LessonTestActivity"
-            android:exported="false" />
+        <!-- Home -->
+        <activity android:name=".home.lesson_unit.test.TestCompletionActivity" />
+        <activity android:name=".home.lesson_unit.test.TestSplashScreen" />
+        <activity android:name=".home.lesson_unit.test.LessonTestActivity" />
+        <activity android:name=".home.lesson_unit.lesson_quiz.LessonCompletionActivity" />
+        <activity android:name=".home.lesson_unit.lesson_unit.LessonUnit" />
+        <activity android:name=".home.lesson_unit.levels.LevelsActivity" />
+        <activity android:name=".home.lesson_unit.flashcard.Flashcard" />
+        <activity android:name=".home.lesson_unit.test.ResultActivity" />
+        <activity android:name=".home.lesson_unit.test.TestResult" />
+        <activity android:name=".home.lesson_unit.test.AnswerBreakdownActivity" />
+        <activity android:name=".home.lesson_unit.lesson_quiz.LessonQuestionActivity" />
+        <activity android:name=".home.lesson_unit.flashcard.FlashcardSplashScreenActivity" />
+        <activity android:name=".home.lesson_unit.flashcard.FinishSplashActivity" />
 
+        <!-- Lessons -->
+        <activity android:name=".lessons.Module.video.video" />
+        <activity android:name=".lessons.Module.module.Module" />
+        <activity android:name=".lessons.Module.read.ReadOnlyActivity" />
+
+        <!-- Community -->
+        <activity android:name=".community.ReportSubmitActivity"/>
+        <activity android:name=".community.ReportDiscussionActivity" />
+        <activity android:name=".community.AddFriendActivity" />
+        <activity android:name=".community.FriendlistActivity" />
+        <activity android:name=".community.NewPostActivity" />
+        <activity android:name=".community.DiscussionForumActivity" />
+        <activity android:name=".community.CommunityFrontPageActivity" />
+
+        <!-- Profile -->
         <activity android:name=".profile.LogInActivity" />
         <activity android:name=".profile.ProfilePageActivity" />
-
         <activity android:name=".profile.SettingsActivity" />
         <activity android:name=".profile.EditProfileActivity" />
         <activity android:name=".profile.PreferencesActivity" />
         <activity android:name=".profile.PrivacyActivity" />
         <activity android:name=".profile.CoursesActivity" />
+        <activity android:name=".profile.SignInActivity"/>
 
 
-        <activity
-            android:name=".lesson_quiz.LessonCompletionActivity"
-            android:exported="false" />
-        <activity
-            android:name=".lesson_unit.LessonUnit"
-            android:exported="false"/>
 
-
-        <activity
-            android:name=".levels.LevelsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".video.video"
-            android:exported="false" />
-        <activity
-            android:name=".flashcard.Flashcard"
-            android:exported="false" />
-        <activity
-            android:name=".test.ResultActivity"
-            android:exported="false" />
-        <activity
-            android:name=".test.TestResult"
-            android:exported="false" />
-        <activity
-            android:name=".test.AnswerBreakdownActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".Module.Module"
-            android:exported="false" />
-        <activity
-            android:name=".read.ReadOnlyActivity"
-            android:exported="false" />
-        <activity
-            android:name=".lesson_quiz.LessonQuestionActivity"
-            android:exported="false" />
-        <activity android:name=".flashcard.FlashcardSplashScreenActivity" />
-        <activity android:name=".flashcard.FinishSplashActivity" />
     </application>
 
 </manifest>

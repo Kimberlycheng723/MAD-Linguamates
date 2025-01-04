@@ -34,7 +34,7 @@ public class AddFriendActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_friend);
+        setContentView(R.layout.activity_community_add_friend);
 
         // Initialize Views
         RecyclerView recyclerView = findViewById(R.id.recyclerAddFriend);

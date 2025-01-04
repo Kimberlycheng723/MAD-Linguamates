@@ -11,10 +11,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-import com.example.madasignment.Module.Module;
+import com.example.madasignment.lessons.Module.module.Module;
 import com.example.madasignment.R;
 import com.example.madasignment.community.CommunityFrontPageActivity;
-import com.example.madasignment.lesson_unit.LessonUnit;
+import com.example.madasignment.home.lesson_unit.lesson_unit.LessonUnit;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

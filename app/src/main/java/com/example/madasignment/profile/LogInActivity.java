@@ -11,7 +11,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.madasignment.R;
-import com.example.madasignment.lesson_unit.LessonUnit;
+import com.example.madasignment.home.lesson_unit.lesson_unit.LessonUnit;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LogInActivity extends AppCompatActivity {
