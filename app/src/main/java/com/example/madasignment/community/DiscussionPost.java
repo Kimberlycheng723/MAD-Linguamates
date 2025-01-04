@@ -2,22 +2,22 @@ package com.example.madasignment.community;
 
 public class DiscussionPost {
     private String postId;
-    private String title; // New field
+    private String title;
     private String content;
     private String userName;
     private String timestamp;
 
-    // Default constructor for Firebase
+    // Default constructor (required for Firebase)
     public DiscussionPost() {
     }
 
-    // Constructor with all fields
+    // Full constructor
     public DiscussionPost(String postId, String title, String content, String userName, String timestamp) {
-        this.postId = postId;
-        this.title = title;
         this.content = content;
-        this.userName = userName;
+        this.postId = postId;
         this.timestamp = timestamp;
+        this.title = title;
+        this.userName = userName;
     }
 
     // Getters and setters

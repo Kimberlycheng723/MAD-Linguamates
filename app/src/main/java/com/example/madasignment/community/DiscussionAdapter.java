@@ -2,6 +2,7 @@ package com.example.madasignment.community;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,25 +13,25 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.madasignment.R;
-import com.example.madasignment.community.ReportDiscussionActivity;
-import com.example.madasignment.community.SpecificDiscussionActivity;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class DiscussionAdapter extends RecyclerView.Adapter<DiscussionAdapter.DiscussionViewHolder> {
+
+    private static final String TAG = "DiscussionAdapter";
     private Context context;
-    private List<DocumentSnapshot> discussionPostSnapshots = new ArrayList<>();
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private List<DiscussionPost> discussionPostList = new ArrayList<>();
 
     public DiscussionAdapter(Context context) {
         this.context = context;
     }
 
-    public void setData(List<DocumentSnapshot> snapshots) {
-        discussionPostSnapshots = snapshots;
+    public void setData(List<DiscussionPost> posts) {
+        discussionPostList.clear();
+        if (posts != null) {
+            discussionPostList.addAll(posts);
+        }
         notifyDataSetChanged();
     }
 
@@ -43,43 +44,52 @@ public class DiscussionAdapter extends RecyclerView.Adapter<DiscussionAdapter.Di
 
     @Override
     public void onBindViewHolder(@NonNull DiscussionViewHolder holder, int position) {
-        DocumentSnapshot snapshot = discussionPostSnapshots.get(position);
-        String title = snapshot.getString("title");
-        String content = snapshot.getString("content");
-        String userName = snapshot.getString("UserName");
+        DiscussionPost post = discussionPostList.get(position);
 
-        holder.tvTitle.setText(title);
-        holder.tvContent.setText(content);
-        holder.tvUserName.setText(userName);
+        try {
+            // Bind data to views
+            holder.userName.setText(post.getUserName());
+            holder.tvTitle.setText(post.getTitle());
+            holder.tvContent.setText(post.getContent());
+            holder.tvTimestamp.setText(post.getTimestamp());
 
-        // Button Actions
+            // Log bindings
+            Log.d(TAG, "Binding post: " + post.getTitle());
+        } catch (NullPointerException e) {
+            Log.e(TAG, "View binding error: " + e.getMessage(), e);
+        }
+
+        // Button actions
         holder.btnAnswer.setOnClickListener(v -> {
             Intent intent = new Intent(context, SpecificDiscussionActivity.class);
-            intent.putExtra("discussionId", snapshot.getId()); // Pass Firestore Document ID
+            intent.putExtra("discussionId", post.getPostId());
             context.startActivity(intent);
         });
 
         holder.btnReport.setOnClickListener(v -> {
             Intent intent = new Intent(context, ReportDiscussionActivity.class);
-            intent.putExtra("discussionId", snapshot.getId());
+            intent.putExtra("discussionId", post.getPostId());
             context.startActivity(intent);
         });
     }
 
     @Override
     public int getItemCount() {
-        return discussionPostSnapshots.size();
+        return discussionPostList.size();
     }
 
     public static class DiscussionViewHolder extends RecyclerView.ViewHolder {
-        TextView tvTitle, tvContent, tvUserName;
+        TextView userName, tvTitle, tvContent, tvTimestamp;
         Button btnAnswer, btnReport;
 
         public DiscussionViewHolder(@NonNull View itemView) {
             super(itemView);
+
+            // Initialize views with correct IDs
+            userName = itemView.findViewById(R.id.userName);
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvContent = itemView.findViewById(R.id.tvContent);
-            tvUserName = itemView.findViewById(R.id.tvUserName);
+            tvTimestamp = itemView.findViewById(R.id.tvTimestamp);
             btnAnswer = itemView.findViewById(R.id.btnAnswer);
             btnReport = itemView.findViewById(R.id.btnReport);
         }
