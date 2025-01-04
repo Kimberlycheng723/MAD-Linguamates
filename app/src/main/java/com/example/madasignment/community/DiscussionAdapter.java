@@ -13,6 +13,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.madasignment.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,23 +58,41 @@ public class DiscussionAdapter extends RecyclerView.Adapter<DiscussionAdapter.Di
             holder.tvContent.setText(post.getContent());
             holder.tvTimestamp.setText(post.getTimestamp());
 
+            DatabaseReference repliesRef = FirebaseDatabase.getInstance()
+                    .getReference("Replies")
+                    .child(post.getPostId()); // Use postId as discussionId
+
+            repliesRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    long answerCount = snapshot.getChildrenCount();
+                    holder.answersCount.setText(answerCount + " answers");
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    holder.answersCount.setText("0 answers");
+                }
+            });
+
+
             // Log bindings
             Log.d(TAG, "Binding post: " + post.getTitle());
         } catch (NullPointerException e) {
             Log.e(TAG, "View binding error: " + e.getMessage(), e);
         }
 
-        // Button actions
-        holder.btnAnswer.setOnClickListener(v -> {
+        // Set click listener on the entire itemView for navigation
+        holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, SpecificDiscussionActivity.class);
-            intent.putExtra("discussionId", post.getPostId());
+            intent.putExtra("discussionId", post.getPostId()); // Pass discussionId
             context.startActivity(intent);
         });
 
+        // Retain functionality for btnReport
         holder.btnReport.setOnClickListener(v -> {
-            Intent intent = new Intent(context, ReportDiscussionActivity.class);
-            intent.putExtra("discussionId", post.getPostId());
-            context.startActivity(intent);
+            Log.d(TAG, "Report button clicked for postId: " + post.getPostId());
+            // Add your report handling logic here
         });
     }
 
@@ -79,8 +102,8 @@ public class DiscussionAdapter extends RecyclerView.Adapter<DiscussionAdapter.Di
     }
 
     public static class DiscussionViewHolder extends RecyclerView.ViewHolder {
-        TextView userName, tvTitle, tvContent, tvTimestamp;
-        Button btnAnswer, btnReport;
+        TextView userName, tvTitle, tvContent, tvTimestamp, answersCount;
+        Button btnReport;
 
         public DiscussionViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -90,7 +113,7 @@ public class DiscussionAdapter extends RecyclerView.Adapter<DiscussionAdapter.Di
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvContent = itemView.findViewById(R.id.tvContent);
             tvTimestamp = itemView.findViewById(R.id.tvTimestamp);
-            btnAnswer = itemView.findViewById(R.id.btnAnswer);
+            answersCount = itemView.findViewById(R.id.answersCount); // Ensure ID matches your layout
             btnReport = itemView.findViewById(R.id.btnReport);
         }
     }

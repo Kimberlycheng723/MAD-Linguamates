@@ -65,6 +65,7 @@
         <activity android:name=".community.ReportDiscussionActivity" />
         <activity android:name=".community.AddFriendActivity" />
         <activity android:name=".community.FriendlistActivity" />
+        <activity android:name=".community.SpecificDiscussionActivity" />
         <activity android:name=".community.NewPostActivity" />
         <activity android:name=".community.DiscussionForumActivity" />
         <activity android:name=".community.CommunityFrontPageActivity" />
