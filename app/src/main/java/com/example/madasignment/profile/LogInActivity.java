@@ -47,12 +47,12 @@ public class LogInActivity extends AppCompatActivity {
 
         if (TextUtils.isEmpty(email)) {
             etEmail.setError("Email is required");
-            Toast.makeText(this, getString(R.string.email_password_required), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.email_required), Toast.LENGTH_SHORT).show();
             return;
         }
         if (TextUtils.isEmpty(password)) {
             etPassword.setError("Password is required");
-            Toast.makeText(this, getString(R.string.email_password_required), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.password_required), Toast.LENGTH_SHORT).show();
             return;
         }
 
