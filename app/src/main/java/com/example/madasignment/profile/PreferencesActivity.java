@@ -2,6 +2,7 @@ package com.example.madasignment.profile;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.widget.Button;
@@ -19,7 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class PreferencesActivity extends AppCompatActivity {
-    private Switch soundEffectSwitch, listeningExerciseSwitch;
+    private Switch soundEffectSwitch;
     private DatabaseReference preferencesRef;
     private String userId;
     private AudioManager audioManager;
@@ -30,7 +31,6 @@ public class PreferencesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_preferences);
 
         soundEffectSwitch = findViewById(R.id.sw_sound_p);
-        listeningExerciseSwitch = findViewById(R.id.sw_listen_p);
         Button backButton = findViewById(R.id.btn_back_p);
 
         userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -39,14 +39,20 @@ public class PreferencesActivity extends AppCompatActivity {
         // Initialize AudioManager
         audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
-        // Load switch states
+        // Load state from SharedPreferences or Firebase
+        SharedPreferences sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE);
+        boolean isSoundOn = sharedPreferences.getBoolean("soundEffectsEnabled", true); // Default ON
+        soundEffectSwitch.setChecked(isSoundOn); // Set initial state
+        toggleSoundEffects(isSoundOn);
+
+        // Sync state with Firebase
         preferencesRef.child("soundEffect").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Boolean isSoundOn = snapshot.getValue(Boolean.class);
-                if (isSoundOn != null) {
-                    soundEffectSwitch.setChecked(isSoundOn);
-                    toggleSoundEffects(isSoundOn);
+                Boolean firebaseSoundOn = snapshot.getValue(Boolean.class);
+                if (firebaseSoundOn != null) {
+                    soundEffectSwitch.setChecked(firebaseSoundOn); // Sync with Firebase
+                    toggleSoundEffects(firebaseSoundOn);
                 }
             }
 
@@ -54,16 +60,23 @@ public class PreferencesActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {}
         });
 
+        // Handle switch toggle
         soundEffectSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            // Save state to Firebase
             preferencesRef.child("soundEffect").setValue(isChecked);
+
+            // Save state locally in SharedPreferences
+            sharedPreferences.edit()
+                    .putBoolean("soundEffectsEnabled", isChecked)
+                    .apply();
+
+            // Update sound effects
             toggleSoundEffects(isChecked);
         });
 
-        listeningExerciseSwitch.setOnCheckedChangeListener((buttonView, isChecked) ->
-                preferencesRef.child("listeningExercises").setValue(isChecked));
-
+        // Handle back button
         backButton.setOnClickListener(v -> {
-            Intent intent = new Intent(PreferencesActivity.this, ProfilePageActivity.class);
+            Intent intent = new Intent(PreferencesActivity.this, SettingsActivity.class);
             startActivity(intent);
             finish();
         });
