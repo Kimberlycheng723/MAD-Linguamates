@@ -45,12 +45,6 @@
             android:name=".community.CommunityFrontPageActivity"
             android:exported="false" />
         <activity
-            android:name=".community.FriendlistActivity"
-            android:exported="false" />
-        <activity
-            android:name=".community.AddFriendActivity"
-            android:exported="false" />
-        <activity
             android:name=".profile.SignInActivity"
             android:exported="false">
 
