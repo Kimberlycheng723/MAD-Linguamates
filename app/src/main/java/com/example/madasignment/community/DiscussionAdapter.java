@@ -92,7 +92,10 @@ public class DiscussionAdapter extends RecyclerView.Adapter<DiscussionAdapter.Di
         // Retain functionality for btnReport
         holder.btnReport.setOnClickListener(v -> {
             Log.d(TAG, "Report button clicked for postId: " + post.getPostId());
-            // Add your report handling logic here
+            Intent intent = new Intent(context, ReportDiscussionActivity.class);
+            intent.putExtra("discussionId", post.getPostId()); // Pass the discussion ID
+            intent.putExtra("discussionTitle", post.getTitle()); // Optionally pass the title for context
+            context.startActivity(intent);
         });
     }
 

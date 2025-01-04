@@ -8,7 +8,7 @@ public class Report {
     private String timestamp;
 
     public Report() {
-        // Default constructor for Firebase
+        // Default constructor required for calls to DataSnapshot.getValue(Report.class)
     }
 
     public Report(String reportId, String reportedPostId, String reportedBy, String reason, String timestamp) {
@@ -19,6 +19,7 @@ public class Report {
         this.timestamp = timestamp;
     }
 
+    // Getters and Setters
     public String getReportId() {
         return reportId;
     }
@@ -59,4 +60,3 @@ public class Report {
         this.timestamp = timestamp;
     }
 }
-

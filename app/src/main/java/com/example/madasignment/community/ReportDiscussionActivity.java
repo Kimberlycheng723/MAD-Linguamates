@@ -2,6 +2,7 @@ package com.example.madasignment.community;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -12,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.madasignment.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -66,8 +68,21 @@ public class ReportDiscussionActivity extends AppCompatActivity {
     }
 
     private void submitReport(String reason) {
+        // Generate unique report ID
         String reportId = reportsRef.push().getKey();
+        if (reportId == null) {
+            Toast.makeText(this, "Failed to generate report ID. Try again.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Get the current timestamp
         String timestamp = String.valueOf(System.currentTimeMillis());
+
+        // Replace the placeholder 'currentUserId' with the actual user ID
+        String reportedBy = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        // Log for debugging
+        Log.d("ReportDiscussion", "Submitting report: reportId=" + reportId + ", reportedPostId=" + reportedPostId + ", reportedBy=" + reportedBy);
 
         // Create Report Object
         Report report = new Report(reportId, reportedPostId, reportedBy, reason, timestamp);
@@ -84,4 +99,5 @@ public class ReportDiscussionActivity extends AppCompatActivity {
             }
         });
     }
+
 }
