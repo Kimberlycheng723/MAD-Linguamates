@@ -2,6 +2,7 @@ package com.example.madasignment.community;
 
 public class DiscussionPost {
     private String postId;
+    private String title; // New field
     private String content;
     private String userName;
     private String timestamp;
@@ -11,8 +12,9 @@ public class DiscussionPost {
     }
 
     // Constructor with all fields
-    public DiscussionPost(String postId, String content, String userName, String timestamp) {
+    public DiscussionPost(String postId, String title, String content, String userName, String timestamp) {
         this.postId = postId;
+        this.title = title;
         this.content = content;
         this.userName = userName;
         this.timestamp = timestamp;
@@ -25,6 +27,14 @@ public class DiscussionPost {
 
     public void setPostId(String postId) {
         this.postId = postId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getContent() {

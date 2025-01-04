@@ -24,6 +24,18 @@
         </intent-filter>
         </activity>
         <activity
+            android:name=".community.ReportSubmitActivity"
+            android:exported="false" />
+        <activity
+            android:name=".community.ReportDiscussionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".community.AddFriendActivity"
+            android:exported="false" />
+        <activity
+            android:name=".community.FriendlistActivity"
+            android:exported="false" />
+        <activity
             android:name=".community.NewPostActivity"
             android:exported="false" />
         <activity
