@@ -34,7 +34,6 @@ public class FriendlistAdapter extends RecyclerView.Adapter<FriendlistAdapter.Fr
 
         // Set name and XP
         holder.tvName.setText(friend.getName());
-        holder.tvXP.setText(friend.getXp() + " XP");
 
         // Remove image-related code
         // holder.ivProfile.setImageResource(R.drawable.ic_profile); // No image handling

@@ -6,39 +6,26 @@
     android:layout_height="wrap_content"
     android:padding="8dp">
 
-    <ImageView
-        android:id="@+id/friendImage"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:src="@drawable/ic_profile"
-        android:contentDescription="Friend Image"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
 
     <TextView
         android:id="@+id/friendName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:text="Friend Name"
-        android:textSize="16sp"
         android:textColor="@android:color/black"
-        app:layout_constraintStart_toEndOf="@id/friendImage"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btnAdd" />
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/friendXP"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:text="1234 XP"
-        android:textSize="14sp"
         android:textColor="@android:color/darker_gray"
-        app:layout_constraintStart_toEndOf="@id/friendImage"
-        app:layout_constraintTop_toBottomOf="@id/friendName"
-        app:layout_constraintEnd_toStartOf="@id/btnAdd" />
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/friendName" />
 
     <Button
         android:id="@+id/btnAdd"

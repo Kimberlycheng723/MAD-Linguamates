@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.madasignment.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -58,26 +59,50 @@ public class FriendlistActivity extends AppCompatActivity {
             Intent intent = new Intent(FriendlistActivity.this, AddFriendActivity.class);
             startActivity(intent);
         });
+        Button btnViewFriendRequests = findViewById(R.id.btnViewFriendRequests);
+
+        btnViewFriendRequests.setOnClickListener(v -> {
+            Intent intent = new Intent(FriendlistActivity.this, FriendRequestsActivity.class);
+            startActivity(intent);
+        });
+
     }
 
     private void loadFriends() {
-        friendsRef.addValueEventListener(new ValueEventListener() {
+        String currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        friendsRef.child(currentUserId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 friendList.clear();
                 for (DataSnapshot friendSnapshot : snapshot.getChildren()) {
-                    Friend friend = friendSnapshot.getValue(Friend.class);
-                    if (friend != null) {
-                        friendList.add(friend);
+                    String friendId = friendSnapshot.getKey();
+                    if (friendId != null && !friendId.equals(currentUserId)) {
+                        // Fetch friend's name
+                        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("User").child(friendId);
+                        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot userSnapshot) {
+                                String name = userSnapshot.child("name").getValue(String.class);
+                                if (name != null) {
+                                    friendList.add(new Friend(friendId, name)); // Updated Friend model constructor
+                                    adapter.notifyDataSetChanged();
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                                Toast.makeText(FriendlistActivity.this, "Failed to fetch friend details.", Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     }
                 }
-                adapter.notifyDataSetChanged();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(FriendlistActivity.this, "Failed to load friends", Toast.LENGTH_SHORT).show();
+                Toast.makeText(FriendlistActivity.this, "Failed to load friends.", Toast.LENGTH_SHORT).show();
             }
         });
     }
+
 }

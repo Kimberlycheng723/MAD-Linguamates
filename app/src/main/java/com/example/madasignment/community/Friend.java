@@ -1,26 +1,25 @@
 package com.example.madasignment.community;
 
 public class Friend {
-    private String id; // Unique identifier for the friend
+    private String userId;
     private String name;
-    private int xp; // Experience points
 
-    // Default constructor for Firebase
     public Friend() {
+        // Default constructor required for Firebase
     }
 
-    public Friend(String id, String name, int xp) {
-        this.id = id;
+    public Friend(String userId, String name) {
+        this.userId = userId;
         this.name = name;
-        this.xp = xp;
     }
 
-    public String getId() {
-        return id;
+    // Getters and setters
+    public String getUserId() {
+        return userId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getName() {
@@ -29,13 +28,5 @@ public class Friend {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getXp() {
-        return xp;
-    }
-
-    public void setXp(int xp) {
-        this.xp = xp;
     }
 }

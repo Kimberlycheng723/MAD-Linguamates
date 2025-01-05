@@ -15,21 +15,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MADAsignment"
         tools:targetApi="31">
-
-
+        <activity
+            android:name=".community.FriendRequestActivity"
+            android:exported="false" />
         <activity
             android:name=".profile.SplashActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-
-
-        <!-- Home -->
+        </activity> <!-- Home -->
         <activity android:name=".home.lesson_unit.test.TestCompletionActivity" />
         <activity android:name=".home.lesson_unit.test.TestSplashScreen" />
         <activity android:name=".home.lesson_unit.test.LessonTestActivity" />
@@ -42,35 +39,26 @@
         <activity android:name=".home.lesson_unit.test.AnswerBreakdownActivity" />
         <activity android:name=".home.lesson_unit.lesson_quiz.LessonQuestionActivity" />
         <activity android:name=".home.lesson_unit.flashcard.FlashcardSplashScreenActivity" />
-        <activity android:name=".home.lesson_unit.flashcard.FinishSplashActivity" />
-
-        <!-- Lessons -->
+        <activity android:name=".home.lesson_unit.flashcard.FinishSplashActivity" /> <!-- Lessons -->
         <activity android:name=".lessons.Module.video.video" />
-
-        <activity android:name=".lessons.Module.read.ReadOnlyActivity" />
-
-        <!-- Gamification -->
+        <activity android:name=".lessons.Module.read.ReadOnlyActivity" /> <!-- Gamification -->
         <activity android:name=".gamification.AchievementSplash" />
         <activity android:name=".gamification.AchievementOverviewActivity" />
         <activity android:name=".gamification.MyBadgesActivity" />
         <activity android:name=".gamification.LeaderboardActivity" />
         <activity android:name=".gamification.DailyStreakActivity" />
-
-        <activity android:name=".lessons.Module.module.Module"
-            android:exported="false"/>
-
-
-        <!-- Community -->
-        <activity android:name=".community.ReportSubmitActivity"/>
+        <activity
+            android:name=".lessons.Module.module.Module"
+            android:exported="false" /> <!-- Community -->
+        <activity android:name=".community.FriendRequestsActivity" />
+        <activity android:name=".community.ReportSubmitActivity" />
         <activity android:name=".community.ReportDiscussionActivity" />
         <activity android:name=".community.AddFriendActivity" />
         <activity android:name=".community.FriendlistActivity" />
         <activity android:name=".community.SpecificDiscussionActivity" />
         <activity android:name=".community.NewPostActivity" />
         <activity android:name=".community.DiscussionForumActivity" />
-        <activity android:name=".community.CommunityFrontPageActivity" />
-
-        <!-- Profile -->
+        <activity android:name=".community.CommunityFrontPageActivity" /> <!-- Profile -->
         <activity android:name=".profile.LogInActivity" />
         <activity android:name=".profile.ProfilePageActivity" />
         <activity android:name=".profile.SettingsActivity" />
@@ -78,10 +66,7 @@
         <activity android:name=".profile.PreferencesActivity" />
         <activity android:name=".profile.PrivacyActivity" />
         <activity android:name=".profile.CoursesActivity" />
-        <activity android:name=".profile.SignInActivity"/>
-
-
-
+        <activity android:name=".profile.SignInActivity" />
     </application>
 
 </manifest>
