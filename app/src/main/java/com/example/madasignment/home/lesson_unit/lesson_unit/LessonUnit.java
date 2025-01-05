@@ -16,8 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.madasignment.R;
 import com.example.madasignment.community.CommunityFrontPageActivity;
 import com.example.madasignment.gamification.AchievementOverviewActivity;
-import com.example.madasignment.home.lesson_unit.lesson_unit.LessonUnitData;
-import com.example.madasignment.home.lesson_unit.lesson_unit.LessonUnitsAdapter;
+import com.example.madasignment.gamification.BadgeFirebaseModel;
 import com.example.madasignment.lessons.Module.module.Module;
 import com.example.madasignment.profile.ProfilePageActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -32,10 +31,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
-import java.util.concurrent.atomic.AtomicLong;
 
 public class LessonUnit extends AppCompatActivity {
 
@@ -133,6 +130,7 @@ public class LessonUnit extends AppCompatActivity {
 
         // Check streak when the user opens the activity
         checkStreak();
+
     }
 
 
@@ -242,4 +240,6 @@ public class LessonUnit extends AppCompatActivity {
         }
         unitsAdapter.notifyDataSetChanged();
     }
+
+
 }

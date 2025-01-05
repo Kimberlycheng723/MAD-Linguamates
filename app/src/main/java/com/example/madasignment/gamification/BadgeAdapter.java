@@ -1,6 +1,7 @@
 package com.example.madasignment.gamification;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,17 +36,17 @@ public class BadgeAdapter extends RecyclerView.Adapter<BadgeAdapter.BadgeViewHol
     public void onBindViewHolder(@NonNull BadgeViewHolder holder, int position) {
         Badge badge = badgeList.get(position);
 
-        holder.badgeName.setText(badge.getName());
-        holder.badgeDescription.setText(badge.getDescription());
-        holder.badgeImage.setImageResource(badge.getImageResId());
+        if (badge != null) {
+            holder.badgeName.setText(badge.getName() != null ? badge.getName() : "Unknown Badge");
+            holder.badgeDescription.setText(badge.getDescription() != null ? badge.getDescription() : "No description available");
+            holder.badgeImage.setImageResource(badge.getImageResId() > 0 ? badge.getImageResId() : R.drawable.badge_locked);
 
-        if (badge.getState().equals("locked")) {
-            holder.badgeProgress.setVisibility(View.GONE);
-        } else if (badge.getState().equals("in_progress")) {
-            holder.badgeProgress.setVisibility(View.VISIBLE);
-            holder.badgeProgress.setText("In Progress");
-        } else if (badge.getState().equals("completed")) {
-            holder.badgeProgress.setVisibility(View.GONE);
+            Log.d("BadgeAdapter", "Binding badge: " + (badge.getName() != null ? badge.getName() : "Null") + ", State: " + badge.getState());
+        } else {
+            Log.e("BadgeAdapter", "Null badge at position: " + position);
+            holder.badgeName.setText("Unknown Badge");
+            holder.badgeDescription.setText("No description available");
+            holder.badgeImage.setImageResource(R.drawable.badge_locked);
         }
     }
 
@@ -56,14 +57,13 @@ public class BadgeAdapter extends RecyclerView.Adapter<BadgeAdapter.BadgeViewHol
 
     public static class BadgeViewHolder extends RecyclerView.ViewHolder {
         ImageView badgeImage;
-        TextView badgeName, badgeDescription, badgeProgress;
+        TextView badgeName, badgeDescription;
 
         public BadgeViewHolder(@NonNull View itemView) {
             super(itemView);
             badgeImage = itemView.findViewById(R.id.badgeImage);
             badgeName = itemView.findViewById(R.id.badgeName);
             badgeDescription = itemView.findViewById(R.id.badgeDescription);
-            badgeProgress = itemView.findViewById(R.id.badgeProgress);
         }
     }
 }

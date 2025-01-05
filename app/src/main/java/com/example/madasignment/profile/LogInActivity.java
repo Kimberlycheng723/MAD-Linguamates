@@ -3,6 +3,7 @@ package com.example.madasignment.profile;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,8 +12,14 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.madasignment.R;
+import com.example.madasignment.gamification.BadgeFirebaseModel;
 import com.example.madasignment.home.lesson_unit.lesson_unit.LessonUnit;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class LogInActivity extends AppCompatActivity {
 
@@ -59,19 +66,52 @@ public class LogInActivity extends AppCompatActivity {
         auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
+                        initializeBadgesInDatabase();
                         Intent intent = new Intent(LogInActivity.this, LessonUnit.class);
                         startActivity(intent);
                         finish();
                     } else {
-                        String errorMessage;
+                        String errorMessage = "Login failed: ";
                         if (task.getException() != null) {
-                            errorMessage = task.getException().getMessage();
+                            errorMessage += task.getException().getMessage();
                         } else {
-                            errorMessage = "Unknown error occurred";
+                            errorMessage += "Unknown error occurred";
                         }
-                        Toast.makeText(LogInActivity.this, "Log-In Failed: " + errorMessage, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LogInActivity.this, errorMessage, Toast.LENGTH_LONG).show();
+                        Log.e("LogInActivity", errorMessage);
                     }
                 });
+    }
+        private void initializeBadgesInDatabase() {
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DatabaseReference badgesRef = FirebaseDatabase.getInstance()
+                .getReference("UserStats")
+                .child(userId)
+                .child("badges");
 
+        badgesRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (!snapshot.exists()) {
+                    Log.d("BadgeInit", "No badges found. Initializing for new user...");
+                    badgesRef.child("First Lesson").setValue(new BadgeFirebaseModel("locked", 0, 1));
+                    badgesRef.child("5 Lessons").setValue(new BadgeFirebaseModel("locked", 0, 5));
+                    badgesRef.child("10 Lessons").setValue(new BadgeFirebaseModel("locked", 0, 10));
+                    badgesRef.child("First Test").setValue(new BadgeFirebaseModel("locked", 0, 1));
+                    badgesRef.child("3 Tests").setValue(new BadgeFirebaseModel("locked", 0, 3));
+                    badgesRef.child("5 Tests").setValue(new BadgeFirebaseModel("locked", 0, 5));
+                    badgesRef.child("3-Day Streak").setValue(new BadgeFirebaseModel("locked", 0, 3));
+                    badgesRef.child("5-Day Streak").setValue(new BadgeFirebaseModel("locked", 0, 5));
+                    badgesRef.child("7-Day Streak").setValue(new BadgeFirebaseModel("locked", 0, 7));
+                } else {
+                    Log.d("BadgeInit", "Badges already exist. Skipping initialization.");
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Log.e("FirebaseError", "Failed to check badges: " + error.getMessage());
+            }
+        });
     }
 }

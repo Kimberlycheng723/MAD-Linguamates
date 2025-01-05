@@ -21,6 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 public class AchievementOverviewActivity extends AppCompatActivity {
 
     private TextView streakCounterValue; // TextView to display the current streak
+    private TextView badgesEarnedValue; // TextView to display the badges earned
     private FirebaseAuth auth;
     private DatabaseReference databaseRef;
 
@@ -36,6 +37,7 @@ public class AchievementOverviewActivity extends AppCompatActivity {
 
         // Initialize UI elements
         streakCounterValue = findViewById(R.id.streakCounterValue);
+        badgesEarnedValue = findViewById(R.id.badgesEarnedValue); // TextView for badges earned
         Button dailyStreakButton = findViewById(R.id.dailyStreakButton);
         Button checkLeaderboardButton = findViewById(R.id.checkLeaderboardButton);
         Button viewAllBadgesButton = findViewById(R.id.viewAllBadgesButton);
@@ -61,6 +63,9 @@ public class AchievementOverviewActivity extends AppCompatActivity {
 
         // Fetch and display the current streak
         displayCurrentStreak();
+
+        // Fetch and display the total badges earned
+        displayBadgesEarned();
     }
 
     private void displayCurrentStreak() {
@@ -84,6 +89,45 @@ public class AchievementOverviewActivity extends AppCompatActivity {
                 } else {
                     streakCounterValue.setText("0"); // Default value if streak doesn't exist
                     Log.d("DisplayStreak", "No streak data found, displaying 0.");
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Log.e("FirebaseError", "Database read failed: " + error.getMessage());
+            }
+        });
+    }
+
+    private void displayBadgesEarned() {
+        String userId = auth.getCurrentUser() != null ? auth.getCurrentUser().getUid() : null;
+
+        if (userId == null) {
+            Toast.makeText(this, "User not authenticated", Toast.LENGTH_SHORT).show();
+            Log.e("DisplayBadges", "User authentication failed");
+            return;
+        }
+
+        DatabaseReference badgesRef = databaseRef.child(userId).child("badges");
+
+        badgesRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    int badgesEarned = 0;
+
+                    for (DataSnapshot badgeSnapshot : snapshot.getChildren()) {
+                        String state = badgeSnapshot.child("state").getValue(String.class);
+                        if ("completed".equalsIgnoreCase(state)) {
+                            badgesEarned++;
+                        }
+                    }
+
+                    badgesEarnedValue.setText(String.valueOf(badgesEarned)); // Display the badges earned
+                    Log.d("DisplayBadges", "Total badges earned: " + badgesEarned);
+                } else {
+                    badgesEarnedValue.setText("0"); // Default value if no badges found
+                    Log.d("DisplayBadges", "No badges data found, displaying 0.");
                 }
             }
 

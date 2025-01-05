@@ -1,49 +1,184 @@
 package com.example.madasignment.gamification;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.madasignment.gamification.BadgeItemDecoration;
+import androidx.recyclerview.widget.DiffUtil;
 
 import com.example.madasignment.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MyBadgesActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private BadgeAdapter badgeAdapter;
     private List<Badge> badgeList;
+    private DatabaseReference badgesRef;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_badges);
+        setContentView(R.layout.activity_gamification_my_badges);
+        ImageButton upButton = findViewById(R.id.upButton);
 
+        upButton.setOnClickListener(v -> {
+            // Navigate back
+            onBackPressed();
+        });
+        // Initialize UI components
         recyclerView = findViewById(R.id.recyclerView);
+        progressBar = findViewById(R.id.progressBar);
+
         recyclerView.setLayoutManager(new GridLayoutManager(this, 3)); // 3 columns in the grid
-
-        // Add spacing between badges
-        int spacing = getResources().getDimensionPixelSize(R.dimen.badge_spacing); // Spacing defined in 'dimens.xml'
-        recyclerView.addItemDecoration(new BadgeItemDecoration(spacing));
-
-        // Initialize Badge List
         badgeList = new ArrayList<>();
-        badgeList.add(new Badge("5 Lessons", "Completed 5 lessons in a week", "completed", R.drawable.badge_completed));
-        badgeList.add(new Badge("Lesson Streak", "Keep learning for 5 days", "completed", R.drawable.badge_completed));
-        badgeList.add(new Badge("Top 25", "Top 25 in Friends League", "completed", R.drawable.badge_completed));
-        badgeList.add(new Badge("10-Day Streak", "Complete 10 days streak", "in_progress", R.drawable.badge_in_progress));
-        badgeList.add(new Badge("10 Lessons", "Completed 10 lessons in a week", "in_progress", R.drawable.badge_in_progress));
-        badgeList.add(new Badge("Top 10", "Top 10 in Friends League", "locked", R.drawable.badge_locked));
-        badgeList.add(new Badge("Complete", "Complete all lessons ", "locked", R.drawable.badge_locked));
-        badgeList.add(new Badge("30-Day Streak", "Complete 30 days streak", "locked", R.drawable.badge_locked));
-        badgeList.add(new Badge("1st Place", "1st in Friends League", "locked", R.drawable.badge_locked));
-
-        // Set Adapter
         badgeAdapter = new BadgeAdapter(this, badgeList);
         recyclerView.setAdapter(badgeAdapter);
+
+        // Initialize Firebase reference
+        String userId = FirebaseAuth.getInstance().getCurrentUser() != null
+                ? FirebaseAuth.getInstance().getCurrentUser().getUid()
+                : null;
+
+        if (userId == null) {
+            Toast.makeText(this, "User not authenticated.", Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
+
+        badgesRef = FirebaseDatabase.getInstance()
+                .getReference("UserStats")
+                .child(userId)
+                .child("badges");
+
+        loadBadges();
+    }
+
+    private void loadBadges() {
+        progressBar.setVisibility(View.VISIBLE);
+
+        badgesRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                List<Badge> newBadgeList = new ArrayList<>();
+
+                // Create a map for badge names to their corresponding badges
+                Map<String, Badge> badgeMap = new HashMap<>();
+                for (DataSnapshot badgeSnapshot : dataSnapshot.getChildren()) {
+                    String name = badgeSnapshot.getKey();
+                    BadgeFirebaseModel badgeModel = badgeSnapshot.getValue(BadgeFirebaseModel.class);
+
+                    if (badgeModel != null && name != null) {
+                        if (badgeModel.getState() == null || badgeModel.getGoal() <= 0) {
+                            Log.e("MyBadgesActivity", "Invalid badge data: " + name);
+                            continue;
+                        }
+                        Badge badge = new Badge(
+                                name,
+                                getBadgeDescription(name),
+                                badgeModel.getState(),
+                                getBadgeImage(badgeModel.getState()),
+                                badgeModel.getGoal(),
+                                badgeModel.getProgress()
+                        );
+                        badgeMap.put(name, badge);
+                    } else {
+                        Log.e("MyBadgesActivity", "Invalid badge data: " + name);
+                    }
+                }
+
+                // Add badges in the desired order
+                addBadgeToList(newBadgeList, badgeMap, "First Lesson");
+                addBadgeToList(newBadgeList, badgeMap, "5 Lessons");
+                addBadgeToList(newBadgeList, badgeMap, "10 Lessons");
+                addBadgeToList(newBadgeList, badgeMap, "First Test");
+                addBadgeToList(newBadgeList, badgeMap, "3 Tests");
+                addBadgeToList(newBadgeList, badgeMap, "5 Tests");
+                addBadgeToList(newBadgeList, badgeMap, "3-Day Streak");
+                addBadgeToList(newBadgeList, badgeMap, "5-Day Streak");
+                addBadgeToList(newBadgeList, badgeMap, "7-Day Streak");
+
+                updateBadges(newBadgeList);
+                progressBar.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.e("MyBadgesActivity", "Error fetching badges: " + databaseError.getMessage());
+                Toast.makeText(MyBadgesActivity.this, "Failed to load badges.", Toast.LENGTH_SHORT).show();
+                progressBar.setVisibility(View.GONE);
+            }
+        });
+    }
+
+    private void addBadgeToList(List<Badge> badgeList, Map<String, Badge> badgeMap, String badgeName) {
+        if (badgeMap.containsKey(badgeName)) {
+            badgeList.add(badgeMap.get(badgeName));
+        } else {
+            Log.e("MyBadgesActivity", "Badge not found: " + badgeName);
+        }
+    }
+
+
+    private void updateBadges(List<Badge> newBadgeList) {
+        BadgeDiffCallback diffCallback = new BadgeDiffCallback(badgeList, newBadgeList);
+        DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(diffCallback);
+
+        badgeList.clear();
+        badgeList.addAll(newBadgeList);
+        diffResult.dispatchUpdatesTo(badgeAdapter);
+    }
+
+    private int getBadgeImage(String state) {
+        switch (state) {
+            case "completed":
+                return R.drawable.badge_completed;
+            case "in_progress":
+                return R.drawable.badge_in_progress;
+            default:
+                return R.drawable.badge_locked;
+        }
+    }
+
+    private String getBadgeDescription(String badgeName) {
+        switch (badgeName) {
+            case "First Lesson":
+                return "Complete first lesson";
+            case "5 Lessons":
+                return "Complete 5 lessons";
+            case "10 Lessons":
+                return "Complete 10 lessons";
+            case "First Test":
+                return "Complete the first test";
+            case "3 Tests":
+                return "Complete 3 tests";
+            case "5 Tests":
+                return "Complete 5 tests";
+            case "3-Day Streak":
+                return "Get a 3-Day Streak";
+            case "5-Day Streak":
+                return "Get a 5-Day Streak";
+            case "7-Day Streak":
+                return "Get a 7-Day Streak";
+            default:
+                return "No description available.";
+        }
     }
 }
