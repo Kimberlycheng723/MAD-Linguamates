@@ -16,9 +16,6 @@
         android:theme="@style/Theme.MADAsignment"
         tools:targetApi="31">
         <activity
-            android:name=".community.FriendRequestActivity"
-            android:exported="false" />
-        <activity
             android:name=".profile.SplashActivity"
             android:exported="true">
             <intent-filter>
