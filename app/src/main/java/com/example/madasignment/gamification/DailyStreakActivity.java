@@ -3,6 +3,7 @@ package com.example.madasignment.gamification;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.GridLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,8 +16,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 public class DailyStreakActivity extends AppCompatActivity {
 
@@ -45,6 +48,9 @@ public class DailyStreakActivity extends AppCompatActivity {
         Button prevMonthButton = findViewById(R.id.prevMonthButton);
         Button nextMonthButton = findViewById(R.id.nextMonthButton);
 
+
+        ImageView backArrow = findViewById(R.id.backArrow);
+        backArrow.setOnClickListener(v -> onBackPressed());
         // Initialize calendar
         currentCalendar = Calendar.getInstance();
         currentCalendar.setFirstDayOfWeek(Calendar.MONDAY);
@@ -55,16 +61,24 @@ public class DailyStreakActivity extends AppCompatActivity {
         // Handle month navigation
         prevMonthButton.setOnClickListener(view -> {
             currentCalendar.add(Calendar.MONTH, -1);
+            updateMonthLabel();
             renderCalendar(List.of());
         });
 
         nextMonthButton.setOnClickListener(view -> {
             currentCalendar.add(Calendar.MONTH, 1);
+            updateMonthLabel();
             renderCalendar(List.of());
         });
 
         // Load streak data from database to display
         loadStreakData();
+    }
+
+    private void updateMonthLabel() {
+        SimpleDateFormat monthFormat = new SimpleDateFormat("MMMM", Locale.getDefault());
+        String monthName = monthFormat.format(currentCalendar.getTime()); // Get month name
+        monthLabel.setText(monthName);
     }
 
     private void loadStreakData() {
