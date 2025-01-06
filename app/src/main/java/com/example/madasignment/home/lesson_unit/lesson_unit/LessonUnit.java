@@ -17,6 +17,7 @@ import com.example.madasignment.R;
 import com.example.madasignment.community.CommunityFrontPageActivity;
 import com.example.madasignment.gamification.AchievementOverviewActivity;
 import com.example.madasignment.gamification.BadgeFirebaseModel;
+import com.example.madasignment.gamification.BadgeUtils;
 import com.example.madasignment.lessons.Module.module.Module;
 import com.example.madasignment.profile.ProfilePageActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -198,6 +199,7 @@ public class LessonUnit extends AppCompatActivity {
 
                 // Log the streak update
                 Log.d("CheckStreak", "Streak updated to: " + finalStreak);
+                BadgeUtils.updateStreakBadges((int) finalStreak);BadgeUtils.updateStreakBadges((int) finalStreak);
             }
 
             @Override

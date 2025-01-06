@@ -10,9 +10,9 @@
     <ImageView
         android:id="@+id/badgeImage"
         android:layout_width="100dp"
-    android:layout_height="170dp"
-    android:scaleType="fitCenter"
-    android:src="@drawable/badge_locked" />
+        android:layout_height="170dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/badge_locked" />
 
     <!-- Badge Name -->
     <TextView
@@ -37,6 +37,7 @@
         android:textColor="@android:color/darker_gray"
         android:textSize="12sp" />
 
+    <!-- Badge Status -->
     <TextView
         android:id="@+id/badgeStatus"
         android:layout_width="wrap_content"
@@ -44,7 +45,7 @@
         android:layout_marginTop="4dp"
         android:text="In Progress"
         android:textColor="#307CD4"
-    android:textStyle="italic"
-    android:textSize="14sp"
-    android:gravity="center" />
+        android:textStyle="italic"
+        android:textSize="14sp"
+        android:gravity="center" />
 </LinearLayout>

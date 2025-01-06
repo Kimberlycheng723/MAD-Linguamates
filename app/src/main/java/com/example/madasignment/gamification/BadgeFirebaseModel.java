@@ -1,5 +1,4 @@
 package com.example.madasignment.gamification;
-
 public class BadgeFirebaseModel {
     private String state;
     private int progress;
@@ -13,6 +12,7 @@ public class BadgeFirebaseModel {
         this.state = state;
         this.progress = progress;
         this.goal = goal;
+        updateState();
     }
 
     public String getState() {
@@ -29,6 +29,7 @@ public class BadgeFirebaseModel {
 
     public void setProgress(int progress) {
         this.progress = progress;
+        updateState(); // Automatically update state when progress changes
     }
 
     public int getGoal() {
@@ -37,5 +38,16 @@ public class BadgeFirebaseModel {
 
     public void setGoal(int goal) {
         this.goal = goal;
+        updateState();
+    }
+
+    private void updateState() {
+        if (progress >= goal) {
+            this.state = "completed";
+        } else if (progress > 0) {
+            this.state = "in_progress";
+        } else {
+            this.state = "locked";
+        }
     }
 }
