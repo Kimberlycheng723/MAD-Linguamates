@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/DestFragment">
+
+    <fragment
+        android:id="@+id/DestFragment"
+        android:name="com.example.assignment.homeFragment"
+        android:label="homeFragment" >
+        <action
+            android:id="@+id/toDestOverview"
+            app:destination="@id/DestOverview" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/DestOverview"
+        android:name="com.example.assignment.OverviewFragment"
+        android:label="Overview"
+        tools:layout="@layout/fragment_overview">
+        <action
+            android:id="@+id/toDestBadge"
+            app:destination="@id/DestBadge" />
+        <action
+            android:id="@+id/toDestStreak"
+            app:destination="@id/DestStreak" />
+        <action
+            android:id="@+id/toDestLeaderboard1"
+            app:destination="@id/DestLeaderboard1" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/DestBadge"
+        android:name="com.example.assignment.BadgeFragment"
+        android:label="Badge"
+        tools:layout="@layout/fragment_badge">
+        <action
+            android:id="@+id/action_badge_to_overview"
+            app:popUpTo="@id/DestOverview"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/DestStreak"
+        android:name="com.example.assignment.StreakFragment"
+        android:label="Streak"
+        tools:layout="@layout/fragment_streak">
+        <action
+            android:id="@+id/action_streak_to_overview"
+            app:popUpTo="@id/DestOverview"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/DestLeaderboard1"
+        android:name="com.example.assignment.Leaderboard1Fragment"
+        android:label="Leaderboard 1"
+        tools:layout="@layout/fragment_leaderboard1">
+        <action
+            android:id="@+id/action_leaderboard1_to_leaderboard2"
+            app:destination="@id/DestLeaderboard2" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/DestLeaderboard2"
+        android:name="com.example.assignment.Leaderboard2Fragment"
+        android:label="Leaderboard 2"
+        tools:layout="@layout/fragment_leaderboard2">
+        <action
+            android:id="@+id/action_leaderboard2_to_leaderboard1"
+            app:popUpTo="@id/DestLeaderboard1"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
+
+</navigation>
