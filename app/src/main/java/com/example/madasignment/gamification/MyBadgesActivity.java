@@ -86,10 +86,6 @@ public class MyBadgesActivity extends AppCompatActivity {
                     BadgeFirebaseModel badgeModel = badgeSnapshot.getValue(BadgeFirebaseModel.class);
 
                     if (badgeModel != null && name != null) {
-                        if (badgeModel.getState() == null || badgeModel.getGoal() <= 0) {
-                            Log.e("MyBadgesActivity", "Invalid badge data: " + name);
-                            continue;
-                        }
                         Badge badge = new Badge(
                                 name,
                                 getBadgeDescription(name),
@@ -99,15 +95,13 @@ public class MyBadgesActivity extends AppCompatActivity {
                                 badgeModel.getProgress()
                         );
                         badgeMap.put(name, badge);
-                    } else {
-                        Log.e("MyBadgesActivity", "Invalid badge data: " + name);
                     }
                 }
 
                 // Add badges in the desired order
                 addBadgeToList(newBadgeList, badgeMap, "First Lesson");
+                addBadgeToList(newBadgeList, badgeMap, "3 Lessons");
                 addBadgeToList(newBadgeList, badgeMap, "5 Lessons");
-                addBadgeToList(newBadgeList, badgeMap, "10 Lessons");
                 addBadgeToList(newBadgeList, badgeMap, "First Test");
                 addBadgeToList(newBadgeList, badgeMap, "3 Tests");
                 addBadgeToList(newBadgeList, badgeMap, "5 Tests");
@@ -161,10 +155,10 @@ public class MyBadgesActivity extends AppCompatActivity {
         switch (badgeName) {
             case "First Lesson":
                 return "Complete first lesson";
+            case "3 Lessons":
+                return "Complete 3 lessons";
             case "5 Lessons":
                 return "Complete 5 lessons";
-            case "10 Lessons":
-                return "Complete 10 lessons";
             case "First Test":
                 return "Complete the first test";
             case "3 Tests":
