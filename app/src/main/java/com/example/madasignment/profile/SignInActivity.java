@@ -116,6 +116,7 @@ public class SignInActivity extends AppCompatActivity {
                             userMap.put("email", email);
                             userMap.put("phone", phone);
                             userMap.put("username", username);
+                            userMap.put("xp", 0);
 
                             // Prepare default user statistics
                             HashMap<String, Object> statsMap = new HashMap<>();

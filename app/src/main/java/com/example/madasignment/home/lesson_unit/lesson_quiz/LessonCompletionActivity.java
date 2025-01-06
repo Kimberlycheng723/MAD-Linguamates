@@ -9,13 +9,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.madasignment.R;
 import com.example.madasignment.gamification.BadgeFirebaseModel;
-import com.example.madasignment.gamification.BadgeUtils;
-
 import com.example.madasignment.home.lesson_unit.lesson_unit.LessonUnit;
 import com.example.madasignment.home.lesson_unit.test.TestSplashScreen;
 import com.google.firebase.auth.FirebaseAuth;
@@ -50,11 +49,11 @@ public class LessonCompletionActivity extends AppCompatActivity {
 
         lessonsCompleted++;
         updateLessonBadges(lessonsCompleted);
+        updateXPForLessonCompletion(50); // Add 50 XP when a lesson is completed
 
         takeQuizButton.setOnClickListener(v -> startActivity(new Intent(this, TestSplashScreen.class)));
         backToHomeButton.setOnClickListener(v -> startActivity(new Intent(this, LessonUnit.class)));
     }
-
 
     private void updateLessonBadges(int lessonsCompleted) {
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid(); // Get the user's ID
@@ -123,4 +122,32 @@ public class LessonCompletionActivity extends AppCompatActivity {
         });
     }
 
+    private void updateXPForLessonCompletion(int xpEarned) {
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid(); // Get the user's ID
+        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("User").child(userId);
+
+        userRef.child("xp").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                Integer currentXP = snapshot.getValue(Integer.class);
+                if (currentXP == null) currentXP = 0; // Initialize XP if not already set
+                int updatedXP = currentXP + xpEarned;
+
+                // Update XP in Firebase
+                userRef.child("xp").setValue(updatedXP).addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(LessonCompletionActivity.this, "50 XP Added!", Toast.LENGTH_SHORT).show();
+                        Log.d("XPUpdate", "XP updated to: " + updatedXP);
+                    } else {
+                        Log.e("XPUpdate", "Failed to update XP");
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Log.e("XPUpdate", "Error reading XP: " + error.getMessage());
+            }
+        });
+    }
 }

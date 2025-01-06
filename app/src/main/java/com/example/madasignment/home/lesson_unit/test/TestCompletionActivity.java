@@ -15,6 +15,7 @@ import com.example.madasignment.R;
 import com.example.madasignment.gamification.BadgeUtils;
 import com.example.madasignment.home.lesson_unit.lesson_unit.LessonUnit;
 
+
 public class TestCompletionActivity extends AppCompatActivity {
 
     private int testsCompleted = 0;
@@ -39,6 +40,8 @@ public class TestCompletionActivity extends AppCompatActivity {
 
         testsCompleted++;
         updateTestBadges(testsCompleted);
+
+
 
         backToHomeButton.setOnClickListener(v -> startActivity(new Intent(this, LessonUnit.class)));
     }
