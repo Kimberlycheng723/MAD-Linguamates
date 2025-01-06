@@ -37,16 +37,17 @@ public class BadgeAdapter extends RecyclerView.Adapter<BadgeAdapter.BadgeViewHol
         Badge badge = badgeList.get(position);
 
         if (badge != null) {
-            holder.badgeName.setText(badge.getName() != null ? badge.getName() : "Unknown Badge");
-            holder.badgeDescription.setText(badge.getDescription() != null ? badge.getDescription() : "No description available");
-            holder.badgeImage.setImageResource(badge.getImageResId() > 0 ? badge.getImageResId() : R.drawable.badge_locked);
+            holder.badgeName.setText(badge.getName());
+            holder.badgeDescription.setText(badge.getDescription());
+            holder.badgeStatus.setText(getBadgeStateDescription(badge.getState())); // Use the helper method
 
-            Log.d("BadgeAdapter", "Binding badge: " + (badge.getName() != null ? badge.getName() : "Null") + ", State: " + badge.getState());
-        } else {
-            Log.e("BadgeAdapter", "Null badge at position: " + position);
-            holder.badgeName.setText("Unknown Badge");
-            holder.badgeDescription.setText("No description available");
-            holder.badgeImage.setImageResource(R.drawable.badge_locked);
+            int badgeImageRes = R.drawable.badge_locked; // Default to locked badge
+            if ("completed".equals(badge.getState())) {
+                badgeImageRes = R.drawable.badge_completed;
+            } else if ("in_progress".equals(badge.getState())) {
+                badgeImageRes = R.drawable.badge_in_progress;
+            }
+            holder.badgeImage.setImageResource(badgeImageRes);
         }
     }
 
@@ -57,13 +58,26 @@ public class BadgeAdapter extends RecyclerView.Adapter<BadgeAdapter.BadgeViewHol
 
     public static class BadgeViewHolder extends RecyclerView.ViewHolder {
         ImageView badgeImage;
-        TextView badgeName, badgeDescription;
+        TextView badgeName, badgeDescription, badgeStatus;
 
         public BadgeViewHolder(@NonNull View itemView) {
             super(itemView);
             badgeImage = itemView.findViewById(R.id.badgeImage);
             badgeName = itemView.findViewById(R.id.badgeName);
             badgeDescription = itemView.findViewById(R.id.badgeDescription);
+            badgeStatus = itemView.findViewById(R.id.badgeStatus);
+        }
+    }
+
+    // Add this helper method here
+    private String getBadgeStateDescription(String state) {
+        switch (state) {
+            case "completed":
+                return "Completed";
+            case "in_progress":
+                return "In Progress";
+            default:
+                return "Locked";
         }
     }
 }
