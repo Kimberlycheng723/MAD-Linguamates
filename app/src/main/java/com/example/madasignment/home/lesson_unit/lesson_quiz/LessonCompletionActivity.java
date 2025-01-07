@@ -43,6 +43,9 @@ public class LessonCompletionActivity extends AppCompatActivity {
         Animation animationLeft = AnimationUtils.loadAnimation(this, R.anim.firework_animation);
         Animation animationRight = AnimationUtils.loadAnimation(this, R.anim.firework_animation);
 
+        animationLeft.setFillAfter(true);
+        animationRight.setFillAfter(true);
+
         scoreContainer.startAnimation(animationLeft);
         fireworkLeft.startAnimation(animationLeft);
         fireworkRight.postDelayed(() -> fireworkRight.startAnimation(animationRight), 500);
@@ -123,9 +126,11 @@ public class LessonCompletionActivity extends AppCompatActivity {
     }
 
     private void updateXPForLessonCompletion(int xpEarned) {
+        TextView scoreText = findViewById(R.id.scoreText); // Reference to the scoreText TextView
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid(); // Get the user's ID
         DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("User").child(userId);
 
+        // Directly update the XP value in Firebase
         userRef.child("xp").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
@@ -136,8 +141,9 @@ public class LessonCompletionActivity extends AppCompatActivity {
                 // Update XP in Firebase
                 userRef.child("xp").setValue(updatedXP).addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        Toast.makeText(LessonCompletionActivity.this, "50 XP Added!", Toast.LENGTH_SHORT).show();
-                        Log.d("XPUpdate", "XP updated to: " + updatedXP);
+                        // Directly display the earned XP (e.g., "+50 XP") on the screen
+                        scoreText.setText("+ " + xpEarned + " XP");
+                        Toast.makeText(LessonCompletionActivity.this, xpEarned + " XP Added!", Toast.LENGTH_SHORT).show();
                     } else {
                         Log.e("XPUpdate", "Failed to update XP");
                     }
@@ -149,5 +155,10 @@ public class LessonCompletionActivity extends AppCompatActivity {
                 Log.e("XPUpdate", "Error reading XP: " + error.getMessage());
             }
         });
+
+        // Immediately update the UI before the database write completes (optional)
+        scoreText.setText("+ " + xpEarned + " XP");
     }
+
+
 }

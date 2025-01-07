@@ -13,7 +13,7 @@ public class LessonQuestionFragmentFactory {
 
     public static List<Fragment> createQuestionFragments() {
         List<Fragment> fragments = new ArrayList<>();
-
+/*
      fragments.add(LessonImageQuestionFragment.newInstance(
                 "Which image matches '你好'?",
                 new String[]{"Hello", "Good Morning", "Good Night", "Thank You"},
@@ -53,13 +53,13 @@ public class LessonQuestionFragmentFactory {
                 Arrays.asList("早上好", "晚上好", "下午好"),
                 "早上好"
         ));
+*/
 
         fragments.add(LessonSpeakingQuestionFragment.newInstance(
                 "晚上好",
                 "wǎn shàng hǎo",
                 R.drawable.image_lesson_good_night
         ));
-
 
 
 
