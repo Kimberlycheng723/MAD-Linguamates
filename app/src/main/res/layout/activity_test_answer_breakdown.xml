@@ -39,7 +39,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:fontFamily="@font/poppins_semibold"
-        android:text="Great Job! You've answered most of the question correctly."
+        android:text="There are no shortcuts to success. \nYou can do this!"
         android:textAlignment="center"
         android:textSize="18sp"
         android:textColor="#32689A" />
@@ -75,7 +75,7 @@
         android:layout_height="77dp"
         android:layout_below="@id/questionGridLayout"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="0dp"
     android:backgroundTint="#26ABC7"
     android:text="Back to Result"
         android:textSize="20sp"

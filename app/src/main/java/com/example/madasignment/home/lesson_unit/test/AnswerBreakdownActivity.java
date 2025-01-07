@@ -52,7 +52,7 @@ public class AnswerBreakdownActivity extends AppCompatActivity {
     private void populateQuestionGrid(GridLayout questionGridLayout, List<QuestionStatus> questionStatuses) {
         questionGridLayout.removeAllViews(); // Clear existing views
 
-        int columns = 4; // Number of questions per row
+        int columns = 3; // Number of questions per row
         questionGridLayout.setColumnCount(columns); // Set the column count
 
         if (questionStatuses != null && !questionStatuses.isEmpty()) {
@@ -94,9 +94,9 @@ public class AnswerBreakdownActivity extends AppCompatActivity {
                 });
 
                 GridLayout.LayoutParams params = new GridLayout.LayoutParams();
-                params.width = 200;
-                params.height = 200;
-                params.setMargins(8, 8, 8, 8);
+                params.width = 300;
+                params.height = 300;
+                params.setMargins(32, 32, 32, 32);
                 questionGridLayout.addView(questionFrame, params);
             }
         } else {

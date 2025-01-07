@@ -47,6 +47,9 @@ public class TestCompletionActivity extends AppCompatActivity {
         Animation animationLeft = AnimationUtils.loadAnimation(this, R.anim.firework_animation);
         Animation animationRight = AnimationUtils.loadAnimation(this, R.anim.firework_animation);
 
+        animationLeft.setFillAfter(true);
+        animationRight.setFillAfter(true);
+
         scoreContainer.startAnimation(animationLeft);
         fireworkLeft.startAnimation(animationLeft);
         fireworkRight.postDelayed(() -> fireworkRight.startAnimation(animationRight), 500);

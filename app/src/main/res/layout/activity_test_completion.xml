@@ -48,7 +48,7 @@
         android:id="@+id/completionText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="60dp"
         android:fontFamily="@font/poppins_semibold"
         android:text="Test Completed !"
         android:textColor="#307CD4"
@@ -67,26 +67,7 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/completionText">
-
-        <!-- Diamond Image -->
-        <ImageView
-            android:id="@+id/diamondImage"
-            android:layout_width="52dp"
-            android:layout_height="62dp"
-            android:src="@drawable/diamond" />
-
-        <!-- Score Text Placeholder -->
-        <TextView
-            android:id="@+id/scoreText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="+ 0"
-            android:textColor="#307CD4"
-            android:textSize="24sp" />
-    </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@id/completionText"/>
 
     <!-- Take Quiz Button -->
 

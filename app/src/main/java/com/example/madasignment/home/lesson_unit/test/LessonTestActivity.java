@@ -7,9 +7,12 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
@@ -34,6 +37,7 @@ public class LessonTestActivity extends AppCompatActivity implements LessonQuest
     private int currentQuestionIndex = 0;
     private int totalScore = 0;
     private CountDownTimer timer;
+    private ImageView closeQuizButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,10 +46,17 @@ public class LessonTestActivity extends AppCompatActivity implements LessonQuest
 
         boolean isFromBreakdown = getIntent().getBooleanExtra("IS_FROM_BREAKDOWN", false);
         int questionNumberToLoad = getIntent().getIntExtra("QUESTION_NUMBER", -1);
+        closeQuizButton = findViewById(R.id.closeQuizButton);
+
+        closeQuizButton.setOnClickListener(v -> new AlertDialog.Builder(this)
+                .setMessage("Are you sure you want to exit the quiz?")
+                .setPositiveButton("Yes", (dialog, which) -> finish())
+                .setNegativeButton("No", null)
+                .show());
 
         // Initialize or reuse question fragments
         if (questionFragments == null) {
-            questionFragments = LessonQuestionFragmentFactory.createQuestionFragments();
+            questionFragments = LessonTestFragmentFactory.createQuestionFragments();
             Collections.shuffle(questionFragments); // Shuffle only once
         }
 
@@ -125,10 +136,23 @@ public class LessonTestActivity extends AppCompatActivity implements LessonQuest
     }
 
     private void endTest() {
+
         if (timer != null) {
             timer.cancel();
         }
 
+
+        // Mark all remaining unanswered questions as skipped
+        while (currentQuestionIndex < questionFragments.size()) {
+            int questionNumber = currentQuestionIndex + 1;
+
+            // Default skipped question status (assuming vocabulary type if not determined)
+            questionStatuses.add(new QuestionStatus(questionNumber, false, true, false, false));
+
+            currentQuestionIndex++;
+        }
+
+        // Navigate to ResultActivity with the updated statuses
         Intent intent = new Intent(this, ResultActivity.class);
         intent.putExtra("TOTAL_SCORE", totalScore);
         intent.putExtra("TOTAL_QUESTIONS", questionFragments.size());
@@ -136,6 +160,8 @@ public class LessonTestActivity extends AppCompatActivity implements LessonQuest
         startActivity(intent);
         finish();
     }
+
+
 
     private void addBackToBreakdownButton() {
         Button backToBreakdownButton = new Button(this);
