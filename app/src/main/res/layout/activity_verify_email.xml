@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/CSLayout_ve"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splash">
+
+    <TextView
+        android:id="@+id/tv_verify_ve"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="179dp"
+        android:layout_marginTop="105dp"
+        android:layout_marginEnd="174dp"
+        android:text="Verify Your Email"
+        android:textColor="#050505"
+        android:textSize="20sp"
+        android:fontFamily="@font/poppins_semibold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_check_ve"
+        android:layout_width="267dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="39dp"
+        android:layout_marginEnd="177dp"
+        android:textColor="#050505"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="To complete your profile, check your email to verify your email address."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_verify_ve" />
+
+    <Button
+        android:id="@+id/btn_verify_ve"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="166dp"
+        android:layout_marginTop="47dp"
+        android:layout_marginEnd="155dp"
+        android:text="Verify"
+        android:fontFamily="@font/poppins_semibold"
+        android:background="@drawable/short_rect_pp"
+        style="@style/CustomUnitButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="#050505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_check_ve" />
+
+    <Button
+        android:id="@+id/btn_nextPage_ve"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="167dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="156dp"
+        android:text="Done"
+        android:fontFamily="@font/poppins_semibold"
+        android:background="@drawable/short_rect_pp"
+        style="@style/CustomUnitButton"
+        android:textColor="#050505"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_verify_ve" />
+</androidx.constraintlayout.widget.ConstraintLayout>
