@@ -41,9 +41,9 @@
         <activity android:name=".lessons.Module.read.ReadOnlyActivity" /> <!-- Gamification -->
         <activity android:name=".gamification.AchievementSplash" />
         <activity android:name=".gamification.AchievementOverviewActivity" />
-        <activity android:name=".gamification.MyBadgesActivity" />
+        <activity android:name=".gamification.badge.MyBadgesActivity" />
         <activity android:name=".gamification.LeaderboardActivity" />
-        <activity android:name=".gamification.DailyStreakActivity" />
+        <activity android:name=".gamification.dailystreak.DailyStreakActivity" />
         <activity
             android:name=".lessons.Module.module.Module"
             android:exported="false" /> <!-- Community -->
@@ -64,6 +64,7 @@
         <activity android:name=".profile.PrivacyActivity" />
         <activity android:name=".profile.CoursesActivity" />
         <activity android:name=".profile.SignInActivity" />
+
     </application>
 
 </manifest>

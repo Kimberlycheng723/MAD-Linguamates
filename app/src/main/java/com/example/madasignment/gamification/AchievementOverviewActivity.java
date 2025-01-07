@@ -10,6 +10,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.madasignment.R;
+import com.example.madasignment.gamification.badge.MyBadgesActivity;
+import com.example.madasignment.gamification.dailystreak.DailyStreakActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;

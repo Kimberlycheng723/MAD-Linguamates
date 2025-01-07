@@ -14,7 +14,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.madasignment.R;
-import com.example.madasignment.gamification.BadgeFirebaseModel;
+import com.example.madasignment.gamification.badge.BadgeFirebaseModel;
 import com.example.madasignment.home.lesson_unit.lesson_unit.LessonUnit;
 import com.example.madasignment.home.lesson_unit.test.TestSplashScreen;
 import com.google.firebase.auth.FirebaseAuth;

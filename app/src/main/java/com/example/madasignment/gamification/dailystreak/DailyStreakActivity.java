@@ -1,4 +1,4 @@
-package com.example.madasignment.gamification;
+package com.example.madasignment.gamification.dailystreak;
 
 import android.os.Bundle;
 import android.widget.Button;

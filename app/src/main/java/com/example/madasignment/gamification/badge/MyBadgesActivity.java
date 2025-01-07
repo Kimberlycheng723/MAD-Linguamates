@@ -1,4 +1,4 @@
-package com.example.madasignment.gamification;
+package com.example.madasignment.gamification.badge;
 
 import android.os.Bundle;
 import android.util.Log;

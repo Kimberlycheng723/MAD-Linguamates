@@ -4,17 +4,19 @@ public class LeaderboardItem {
     private int rank;
     private String username;
     private int xp;
-    private int imageResId;
 
     public LeaderboardItem(int rank, String username, int xp) {
         this.rank = rank;
         this.username = username;
         this.xp = xp;
-        this.imageResId = imageResId;
     }
 
     public int getRank() {
         return rank;
+    }
+
+    public void setRank(int rank) {
+        this.rank = rank;
     }
 
     public String getUsername() {
@@ -23,9 +25,5 @@ public class LeaderboardItem {
 
     public int getXp() {
         return xp;
-    }
-
-    public int getImageResId() {
-        return imageResId;
     }
 }

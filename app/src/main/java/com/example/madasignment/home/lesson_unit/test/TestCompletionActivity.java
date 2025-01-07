@@ -12,7 +12,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.madasignment.R;
-import com.example.madasignment.gamification.BadgeUtils;
+import com.example.madasignment.gamification.badge.BadgeUtils;
 import com.example.madasignment.home.lesson_unit.lesson_unit.LessonUnit;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
