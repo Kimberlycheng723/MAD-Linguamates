@@ -3,6 +3,7 @@ package com.example.madasignment.lessons.Module.module;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ProgressBar;
@@ -28,7 +29,7 @@ public class Module extends AppCompatActivity {
     private ModuleAdapter moduleAdapter;
     private List<ModuleData> easyModules, mediumModules, hardModules, allModules;
     private Spinner difficultySpinner;
-    private ProgressBar progressBar;
+
     private BottomNavigationView bottomNavigationView;
     private int completedModules = 0;
 
@@ -52,16 +53,12 @@ public class Module extends AppCompatActivity {
         // Set up Bottom Navigation
         setupBottomNavigation();
 
-        // Initialize progress bar
-        updateProgressBar();
-
 
     }
 
     private void initViews() {
         moduleRecyclerView = findViewById(R.id.moduleRecyclerView);
         difficultySpinner = findViewById(R.id.difficultySpinner);
-        progressBar = findViewById(R.id.progressBar);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
     }
 
@@ -99,6 +96,7 @@ public class Module extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String difficulty = parent.getItemAtPosition(position).toString();
+                Log.d("ModuleActivity", "Selected Difficulty: " + difficulty);
                 switch (difficulty) {
                     case "Easy":
                         setupRecyclerView(easyModules);
@@ -111,19 +109,25 @@ public class Module extends AppCompatActivity {
                         break;
                 }
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                // Do nothing
+                Log.d("ModuleActivity", "No difficulty selected.");
             }
         });
     }
 
     private void setupRecyclerView(List<ModuleData> modules) {
-        moduleAdapter = new ModuleAdapter(modules, this::updateProgressBar);
-        moduleRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        moduleRecyclerView.setAdapter(moduleAdapter);
+        if (moduleAdapter == null) {
+            // Create a new adapter and set it to the RecyclerView
+            moduleAdapter = new ModuleAdapter(modules);
+            moduleRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+            moduleRecyclerView.setAdapter(moduleAdapter);
+        } else {
+            // Update the data in the existing adapter
+            moduleAdapter.updateData(modules);
+        }
     }
+
 
     private void setupBottomNavigation() {
         bottomNavigationView.setOnItemSelectedListener(item -> {
@@ -153,12 +157,5 @@ public class Module extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.nav_lessons);
     }
 
-    private void updateProgressBar() {
-        int totalModules = allModules.size(); // Total number of modules across all difficulties
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            completedModules = (int) allModules.stream().filter(ModuleData::isCompleted).count(); // Count completed modules
-        }
-        int progress = (completedModules * 100) / totalModules; // Calculate percentage
-        progressBar.setProgress(progress);
-    }
+
 }
