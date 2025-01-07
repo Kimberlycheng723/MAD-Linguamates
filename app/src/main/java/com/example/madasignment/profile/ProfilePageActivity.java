@@ -25,12 +25,18 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class ProfilePageActivity extends AppCompatActivity {
 
     private FirebaseAuth auth;
     private DatabaseReference databaseReference;
-    private TextView tvStreakValue, tvLeagueValue, tvLessonValue, tvLanguageValue;
+    private TextView tvStreakValue, tvLeagueValue, tvBadgesValue, tvLanguageValue;
     private TextView tvnameValue, tvusernameValue, tvBioValue;
+
+    private TextView tvBadge1, tvBadge2;
     private BottomNavigationView bottomNavigationView; // Declare as a private variable
 
     @Override
@@ -66,11 +72,14 @@ public class ProfilePageActivity extends AppCompatActivity {
         tvStreakValue = findViewById(R.id.tv_streakValue_pp);
         tvLeagueValue = findViewById(R.id.tv_leagueValue_pp);
         tvLanguageValue = findViewById(R.id.tv_languageValue_pp);
-        tvLessonValue = findViewById(R.id.tv_lessonValue_pp);
+        tvBadgesValue = findViewById(R.id.tv_badgesValue_pp);
 
         tvnameValue = findViewById(R.id.tv_name_pp);
         tvusernameValue = findViewById(R.id.tv_username_pp);
         tvBioValue = findViewById(R.id.tv_bio_pp);
+
+        tvBadge1 = findViewById(R.id.tv_badge1_pp);
+        tvBadge2 = findViewById(R.id.tv_badge2_pp);
 
         // Fetch and Display Data
         fetchUserData();
@@ -86,13 +95,17 @@ public class ProfilePageActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.exists()) {
 
-                            String streak = snapshot.child("iv_statstreak_pp").getValue(String.class);
-                            tvStreakValue.setText(streak != null ? streak : "0");
+                            String streak = snapshot.child("currentStreak").getValue() != null
+                                    ? String.valueOf(snapshot.child("currentStreak").getValue())
+                                    : "0";
+                            tvStreakValue.setText(streak);
 
-                            String league = snapshot.child("iv_statleague_pp").getValue(String.class);
-                            tvLeagueValue.setText(league != null ? league : "None");
+                            String league = snapshot.child("currentLeague").getValue() != null
+                                    ? String.valueOf(snapshot.child("currentLeague").getValue())
+                                    : "0";
+                            tvLeagueValue.setText(league);
 
-                            String languages = snapshot.child("iv_statlang_pp").getValue(String.class);
+                            String languages = snapshot.child("language").getValue(String.class);
                             if (languages != null && !languages.equals("None")) {
                                 // Count the number of languages
                                 int languageCount = languages.split(",").length;
@@ -100,11 +113,6 @@ public class ProfilePageActivity extends AppCompatActivity {
                             } else {
                                 tvLanguageValue.setText("0");
                             }
-
-                            String lessons = snapshot.child("iv_statlessons_pp").getValue(String.class);
-                            tvLessonValue.setText(lessons != null ? lessons : "0");
-
-                            Log.d("ProfilePageActivity", "Snapshot: " + snapshot.toString());
 
                         }
                     }
@@ -141,6 +149,47 @@ public class ProfilePageActivity extends AppCompatActivity {
                         // Handle Database Error
                         Log.d("ProfilePageActivity", "Error: " + error.getMessage());
                         Toast.makeText(ProfilePageActivity.this, "Failed to load data. Please try again.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                databaseReference.child("UserStats").child(userId).child("badges").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+                            int completedBadgeCount = 0;
+                            List<String> completedBadges = new ArrayList<>();
+
+                            // Iterate over badges and filter the completed ones
+                            for (DataSnapshot badgeSnapshot : snapshot.getChildren()) {
+                                String badgeName = badgeSnapshot.getKey();
+                                String badgeState = badgeSnapshot.child("state").getValue(String.class);
+
+                                if (badgeState.equals("completed")) {
+                                    completedBadges.add(badgeName);
+                                    completedBadgeCount++;
+                                }
+                            }
+
+                            // Sort the completed badges (customize criteria as needed)
+                            Collections.sort(completedBadges);
+
+                            // Display up to two completed badges
+                            String badgeDisplay1 = completedBadges.size() > 0 ? completedBadges.get(0) : "None";
+                            tvBadge1.setText( badgeDisplay1 != null ? badgeDisplay1 : "0");
+
+                            String badgeDisplay2 = completedBadges.size() > 1 ? completedBadges.get(1) : "None";
+                            tvBadge2.setText( badgeDisplay2 != null ? badgeDisplay2 : "0");
+
+                            // Display the count of completed badges
+                            String badgesValue = String.valueOf(completedBadgeCount);
+                            tvBadgesValue.setText(badgesValue);
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Log.e("DatabaseError", error.getMessage());
                     }
                 });
             } catch (Exception e) {

@@ -104,6 +104,7 @@
         android:layout_marginEnd="32dp"
         android:background="@drawable/short_rect_pp"
         android:text="S"
+        style="@style/CustomUnitButton"
         android:textColor="#00000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -143,7 +144,7 @@
 
     <Button
         android:id="@+id/Bt_editProfile"
-        style="@style/Widget.AppCompat.Button.Borderless"
+        style="@style/CustomUnitButton"
         android:layout_width="62dp"
         android:layout_height="48dp"
         android:layout_marginTop="272dp"
@@ -238,13 +239,13 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
-        android:id="@+id/tv_lessons_pp"
+        android:id="@+id/tv_badgesCollected_pp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="28dp"
         android:layout_marginBottom="12dp"
-        android:text="Lessons Today"
         android:fontFamily="@font/poppins_semibold"
+        android:text="Badges Collected"
         app:layout_constraintBottom_toBottomOf="@+id/iv_statlessons_pp"
         app:layout_constraintEnd_toEndOf="@+id/iv_statlessons_pp" />
 
@@ -303,6 +304,7 @@
         android:background="@drawable/settings"
         android:backgroundTint="#423D3D"
         android:text="btn"
+        style="@style/CustomUnitButton"
         android:textColor="#00FFFFFF"
         app:iconTint="#3A3535"
         app:layout_constraintEnd_toEndOf="parent"
@@ -344,7 +346,7 @@
         app:layout_constraintTop_toTopOf="@+id/iv_statlang_pp" />
 
     <TextView
-        android:id="@+id/tv_lessonValue_pp"
+        android:id="@+id/tv_badgesValue_pp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -365,5 +367,50 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_navigation_menu" />
+        app:menu="@menu/bottom_navigation_menu" >
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    <ImageView
+        android:id="@+id/iv_badge1_pp"
+        android:layout_width="80dp"
+        android:layout_height="125dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@+id/iv_achievements_pp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_achievements_pp"
+        app:srcCompat="@drawable/badge_in_progress" />
+
+    <ImageView
+        android:id="@+id/iv_badge2_pp"
+        android:layout_width="80dp"
+        android:layout_height="125dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="56dp"
+        app:layout_constraintEnd_toEndOf="@+id/iv_achievements_pp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_achievements_pp"
+        app:srcCompat="@drawable/badge_in_progress" />
+
+    <TextView
+        android:id="@+id/tv_badge1_pp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="100dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="First Lesson"
+        app:layout_constraintStart_toStartOf="@+id/iv_achievements_pp"
+        app:layout_constraintTop_toTopOf="@+id/iv_badge1_pp" />
+
+    <TextView
+        android:id="@+id/tv_badge2_pp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="68dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="First Test"
+        app:layout_constraintEnd_toEndOf="@+id/iv_achievements_pp"
+        app:layout_constraintTop_toTopOf="@+id/iv_badge2_pp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
