@@ -8,9 +8,9 @@ public class LessonUnitData {
 
     private String buttonColor; // Button color (Hex or Color Resource)
 
-    public LessonUnitData(String title, int progress, String action, int imageResId, String backgroundColor, String buttonColor) {
+    public LessonUnitData(String title, String action, int imageResId, String backgroundColor, String buttonColor) {
         this.title = title;
-        this.progress = progress;
+
         this.action = action;
         this.imageResId = imageResId;
         this.backgroundColor = backgroundColor;
@@ -21,9 +21,6 @@ public class LessonUnitData {
         return title;
     }
 
-    public int getProgress() {
-        return progress;
-    }
 
     public String getAction() {
         return action;

@@ -44,8 +44,8 @@ public class LessonUnitsAdapter extends RecyclerView.Adapter<LessonUnitsAdapter.
 
         // Set data for each unit
         holder.unitTitle.setText(unit.getTitle());
-        holder.unitProgressBar.setProgress(unit.getProgress());
-        holder.progressText.setText(unit.getProgress() + "%");
+
+
         holder.unitImage.setImageResource(unit.getImageResId());
         holder.unitActionButton.setText(unit.getAction());
 
@@ -60,7 +60,7 @@ public class LessonUnitsAdapter extends RecyclerView.Adapter<LessonUnitsAdapter.
 
         // Handle button click
         holder.unitActionButton.setOnClickListener(view -> {
-            if (unit.getTitle().equals("Common Greetings and Phrases") && unit.getAction().equalsIgnoreCase("Replay")) {
+            if (unit.getTitle().equals("Common Greetings and Phrases") && unit.getAction().equalsIgnoreCase("Play")) {
                 Intent intent = new Intent(view.getContext(), LevelsActivity.class);
                 view.getContext().startActivity(intent);
             } else {
@@ -79,7 +79,7 @@ public class LessonUnitsAdapter extends RecyclerView.Adapter<LessonUnitsAdapter.
 
     static class UnitViewHolder extends RecyclerView.ViewHolder {
         TextView unitTitle;
-        ProgressBar unitProgressBar;
+
         TextView progressText; // Added progress text
         Button unitActionButton;
         ImageView unitImage;
@@ -87,7 +87,7 @@ public class LessonUnitsAdapter extends RecyclerView.Adapter<LessonUnitsAdapter.
         public UnitViewHolder(@NonNull View itemView) {
             super(itemView);
             unitTitle = itemView.findViewById(R.id.unitTitle);
-            unitProgressBar = itemView.findViewById(R.id.unitProgressBar);
+
             progressText = itemView.findViewById(R.id.progressText); // Bind progress text
             unitActionButton = itemView.findViewById(R.id.unitActionButton);
             unitImage = itemView.findViewById(R.id.unitImage);

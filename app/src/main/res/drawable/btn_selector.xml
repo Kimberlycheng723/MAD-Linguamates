@@ -1,0 +1,6 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Selected state -->
+    <item android:state_selected="true" android:drawable="@drawable/unit_btn_selected1" />
+    <!-- Default (non-selected) state -->
+    <item android:drawable="@drawable/unit_btn_non_selected1" />
+</selector>

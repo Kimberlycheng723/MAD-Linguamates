@@ -23,12 +23,15 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- Home -->
+        </activity>
+             <!-- Home -->
         <activity android:name=".home.lesson_unit.test.TestCompletionActivity" />
         <activity android:name=".home.lesson_unit.test.TestSplashScreen" />
         <activity android:name=".home.lesson_unit.test.LessonTestActivity" />
         <activity android:name=".home.lesson_unit.lesson_quiz.LessonCompletionActivity" />
-        <activity android:name=".home.lesson_unit.lesson_unit.LessonUnit" />
+        <activity android:name=".home.lesson_unit.lesson_unit.LessonUnit"/>
+
+
         <activity android:name=".home.lesson_unit.levels.LevelsActivity" />
         <activity android:name=".home.lesson_unit.flashcard.Flashcard" />
         <activity android:name=".home.lesson_unit.test.ResultActivity" />
