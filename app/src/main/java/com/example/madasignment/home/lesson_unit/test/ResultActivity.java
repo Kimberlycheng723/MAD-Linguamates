@@ -38,6 +38,9 @@ public class ResultActivity extends AppCompatActivity {
         int speakingQuestions = 0, listeningQuestions = 0, vocabularyQuestions = 0;
 
         for (QuestionStatus status : questionStatuses) {
+            if (status.isMatching) {
+                continue; // Skip matching questions
+            }
             if (status.isSpeaking) {
                 speakingQuestions++;
                 if (status.isCorrect) speakingScore++;
@@ -51,6 +54,7 @@ public class ResultActivity extends AppCompatActivity {
         }
 
         // Calculate percentages
+        int totalValidQuestions = speakingQuestions + listeningQuestions + vocabularyQuestions;
         int totalPercentage = (totalQuestions > 0) ? (totalScore * 100) / totalQuestions : 0;
         int xpEarned = calculateXPEarned(totalPercentage);
         int vocabularyPercentage = (vocabularyQuestions > 0) ? (vocabularyScore * 100) / vocabularyQuestions : 0;

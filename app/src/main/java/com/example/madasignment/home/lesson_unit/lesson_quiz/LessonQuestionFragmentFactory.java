@@ -13,7 +13,8 @@ public class LessonQuestionFragmentFactory {
 
     public static List<Fragment> createQuestionFragments() {
         List<Fragment> fragments = new ArrayList<>();
-/*
+
+
      fragments.add(LessonImageQuestionFragment.newInstance(
                 "Which image matches '你好'?",
                 new String[]{"Hello", "Good Morning", "Good Night", "Thank You"},
@@ -41,6 +42,7 @@ public class LessonQuestionFragmentFactory {
                 "Match all the words to the correct translation:",
                 Arrays.asList("Hello", "Good Morning", "Welcome", "Good Night"),
                 Arrays.asList("你好", "早上好", "欢迎", "晚上好")
+
         ));
 
        fragments.add(LessonRearrangeWordsQuestionFragment.newInstance(
@@ -53,7 +55,7 @@ public class LessonQuestionFragmentFactory {
                 Arrays.asList("早上好", "晚上好", "下午好"),
                 "早上好"
         ));
-*/
+
 
         fragments.add(LessonSpeakingQuestionFragment.newInstance(
                 "晚上好",

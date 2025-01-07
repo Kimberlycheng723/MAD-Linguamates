@@ -8,7 +8,7 @@ public class QuestionStatus implements Serializable {
     public boolean isVocabulary;
     public boolean isSpeaking;
     public boolean isListening;
-
+    public boolean isMatching;
     // Constructor
     public QuestionStatus(int questionNumber, boolean isCorrect, boolean isVocabulary, boolean isSpeaking, boolean isListening) {
         this.questionNumber = questionNumber;
@@ -16,5 +16,6 @@ public class QuestionStatus implements Serializable {
         this.isVocabulary = isVocabulary;
         this.isSpeaking = isSpeaking;
         this.isListening = isListening;
+        this.isMatching = isMatching;
     }
 }
