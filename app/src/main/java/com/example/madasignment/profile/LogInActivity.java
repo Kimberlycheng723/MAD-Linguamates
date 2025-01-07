@@ -19,6 +19,7 @@ import com.example.madasignment.R;
 import com.example.madasignment.gamification.badge.BadgeFirebaseModel;
 import com.example.madasignment.home.lesson_unit.lesson_unit.LessonUnit;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -99,10 +100,18 @@ public class LogInActivity extends AppCompatActivity {
         auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        initializeBadgesInDatabase();
-                        Intent intent = new Intent(LogInActivity.this, LessonUnit.class);
-                        startActivity(intent);
-                        finish();
+                        // User signed in successfully, now check if email is verified
+                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                        if (user != null && user.isEmailVerified()) {
+                            initializeBadgesInDatabase();
+                            Intent intent = new Intent(LogInActivity.this, LanguageSelectPage.class);
+                            startActivity(intent);
+                            finish();
+                        } else {
+                            // Email is not verified
+                            Toast.makeText(LogInActivity.this, "Please verify your email before logging in.", Toast.LENGTH_LONG).show();
+                            FirebaseAuth.getInstance().signOut(); // Sign out the user to prevent access
+                        }
                     } else {
                         String errorMessage = "Login failed: ";
                         if (task.getException() != null) {
@@ -115,6 +124,7 @@ public class LogInActivity extends AppCompatActivity {
                     }
                 });
     }
+
 
     private void resetPassword() {
         String email = etEmail.getText().toString().trim();
