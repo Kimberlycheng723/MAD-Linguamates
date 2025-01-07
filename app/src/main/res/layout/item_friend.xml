@@ -18,12 +18,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvFriendXP"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="XP"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvFriendName" />
 </androidx.constraintlayout.widget.ConstraintLayout>

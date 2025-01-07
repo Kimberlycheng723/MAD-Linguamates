@@ -40,6 +40,7 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
         holder.xpText.setText(item.getXp() + " XP");
     }
 
+
     @Override
     public int getItemCount() {
         return leaderboardList.size();

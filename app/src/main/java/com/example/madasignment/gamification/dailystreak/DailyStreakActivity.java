@@ -1,5 +1,6 @@
 package com.example.madasignment.gamification.dailystreak;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.GridLayout;
@@ -9,6 +10,12 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.madasignment.R;
+import com.example.madasignment.community.CommunityFrontPageActivity;
+import com.example.madasignment.gamification.AchievementOverviewActivity;
+import com.example.madasignment.home.lesson_unit.lesson_unit.LessonUnit;
+import com.example.madasignment.lessons.Module.module.Module;
+import com.example.madasignment.profile.ProfilePageActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -73,6 +80,8 @@ public class DailyStreakActivity extends AppCompatActivity {
 
         // Load streak data from database to display
         loadStreakData();
+
+        setupBottomNavigation();
     }
 
     private void updateMonthLabel() {
@@ -186,6 +195,38 @@ public class DailyStreakActivity extends AppCompatActivity {
         params.setMargins(12, 12, 12, 12); // Margins for spacing
 
         calendarGrid.addView(cell, params);
+    }
+
+
+    private void setupBottomNavigation() {
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
+
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.nav_home) {
+                Intent intent = new Intent(DailyStreakActivity.this, LessonUnit.class);
+                startActivity(intent);
+                return true;
+            } else if (id == R.id.nav_lessons) {
+                Intent intent = new Intent(DailyStreakActivity.this, Module.class);
+                startActivity(intent);
+                return true;
+            } else if (id == R.id.nav_progress) {
+                return true;
+            } else if (id == R.id.nav_forum) {
+                Intent intent = new Intent(DailyStreakActivity.this, CommunityFrontPageActivity.class);
+                startActivity(intent);
+                return true;
+            } else if (id == R.id.nav_profile) {
+                Intent intent = new Intent(DailyStreakActivity.this, ProfilePageActivity.class);
+                startActivity(intent);
+                return true;
+            }
+            return false;
+        });
+
+        // Set the current selected item
+        bottomNavigationView.setSelectedItemId(R.id.nav_progress);
     }
 
 }

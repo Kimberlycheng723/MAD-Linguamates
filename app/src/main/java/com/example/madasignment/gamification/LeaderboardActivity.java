@@ -1,5 +1,6 @@
 package com.example.madasignment.gamification;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -10,6 +11,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.madasignment.R;
+import com.example.madasignment.community.CommunityFrontPageActivity;
+import com.example.madasignment.gamification.dailystreak.DailyStreakActivity;
+import com.example.madasignment.home.lesson_unit.lesson_unit.LessonUnit;
+import com.example.madasignment.lessons.Module.module.Module;
+import com.example.madasignment.profile.ProfilePageActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -19,7 +26,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public class LeaderboardActivity extends AppCompatActivity {
@@ -53,6 +59,7 @@ public class LeaderboardActivity extends AppCompatActivity {
 
         // Handle Back Arrow
         findViewById(R.id.backArrow).setOnClickListener(view -> finish());
+        setupBottomNavigation();
     }
 
     private void loadLeaderboard() {
@@ -88,7 +95,7 @@ public class LeaderboardActivity extends AppCompatActivity {
                     Integer xp = userSnapshot.child("xp").getValue(Integer.class);
 
                     if (username != null && xp != null) {
-                        leaderboardList.add(new LeaderboardItem(0, username, xp));
+                        leaderboardList.add(new LeaderboardItem(0, username, xp, userId)); // Add userId here
                     }
 
                     if (leaderboardList.size() == userIds.size()) {
@@ -106,19 +113,59 @@ public class LeaderboardActivity extends AppCompatActivity {
 
     private void sortLeaderboardAndUpdateUI() {
         // Sort leaderboard by XP in descending order
-        Collections.sort(leaderboardList, new Comparator<LeaderboardItem>() {
-            @Override
-            public int compare(LeaderboardItem o1, LeaderboardItem o2) {
-                return Integer.compare(o2.getXp(), o1.getXp());
-            }
-        });
+        Collections.sort(leaderboardList, (o1, o2) -> Integer.compare(o2.getXp(), o1.getXp()));
 
-        // Assign ranks based on sorted order
+        DatabaseReference userStatsRef = FirebaseDatabase.getInstance().getReference("UserStats");
+
+        // Assign ranks and update `currentLeague` in the database
         for (int i = 0; i < leaderboardList.size(); i++) {
-            leaderboardList.get(i).setRank(i + 1);
+            final int rank = i + 1; // Create a final variable for the rank
+            LeaderboardItem item = leaderboardList.get(i);
+            item.setRank(rank);
+
+            // Update the user's `currentLeague` in the database
+            userStatsRef.child(item.getUserId()).child("currentLeague").setValue(rank)
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            Log.d("LeaderboardUpdate", "Updated rank for user: " + item.getUsername());
+                        } else {
+                            Log.e("LeaderboardUpdate", "Failed to update rank for user: " + item.getUsername());
+                        }
+                    });
         }
 
         // Update RecyclerView
         leaderboardAdapter.notifyDataSetChanged();
+    }
+
+    private void setupBottomNavigation() {
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
+
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.nav_home) {
+                Intent intent = new Intent(LeaderboardActivity.this, LessonUnit.class);
+                startActivity(intent);
+                return true;
+            } else if (id == R.id.nav_lessons) {
+                Intent intent = new Intent(LeaderboardActivity.this, Module.class);
+                startActivity(intent);
+                return true;
+            } else if (id == R.id.nav_progress) {
+                return true;
+            } else if (id == R.id.nav_forum) {
+                Intent intent = new Intent(LeaderboardActivity.this, CommunityFrontPageActivity.class);
+                startActivity(intent);
+                return true;
+            } else if (id == R.id.nav_profile) {
+                Intent intent = new Intent(LeaderboardActivity.this, ProfilePageActivity.class);
+                startActivity(intent);
+                return true;
+            }
+            return false;
+        });
+
+        // Set the current selected item
+        bottomNavigationView.setSelectedItemId(R.id.nav_progress);
     }
 }

@@ -124,7 +124,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/streakCounterUnit" />
 
-    <!-- Star with Rank -->
     <FrameLayout
         android:id="@+id/starWithRank"
         android:layout_width="100dp"
@@ -145,11 +144,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="13"
-            android:textColor="@android:color/white"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:text="--"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold" />
     </FrameLayout>
+
 
     <!-- Buttons -->
     <Button

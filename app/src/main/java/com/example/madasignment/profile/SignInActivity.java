@@ -124,6 +124,7 @@ public class SignInActivity extends AppCompatActivity {
                             statsMap.put("iv_statleague_pp", "None");
                             statsMap.put("iv_statlessons_pp", "0");
                             statsMap.put("iv_statstreak_pp", "0");
+                            statsMap.put("currentLeague", 0);
 
                             // Save User data
                             databaseReference.child("User").child(userId).setValue(userMap)

@@ -11,21 +11,12 @@
         android:id="@+id/friendName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="Friend Name"
         android:textColor="@android:color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/friendXP"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="1234 XP"
-        android:textColor="@android:color/darker_gray"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/friendName" />
 
     <Button
         android:id="@+id/btnAdd"
