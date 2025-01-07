@@ -260,6 +260,7 @@
         android:backgroundTint="#00AF2121"
         android:fontFamily="@font/poppins_semibold"
         android:text="@string/log_in"
+        style="@style/CustomUnitButton"
         android:textColor="#646060"
         android:textColorLink="#9B8B8B"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -294,7 +295,7 @@
         android:layout_marginTop="32dp"
         android:background="@drawable/long_rect_pp"
         android:fontFamily="@font/poppins_semibold"
-
+        style="@style/CustomUnitButton"
         android:text="@string/sign_up"
         android:textColor="#5B5656"
         app:layout_constraintEnd_toEndOf="parent"

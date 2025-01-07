@@ -8,9 +8,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.madasignment.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -121,8 +124,6 @@ public class SignInActivity extends AppCompatActivity {
                             // Prepare default user statistics
                             HashMap<String, Object> statsMap = new HashMap<>();
                             statsMap.put("iv_statlang_pp", "None");
-                            statsMap.put("iv_statleague_pp", "None");
-                            statsMap.put("iv_statlessons_pp", "0");
                             statsMap.put("iv_statstreak_pp", "0");
                             statsMap.put("currentLeague", 0);
 
@@ -134,9 +135,11 @@ public class SignInActivity extends AppCompatActivity {
                                             databaseReference.child("UserStats").child(userId).setValue(statsMap)
                                                     .addOnCompleteListener(statsTask -> {
                                                         if (statsTask.isSuccessful()) {
-                                                            Toast.makeText(SignInActivity.this, "Sign-Up Successful", Toast.LENGTH_SHORT).show();
-                                                            startActivity(new Intent(SignInActivity.this, LogInActivity.class));
-                                                            finish();
+                                                            //navigate to verify page
+                                                            startActivity(new Intent(SignInActivity.this, VerifyEmailActivity.class));
+
+                                                            // Send verification email after registration
+//                                                            sendVerificationEmail();
                                                         } else {
                                                             Toast.makeText(SignInActivity.this, "Failed to save user statistics", Toast.LENGTH_SHORT).show();
                                                         }
@@ -156,7 +159,7 @@ public class SignInActivity extends AppCompatActivity {
     // Navigate to Login Activity
     private void navigateToLogin() {
         // Redirect to Login Activity
-        Intent intent = new Intent(SignInActivity.this, LogInActivity.class);
+        Intent intent = new Intent(SignInActivity.this, LanguageSelectPage.class);
         startActivity(intent);
     }
 }
