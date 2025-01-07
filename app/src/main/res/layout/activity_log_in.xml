@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,14 +8,27 @@
     android:layout_height="match_parent"
     android:background="@drawable/splash">
 
+    <ImageButton
+        android:id="@+id/upButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="58dp"
+        android:background="@null"
+        android:contentDescription="Go Back"
+        android:src="@drawable/up_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Existing Layout Components -->
     <TextView
         android:id="@+id/tv_email_li"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
+        android:layout_marginStart="65dp"
         android:layout_marginTop="140dp"
-        android:text="@string/email"
         android:fontFamily="@font/poppins_semibold"
+        android:text="@string/email"
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,10 +38,10 @@
         android:id="@+id/tv_pass_li"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
+        android:layout_marginStart="65dp"
         android:layout_marginBottom="12dp"
-        android:text="@string/password"
         android:fontFamily="@font/poppins_semibold"
+        android:text="@string/password"
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/et_pass_li"
@@ -37,11 +51,11 @@
         android:id="@+id/et_email_li"
         android:layout_width="285dp"
         android:layout_height="50dp"
+        android:background="@android:color/transparent"
         android:ems="10"
+        android:fontFamily="@font/poppins_regular"
         android:hint="@string/enter_email"
         android:inputType="textEmailAddress"
-        android:fontFamily="@font/poppins_regular"
-        android:background="@android:color/transparent"
         app:layout_constraintBottom_toBottomOf="@+id/iv_email_li"
         app:layout_constraintEnd_toEndOf="@+id/iv_email_li"
         app:layout_constraintStart_toStartOf="@+id/iv_email_li"
@@ -64,21 +78,25 @@
         android:id="@+id/et_pass_li"
         android:layout_width="279dp"
         android:layout_height="53dp"
-        android:ems="10"
-        android:hint="@string/enter_password"
-        android:inputType="textPassword"
-        android:fontFamily="@font/poppins_regular"
+        android:layout_marginBottom="4dp"
         android:background="@android:color/transparent"
+        android:ems="10"
+        android:fontFamily="@font/poppins_regular"
+        android:hint="@string/enter_password"
+
+        android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="@+id/iv_pass_li"
         app:layout_constraintEnd_toEndOf="@+id/iv_pass_li"
+        app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toStartOf="@+id/iv_pass_li" />
 
     <ImageView
         android:id="@+id/iv_email_li"
         android:layout_width="329dp"
         android:layout_height="63dp"
-        android:layout_marginStart="40dp"
         android:layout_marginTop="76dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_hello_si"
         app:srcCompat="@drawable/long_rect_pp" />
@@ -87,23 +105,26 @@
         android:id="@+id/iv_pass_li"
         android:layout_width="339dp"
         android:layout_height="60dp"
-        android:layout_marginStart="40dp"
         android:layout_marginTop="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_email_li"
         app:srcCompat="@drawable/long_rect_pp" />
 
     <Button
         android:id="@+id/btn_login_li"
-        android:layout_width="wrap_content"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="159dp"
         android:layout_marginEnd="164dp"
-        android:layout_marginBottom="432dp"
-        android:background="@drawable/long_rect_pp"
-        android:text="@string/log_in"
+        android:layout_marginBottom="450dp"
+        android:background="@drawable/log_in_button"
+        style="@style/CustomUnitButton"
+
         android:fontFamily="@font/poppins_semibold"
-        android:textColor="#3E3838"
+        android:text="@string/log_in"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.508"
@@ -179,4 +200,32 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_login_li"
         app:srcCompat="@drawable/firework1" />
 
+    <!-- Added Forgot Password Button -->
+    <Button
+        android:id="@+id/btn_forgot_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:background="@android:color/transparent"
+        android:text="Forgot Password"
+        android:textColor="#3030A4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_login_li" />
+
+    <!-- Added Password Visibility Toggle -->
+    <ImageView
+        android:id="@+id/iv_toggle_password"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/ic_visibility"
+        app:layout_constraintBottom_toBottomOf="@+id/et_pass_li"
+        app:layout_constraintEnd_toEndOf="@+id/et_pass_li"
+        app:layout_constraintTop_toTopOf="@+id/et_pass_li"
+        app:layout_constraintVertical_bias="0.434" />
+
+    <!-- Added Language Selection Dropdown -->
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+

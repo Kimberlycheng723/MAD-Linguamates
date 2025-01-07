@@ -156,7 +156,7 @@
         android:id="@+id/dailyStreakButton"
         android:layout_width="350dp"
         android:layout_height="78dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="60dp"
         android:backgroundTint="#67C1F5"
         android:fontFamily="@font/poppins_semibold"
         android:text="DAILY STREAK PROGRESS"

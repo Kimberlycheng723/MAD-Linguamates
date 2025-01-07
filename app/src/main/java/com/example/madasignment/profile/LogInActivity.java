@@ -1,12 +1,16 @@
 package com.example.madasignment.profile;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,15 +27,33 @@ import com.google.firebase.database.ValueEventListener;
 
 public class LogInActivity extends AppCompatActivity {
 
+
     private EditText etEmail, etPassword;
-    private Button btnLogin;
+    private Button btnLogin, btnForgotPassword;
+    private ImageView ivTogglePassword;
     private FirebaseAuth auth;
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
 
+        ImageButton upButton = findViewById(R.id.upButton);
+
+        upButton.setOnClickListener(v -> {
+            // Navigate back
+            Intent intent = new Intent(LogInActivity.this, SignInActivity.class);
+            startActivity(intent);
+
+        });
+
+        sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+        boolean isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false);
+        if (isLoggedIn) {
+            // User is already logged in, skip login screen
+            navigateToLessonUnit();
+        }
         // Initialize Firebase
         auth = FirebaseAuth.getInstance();
 
@@ -39,15 +61,26 @@ public class LogInActivity extends AppCompatActivity {
         etEmail = findViewById(R.id.et_email_li);
         etPassword = findViewById(R.id.et_pass_li);
         btnLogin = findViewById(R.id.btn_login_li);
+        btnForgotPassword = findViewById(R.id.btn_forgot_password);
+        ivTogglePassword = findViewById(R.id.iv_toggle_password);
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loginUser();
-            }
-        });
+        // Handle Login Button Click
+        btnLogin.setOnClickListener(v -> loginUser());
+
+        // Handle Forgot Password Button Click
+        btnForgotPassword.setOnClickListener(v -> resetPassword());
+
+        // Handle Password Visibility Toggle
+        ivTogglePassword.setOnClickListener(v -> togglePasswordVisibility());
     }
 
+
+
+    private void navigateToLessonUnit() {
+        Intent intent = new Intent(LogInActivity.this, LessonUnit.class);
+        startActivity(intent);
+        finish();
+    }
     private void loginUser() {
         String email = etEmail.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
@@ -82,7 +115,36 @@ public class LogInActivity extends AppCompatActivity {
                     }
                 });
     }
-        private void initializeBadgesInDatabase() {
+
+    private void resetPassword() {
+        String email = etEmail.getText().toString().trim();
+        if (TextUtils.isEmpty(email)) {
+            Toast.makeText(this, "Please enter your email to reset password", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        auth.sendPasswordResetEmail(email)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(LogInActivity.this, "Password reset email sent", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(LogInActivity.this, "Failed to send reset email", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+    private void togglePasswordVisibility() {
+        if (etPassword.getInputType() == InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD) {
+            etPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+            ivTogglePassword.setImageResource(R.drawable.ic_visibility); // Update with your eye icon drawable
+        } else {
+            etPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+            ivTogglePassword.setImageResource(R.drawable.ic_visibility_off); // Update with your crossed eye icon drawable
+        }
+        etPassword.setSelection(etPassword.getText().length());
+    }
+
+    private void initializeBadgesInDatabase() {
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         DatabaseReference badgesRef = FirebaseDatabase.getInstance()
                 .getReference("UserStats")
