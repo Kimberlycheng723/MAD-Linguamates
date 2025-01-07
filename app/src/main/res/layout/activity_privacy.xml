@@ -67,6 +67,7 @@
         android:layout_marginStart="28dp"
         android:layout_marginTop="40dp"
         android:text="back"
+        style="@style/CustomUnitButton"
         android:textColor="#242222"
         android:fontFamily="@font/poppins_semibold"
         android:background="@drawable/short_rect_pp"
