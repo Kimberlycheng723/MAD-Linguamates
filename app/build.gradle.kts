@@ -36,7 +36,7 @@ android {
 }
 
 dependencies {
-
+    implementation("com.belerweb:pinyin4j:2.5.0")
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)

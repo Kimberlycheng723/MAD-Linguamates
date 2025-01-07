@@ -41,37 +41,47 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="start"
-        android:paddingLeft="16dp"
-        android:layout_marginBottom="16dp">
+        android:gravity="center"
+        android:padding="16dp">
 
         <Button
             android:id="@+id/btnBeginner"
-            android:layout_width="122dp"
+            android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_marginEnd="16dp"
-
+            android:layout_weight="1.2"
+            android:layout_margin="8dp"
+            android:background="@drawable/btn_selector"
             android:text="Beginner"
-            android:textSize="11sp"
-            android:fontFamily="@font/poppins_semibold" />
+            android:gravity="center"
+            android:textSize="9.6sp"
+            android:textColor="@color/black"
+            style="@style/CustomUnitButton" />
 
         <Button
             android:id="@+id/btnIntermediate"
-            android:layout_width="122dp"
+            android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_marginEnd="16dp"
+            android:layout_weight="1.2"
+            android:layout_margin="8dp"
+            android:background="@drawable/btn_selector"
             android:text="Intermediate"
-            android:textSize="11sp"
-            android:fontFamily="@font/poppins_semibold" />
+            android:gravity="center"
+            android:textSize="9.6sp"
+            android:textColor="@color/black"
+            style="@style/CustomUnitButton" />
 
         <Button
             android:id="@+id/btnAdvanced"
-            android:layout_width="122dp"
+            android:layout_width="0dp"
             android:layout_height="50dp"
-
+            android:layout_weight="1.2"
+            android:layout_margin="8dp"
+            android:textColor="@color/black"
+            android:background="@drawable/btn_selector"
             android:text="Advanced"
-            android:textSize="11sp"
-            android:fontFamily="@font/poppins_semibold" />
+            android:gravity="center"
+            android:textSize="9.6sp"
+            style="@style/CustomUnitButton" />
     </LinearLayout>
 
     <!-- Lesson Units RecyclerView -->

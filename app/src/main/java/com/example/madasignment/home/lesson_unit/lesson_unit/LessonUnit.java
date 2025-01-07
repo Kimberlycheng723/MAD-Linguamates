@@ -16,8 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.madasignment.R;
 import com.example.madasignment.community.CommunityFrontPageActivity;
 import com.example.madasignment.gamification.AchievementOverviewActivity;
-import com.example.madasignment.gamification.BadgeFirebaseModel;
-import com.example.madasignment.gamification.BadgeUtils;
+import com.example.madasignment.gamification.badge.BadgeUtils;
 import com.example.madasignment.lessons.Module.module.Module;
 import com.example.madasignment.profile.ProfilePageActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -62,7 +61,9 @@ public class LessonUnit extends AppCompatActivity {
         unitsRecyclerView = findViewById(R.id.unitsRecyclerView);
         ImageView flagIcon = findViewById(R.id.flagIcon);
         TextView motivationalQuote = findViewById(R.id.motivationalQuote);
-
+        btnBeginner.setBackgroundResource(R.drawable.btn_selector);
+        btnIntermediate.setBackgroundResource(R.drawable.btn_selector);
+        btnAdvanced.setBackgroundResource(R.drawable.btn_selector);
         // Set motivational quote
         String styledText = "<font color='#000000'>The more you practice,</font><br>" +
                 "<font color='#007BFF'>The easier it gets!</font>";
@@ -87,6 +88,7 @@ public class LessonUnit extends AppCompatActivity {
         unitsAdapter = new LessonUnitsAdapter(unitList);
         unitsRecyclerView.setAdapter(unitsAdapter);
 
+        updateButtonSelection(btnBeginner);
         // Load Beginner Units by Default
         loadUnits("Beginner");
 
@@ -105,6 +107,7 @@ public class LessonUnit extends AppCompatActivity {
             updateButtonSelection(btnAdvanced);
             loadUnits("Advanced");
         });
+
 
         // Handle bottom navigation
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
@@ -217,28 +220,34 @@ public class LessonUnit extends AppCompatActivity {
 
 
     private void updateButtonSelection(Button selectedButton) {
-        btnBeginner.setBackgroundResource(R.drawable.unit_btn_non_selected);
-        btnIntermediate.setBackgroundResource(R.drawable.unit_btn_non_selected);
-        btnAdvanced.setBackgroundResource(R.drawable.unit_btn_non_selected);
+        // Reset all buttons to non-selected state
+        btnBeginner.setSelected(false);
+        btnIntermediate.setSelected(false);
+        btnAdvanced.setSelected(false);
 
-        selectedButton.setBackgroundResource(R.drawable.unit_btn_selected);
-        selectedButton.setTextColor(getResources().getColor(R.color.black));
+        // Set the clicked button to selected state
+        selectedButton.setSelected(true);
+
+        // Ensure the text of the buttons is always visible and correct
+        btnBeginner.setText("Beginner");
+        btnIntermediate.setText("Intermediate");
+        btnAdvanced.setText("Advanced");
     }
 
     private void loadUnits(String difficulty) {
         unitList.clear();
         if (difficulty.equals("Beginner")) {
-            unitList.add(new LessonUnitData("Common Greetings and Phrases", 100, "Replay", R.drawable.unit_greeting, "#FF8D8D", "#FF6F6F"));
-            unitList.add(new LessonUnitData("Numbers, Days, and Months", 70, "Continue", R.drawable.unit_numbers, "#FFDA35", "#DAEC00"));
-            unitList.add(new LessonUnitData("Colours and Shapes", 0, "Start", R.drawable.unit_colours, "#A1D7FF", "#86CDFF"));
+            unitList.add(new LessonUnitData("Common Greetings and Phrases",  "Play", R.drawable.unit_greeting, "#FF8D8D", "#FF6F6F"));
+            unitList.add(new LessonUnitData("Numbers, Days, and Months",  "Play", R.drawable.unit_numbers, "#FFDA35", "#DAEC00"));
+            unitList.add(new LessonUnitData("Colours and Shapes", "Play", R.drawable.unit_colours, "#A1D7FF", "#86CDFF"));
         } else if (difficulty.equals("Intermediate")) {
-            unitList.add(new LessonUnitData("Foods and Drinks", 100, "Replay", R.drawable.unit_foods, "#FFDA35", "#DAEC00"));
-            unitList.add(new LessonUnitData("Sports and Games", 75, "Continue", R.drawable.unit_sports, "#A8E6CF", "#66BB6A"));
-            unitList.add(new LessonUnitData("Emotions and Feelings", 0, "Start", R.drawable.unit_emotions, "#D1C4E9", "#B39DDB"));
+            unitList.add(new LessonUnitData("Foods and Drinks",  "Play", R.drawable.unit_foods, "#FFDA35", "#DAEC00"));
+            unitList.add(new LessonUnitData("Sports and Games",  "Play", R.drawable.unit_sports, "#A8E6CF", "#66BB6A"));
+            unitList.add(new LessonUnitData("Emotions and Feelings", "Play", R.drawable.unit_emotions, "#D1C4E9", "#B39DDB"));
         } else if (difficulty.equals("Advanced")) {
-            unitList.add(new LessonUnitData("Travel Around World", 100, "Replay", R.drawable.unit_travels, "#A8E6CF", "#66BB6A"));
-            unitList.add(new LessonUnitData("Festivals and Traditions", 70, "Continue", R.drawable.unit_festivals, "#D1C4E9", "#B39DDB"));
-            unitList.add(new LessonUnitData("Health and Wellness", 25, "Start", R.drawable.unit_health, "#A1D7FF", "#86CDFF"));
+            unitList.add(new LessonUnitData("Travel Around World",  "Play", R.drawable.unit_travels, "#A8E6CF", "#66BB6A"));
+            unitList.add(new LessonUnitData("Festivals and Traditions", "Play", R.drawable.unit_festivals, "#D1C4E9", "#B39DDB"));
+            unitList.add(new LessonUnitData("Health and Wellness",  "Play", R.drawable.unit_health, "#A1D7FF", "#86CDFF"));
         }
         unitsAdapter.notifyDataSetChanged();
     }

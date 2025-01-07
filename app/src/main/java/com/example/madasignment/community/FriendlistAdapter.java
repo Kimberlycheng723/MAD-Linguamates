@@ -53,7 +53,7 @@ public class FriendlistAdapter extends RecyclerView.Adapter<FriendlistAdapter.Fr
             super(itemView);
             ivProfile = itemView.findViewById(R.id.ivProfile);
             tvName = itemView.findViewById(R.id.tvFriendName);
-            tvXP = itemView.findViewById(R.id.tvFriendXP);
+
         }
     }
 }

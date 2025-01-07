@@ -2,7 +2,7 @@
 
     <!-- Base Theme -->
     <style name="Base.Theme.MADAsignment" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize primary and secondary colors -->
+        <item name="buttonStyle">@style/CustomUnitButton</item>
 
     </style>
 
@@ -10,20 +10,15 @@
     <style name="Theme.MADAsignment" parent="Base.Theme.MADAsignment" />
 
     <!-- Button Styles -->
-    <style name="CustomUnitButton" parent="Widget.Material3.Button.TextButton">
-        <item name="backgroundTint">@null</item> <!-- Remove default tint -->
-        <item name="android:background">@drawable/unit_btn_non_selected</item>
-        <item name="rippleColor">@null</item> <!-- Remove ripple effect -->
-        <item name="android:textColor">@color/blue</item>
-        <item name="bottomNavigationStyle">@style/CustomBottomNavigationView</item>
+    <style name="CustomUnitButton" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@null</item> <!-- Remove Material Tint -->
+        <item name="android:background">@drawable/btn_selector</item> <!-- Use your selector -->
+        <item name="rippleColor">@null</item> <!-- Remove Ripple Effect -->
+        <item name="android:textColor">@android:color/white</item>
     </style>
 
-    <style name="CustomUnitButtonSelected" parent="Widget.Material3.Button.TextButton">
-        <item name="backgroundTint">@null</item> <!-- Remove default tint -->
-        <item name="android:background">@drawable/unit_btn_selected</item>
-        <item name="rippleColor">@null</item>
-        <item name="android:textColor">@color/black</item>
-    </style>
+
+
 
     <style name="CustomBottomNavigationView" parent="Widget.Design.BottomNavigationView">
         <item name="itemIconSize">32dp</item> <!-- Adjust icon size -->

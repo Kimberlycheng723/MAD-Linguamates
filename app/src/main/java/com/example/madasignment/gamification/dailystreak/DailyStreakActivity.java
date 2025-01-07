@@ -1,13 +1,21 @@
-package com.example.madasignment.gamification;
+package com.example.madasignment.gamification.dailystreak;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.GridLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.madasignment.R;
+import com.example.madasignment.community.CommunityFrontPageActivity;
+import com.example.madasignment.gamification.AchievementOverviewActivity;
+import com.example.madasignment.home.lesson_unit.lesson_unit.LessonUnit;
+import com.example.madasignment.lessons.Module.module.Module;
+import com.example.madasignment.profile.ProfilePageActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -15,8 +23,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 public class DailyStreakActivity extends AppCompatActivity {
 
@@ -45,6 +55,9 @@ public class DailyStreakActivity extends AppCompatActivity {
         Button prevMonthButton = findViewById(R.id.prevMonthButton);
         Button nextMonthButton = findViewById(R.id.nextMonthButton);
 
+
+        ImageView backArrow = findViewById(R.id.backArrow);
+        backArrow.setOnClickListener(v -> onBackPressed());
         // Initialize calendar
         currentCalendar = Calendar.getInstance();
         currentCalendar.setFirstDayOfWeek(Calendar.MONDAY);
@@ -55,16 +68,26 @@ public class DailyStreakActivity extends AppCompatActivity {
         // Handle month navigation
         prevMonthButton.setOnClickListener(view -> {
             currentCalendar.add(Calendar.MONTH, -1);
+            updateMonthLabel();
             renderCalendar(List.of());
         });
 
         nextMonthButton.setOnClickListener(view -> {
             currentCalendar.add(Calendar.MONTH, 1);
+            updateMonthLabel();
             renderCalendar(List.of());
         });
 
         // Load streak data from database to display
         loadStreakData();
+
+        setupBottomNavigation();
+    }
+
+    private void updateMonthLabel() {
+        SimpleDateFormat monthFormat = new SimpleDateFormat("MMMM", Locale.getDefault());
+        String monthName = monthFormat.format(currentCalendar.getTime()); // Get month name
+        monthLabel.setText(monthName);
     }
 
     private void loadStreakData() {
@@ -172,6 +195,38 @@ public class DailyStreakActivity extends AppCompatActivity {
         params.setMargins(12, 12, 12, 12); // Margins for spacing
 
         calendarGrid.addView(cell, params);
+    }
+
+
+    private void setupBottomNavigation() {
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
+
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.nav_home) {
+                Intent intent = new Intent(DailyStreakActivity.this, LessonUnit.class);
+                startActivity(intent);
+                return true;
+            } else if (id == R.id.nav_lessons) {
+                Intent intent = new Intent(DailyStreakActivity.this, Module.class);
+                startActivity(intent);
+                return true;
+            } else if (id == R.id.nav_progress) {
+                return true;
+            } else if (id == R.id.nav_forum) {
+                Intent intent = new Intent(DailyStreakActivity.this, CommunityFrontPageActivity.class);
+                startActivity(intent);
+                return true;
+            } else if (id == R.id.nav_profile) {
+                Intent intent = new Intent(DailyStreakActivity.this, ProfilePageActivity.class);
+                startActivity(intent);
+                return true;
+            }
+            return false;
+        });
+
+        // Set the current selected item
+        bottomNavigationView.setSelectedItemId(R.id.nav_progress);
     }
 
 }

@@ -1,4 +1,4 @@
-package com.example.madasignment.gamification;
+package com.example.madasignment.gamification.badge;
 public class BadgeFirebaseModel {
     private String state;
     private int progress;

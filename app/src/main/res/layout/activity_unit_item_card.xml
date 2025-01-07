@@ -14,9 +14,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center_vertical"
-        android:paddingTop="15dp"
         android:orientation="vertical"
-        >
+        android:paddingTop="20dp">
 
         <!-- Title -->
         <TextView
@@ -30,33 +29,6 @@
             android:textSize="20sp" />
 
         <!-- Progress Bar -->
-        <LinearLayout
-            android:layout_width="211dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <ProgressBar
-                android:id="@+id/unitProgressBar"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="0dp"
-                android:layout_height="4dp"
-                android:layout_weight="1"
-                android:max="100"
-                android:progress="100"
-                android:progressDrawable="@drawable/unit_progressbar" />
-
-            <TextView
-                android:id="@+id/progressText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:fontFamily="@font/poppins_regular"
-                android:text="100%"
-                android:textColor="@android:color/black"
-                android:textSize="10sp" />
-        </LinearLayout>
 
         <!-- Action Button -->
         <Button
@@ -68,7 +40,7 @@
             android:backgroundTint="#FF6E6E"
             android:fontFamily="@font/poppins_medium"
             android:padding="8dp"
-            android:text="Replay"
+            android:text="Start"
             android:textColor="@android:color/black" />
     </LinearLayout>
 

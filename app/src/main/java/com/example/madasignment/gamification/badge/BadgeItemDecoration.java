@@ -1,4 +1,4 @@
-package com.example.madasignment.gamification;
+package com.example.madasignment.gamification.badge;
 
 import android.graphics.Rect;
 import android.view.View;

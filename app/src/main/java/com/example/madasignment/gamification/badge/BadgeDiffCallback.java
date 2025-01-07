@@ -1,4 +1,4 @@
-package com.example.madasignment.gamification;
+package com.example.madasignment.gamification.badge;
 
 import androidx.recyclerview.widget.DiffUtil;
 import java.util.List;

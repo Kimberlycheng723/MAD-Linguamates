@@ -1,4 +1,4 @@
-package com.example.madasignment.gamification;
+package com.example.madasignment.gamification.badge;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
