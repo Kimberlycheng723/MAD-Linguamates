@@ -67,6 +67,9 @@
         <activity android:name=".profile.PrivacyActivity" />
         <activity android:name=".profile.CoursesActivity" />
         <activity android:name=".profile.SignInActivity" />
+        <activity android:name=".profile.VerifyEmailActivity" />
+        <activity android:name=".profile.LanguageSelectPage" />
+
 
     </application>
 
