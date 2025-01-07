@@ -15,8 +15,6 @@ import androidx.recyclerview.widget.DiffUtil;
 
 import com.example.madasignment.R;
 import com.example.madasignment.community.CommunityFrontPageActivity;
-import com.example.madasignment.gamification.AchievementOverviewActivity;
-import com.example.madasignment.gamification.LeaderboardActivity;
 import com.example.madasignment.home.lesson_unit.lesson_unit.LessonUnit;
 import com.example.madasignment.lessons.Module.module.Module;
 import com.example.madasignment.profile.ProfilePageActivity;

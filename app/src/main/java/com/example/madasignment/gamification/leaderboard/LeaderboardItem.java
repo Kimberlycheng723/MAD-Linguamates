@@ -1,4 +1,4 @@
-package com.example.madasignment.gamification;
+package com.example.madasignment.gamification.leaderboard;
 
 public class LeaderboardItem {
     private int rank;

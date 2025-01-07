@@ -6,7 +6,6 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +14,8 @@ import com.example.madasignment.R;
 import com.example.madasignment.community.CommunityFrontPageActivity;
 import com.example.madasignment.gamification.badge.MyBadgesActivity;
 import com.example.madasignment.gamification.dailystreak.DailyStreakActivity;
+import com.example.madasignment.gamification.leaderboard.LeaderboardActivity;
+import com.example.madasignment.gamification.leaderboard.LeaderboardItem;
 import com.example.madasignment.home.lesson_unit.lesson_unit.LessonUnit;
 import com.example.madasignment.lessons.Module.module.Module;
 import com.example.madasignment.profile.ProfilePageActivity;
