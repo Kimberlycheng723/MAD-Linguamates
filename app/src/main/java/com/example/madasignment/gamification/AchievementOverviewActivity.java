@@ -58,9 +58,8 @@ public class AchievementOverviewActivity extends AppCompatActivity {
         Button dailyStreakButton = findViewById(R.id.dailyStreakButton);
         Button checkLeaderboardButton = findViewById(R.id.checkLeaderboardButton);
         Button viewAllBadgesButton = findViewById(R.id.viewAllBadgesButton);
-        ImageView upButton = findViewById(R.id.backArrow);
 
-        upButton.setOnClickListener(v -> finish());
+
 
 
         dailyStreakButton.setOnClickListener(v -> {

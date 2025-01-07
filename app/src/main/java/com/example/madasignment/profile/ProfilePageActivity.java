@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import com.example.madasignment.gamification.AchievementOverviewActivity;
 import com.example.madasignment.lessons.Module.module.Module;
 import com.example.madasignment.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -162,7 +163,8 @@ public class ProfilePageActivity extends AppCompatActivity {
                 startActivity(intent);
                 return true;
             } else if (id == R.id.nav_progress) {
-                Toast.makeText(this, "Progress Selected", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(ProfilePageActivity.this, AchievementOverviewActivity.class);
+                startActivity(intent);
                 return true;
             } else if (id == R.id.nav_forum) {
                 Intent intent = new Intent(ProfilePageActivity.this, CommunityFrontPageActivity.class);
