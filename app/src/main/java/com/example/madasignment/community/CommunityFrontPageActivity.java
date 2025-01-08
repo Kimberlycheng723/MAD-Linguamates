@@ -3,10 +3,11 @@ package com.example.madasignment.community;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.madasignment.community.discussion_forum.DiscussionForumActivity;
+import com.example.madasignment.community.friendlist.FriendlistActivity;
 import com.example.madasignment.gamification.AchievementOverviewActivity;
 import com.example.madasignment.lessons.Module.module.Module;
 import com.example.madasignment.R;

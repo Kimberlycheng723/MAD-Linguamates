@@ -42,7 +42,7 @@ public class MyBadgesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gamification_my_badges);
+        setContentView(R.layout.activity_achievements_my_badges);
         ImageButton upButton = findViewById(R.id.upButton);
 
         upButton.setOnClickListener(v -> {

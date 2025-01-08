@@ -17,7 +17,7 @@ public class AchievementSplash extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash_achievements);
+        setContentView(R.layout.activity_achievements_splash);
 
         // Handler to delay and move to the next activity
         new Handler().postDelayed(() -> {

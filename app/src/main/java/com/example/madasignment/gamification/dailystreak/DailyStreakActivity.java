@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.madasignment.R;
 import com.example.madasignment.community.CommunityFrontPageActivity;
-import com.example.madasignment.gamification.AchievementOverviewActivity;
 import com.example.madasignment.home.lesson_unit.lesson_unit.LessonUnit;
 import com.example.madasignment.lessons.Module.module.Module;
 import com.example.madasignment.profile.ProfilePageActivity;
@@ -39,7 +38,7 @@ public class DailyStreakActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_daily_streaks);
+        setContentView(R.layout.activity_achievements_daily_streaks);
 
         // Initialize Firebase
         auth = FirebaseAuth.getInstance();

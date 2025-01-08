@@ -15,7 +15,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.example.madasignment.R;
 import com.example.madasignment.home.lesson_unit.flashcard.FlashcardSplashScreenActivity;
-import com.example.madasignment.profile.LogInActivity;
+import com.example.madasignment.profile.signin_login.LogInActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;

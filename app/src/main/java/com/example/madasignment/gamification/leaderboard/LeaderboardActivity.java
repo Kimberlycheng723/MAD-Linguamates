@@ -40,7 +40,7 @@ public class LeaderboardActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_leaderboard);
+        setContentView(R.layout.activity_achievements_leaderboard);
 
         leaderboardRecyclerView = findViewById(R.id.leaderboardRecyclerView);
         leaderboardRecyclerView.setLayoutManager(new LinearLayoutManager(this));

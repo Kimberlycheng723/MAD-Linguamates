@@ -64,6 +64,7 @@ public class LessonUnit extends AppCompatActivity {
         btnBeginner.setBackgroundResource(R.drawable.btn_selector);
         btnIntermediate.setBackgroundResource(R.drawable.btn_selector);
         btnAdvanced.setBackgroundResource(R.drawable.btn_selector);
+
         // Set motivational quote
         String styledText = "<font color='#000000'>The more you practice,</font><br>" +
                 "<font color='#007BFF'>The easier it gets!</font>";
@@ -211,13 +212,6 @@ public class LessonUnit extends AppCompatActivity {
             }
         });
     }
-
-
-
-
-
-
-
 
     private void updateButtonSelection(Button selectedButton) {
         // Reset all buttons to non-selected state

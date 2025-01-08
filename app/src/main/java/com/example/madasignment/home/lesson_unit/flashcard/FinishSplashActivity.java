@@ -13,7 +13,7 @@ public class FinishSplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_finish_splash);
+        setContentView(R.layout.activity_flashcard_finish_splash);
 
         // Automatically navigate to LessonQuestionActivity after a delay (e.g., 3 seconds)
         new Handler().postDelayed(() -> {

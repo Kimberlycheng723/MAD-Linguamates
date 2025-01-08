@@ -14,6 +14,8 @@ import androidx.core.content.ContextCompat;
 import com.example.madasignment.gamification.AchievementOverviewActivity;
 import com.example.madasignment.lessons.Module.module.Module;
 import com.example.madasignment.R;
+import com.example.madasignment.profile.settings.EditProfileActivity;
+import com.example.madasignment.profile.settings.SettingsActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.example.madasignment.community.CommunityFrontPageActivity;

@@ -3,7 +3,6 @@ package com.example.madasignment.home.lesson_unit.test;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -21,7 +20,7 @@ public class ResultActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_result_screen);
+        setContentView(R.layout.activity_test_result_screen);
 
         // Retrieve question statuses
         final List<QuestionStatus> questionStatuses =
