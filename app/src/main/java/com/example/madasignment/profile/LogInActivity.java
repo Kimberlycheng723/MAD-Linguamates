@@ -30,7 +30,7 @@ public class LogInActivity extends AppCompatActivity {
 
 
     private EditText etEmail, etPassword;
-    private Button btnLogin, btnForgotPassword;
+    private Button btnLogin, btnForgotPassword, btnSignUp;
     private ImageView ivTogglePassword;
     private FirebaseAuth auth;
     private SharedPreferences sharedPreferences;
@@ -49,6 +49,10 @@ public class LogInActivity extends AppCompatActivity {
 
         });
 
+        if (SaveSharedPreference.isLoggedIn(this)) {
+            navigateToLessonUnit();
+        }
+
         sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
         boolean isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false);
         if (isLoggedIn) {
@@ -64,6 +68,9 @@ public class LogInActivity extends AppCompatActivity {
         btnLogin = findViewById(R.id.btn_login_li);
         btnForgotPassword = findViewById(R.id.btn_forgot_password);
         ivTogglePassword = findViewById(R.id.iv_toggle_password);
+        btnSignUp = findViewById(R.id.btn_signUp_li);
+
+
 
         // Handle Login Button Click
         btnLogin.setOnClickListener(v -> loginUser());
@@ -73,6 +80,13 @@ public class LogInActivity extends AppCompatActivity {
 
         // Handle Password Visibility Toggle
         ivTogglePassword.setOnClickListener(v -> togglePasswordVisibility());
+
+        // Handle Sign Up Button Click
+        btnSignUp.setOnClickListener(v -> {
+            Intent intent = new Intent(LogInActivity.this, SignInActivity.class);
+            startActivity(intent);
+        });
+
     }
 
 
@@ -100,17 +114,17 @@ public class LogInActivity extends AppCompatActivity {
         auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        // User signed in successfully, now check if email is verified
                         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                         if (user != null && user.isEmailVerified()) {
+                            // Save login state
+                            SaveSharedPreference.setLoggedIn(this, true);
+
+                            // Navigate to the next screen
                             initializeBadgesInDatabase();
-                            Intent intent = new Intent(LogInActivity.this, LanguageSelectPage.class);
-                            startActivity(intent);
-                            finish();
+                            navigateToLessonUnit();
                         } else {
-                            // Email is not verified
-                            Toast.makeText(LogInActivity.this, "Please verify your email before logging in.", Toast.LENGTH_LONG).show();
-                            FirebaseAuth.getInstance().signOut(); // Sign out the user to prevent access
+                            Toast.makeText(this, "Please verify your email before logging in.", Toast.LENGTH_LONG).show();
+                            FirebaseAuth.getInstance().signOut();
                         }
                     } else {
                         String errorMessage = "Login failed: ";
@@ -119,11 +133,11 @@ public class LogInActivity extends AppCompatActivity {
                         } else {
                             errorMessage += "Unknown error occurred";
                         }
-                        Toast.makeText(LogInActivity.this, errorMessage, Toast.LENGTH_LONG).show();
-                        Log.e("LogInActivity", errorMessage);
+                        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
                     }
                 });
     }
+
 
 
     private void resetPassword() {
