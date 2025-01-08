@@ -136,7 +136,7 @@ public class SignInActivity extends AppCompatActivity {
                                                     .addOnCompleteListener(statsTask -> {
                                                         if (statsTask.isSuccessful()) {
                                                             //navigate to verify page
-                                                            startActivity(new Intent(SignInActivity.this, VerifyEmailActivity.class));
+                                                            startActivity(new Intent(SignInActivity.this, LanguageSelectPage.class));
 
                                                             // Send verification email after registration
 //                                                            sendVerificationEmail();
@@ -159,7 +159,7 @@ public class SignInActivity extends AppCompatActivity {
     // Navigate to Login Activity
     private void navigateToLogin() {
         // Redirect to Login Activity
-        Intent intent = new Intent(SignInActivity.this, LanguageSelectPage.class);
+        Intent intent = new Intent(SignInActivity.this, LogInActivity.class);
         startActivity(intent);
     }
 }
