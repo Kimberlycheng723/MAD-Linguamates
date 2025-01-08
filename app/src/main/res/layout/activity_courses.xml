@@ -27,6 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="48dp"
+        style="@style/CustomUnitButton"
         android:background="@drawable/short_rect_pp"
         android:text="back"
         android:fontFamily="@font/poppins_semibold"
