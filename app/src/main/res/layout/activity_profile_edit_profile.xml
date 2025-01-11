@@ -5,13 +5,13 @@
     android:id="@+id/CsLayout_ep"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/splash" >
+    android:background="@drawable/splash">
 
     <ImageView
         android:id="@+id/iv_dophin_ep"
         android:layout_width="127dp"
         android:layout_height="122dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.464"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,21 +23,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
+        android:layout_marginTop="109dp"
         android:layout_marginBottom="4dp"
-        android:text="Name"
         android:fontFamily="@font/poppins_semibold"
+        android:text="Name"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/iv_name_ep"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_back_ep" />
 
     <ImageView
         android:id="@+id/iv_username_ep"
-        android:layout_width="313dp"
+        android:layout_width="322dp"
         android:layout_height="59dp"
         android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_name_ep"
         app:srcCompat="@drawable/long_rect_pp" />
@@ -48,7 +49,6 @@
         android:layout_height="69dp"
         android:layout_marginTop="48dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.393"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_dophin_ep"
         app:srcCompat="@drawable/long_rect_pp" />
@@ -57,11 +57,12 @@
         android:id="@+id/et_name_ep"
         android:layout_width="247dp"
         android:layout_height="48dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="52dp"
-        android:ems="10"
-        android:hint="name"
         android:background="@null"
+        android:ems="10"
         android:fontFamily="@font/poppins_semibold"
+        android:hint="name"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.396"
@@ -72,6 +73,7 @@
         android:id="@+id/et_username_ep"
         android:layout_width="295dp"
         android:layout_height="48dp"
+        android:layout_marginStart="10dp"
         android:background="@null"
         android:ems="10"
         android:fontFamily="@font/poppins_semibold"
@@ -79,7 +81,6 @@
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="@+id/iv_username_ep"
         app:layout_constraintEnd_toEndOf="@+id/iv_username_ep"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/iv_username_ep"
         app:layout_constraintTop_toTopOf="@+id/iv_username_ep"
         app:layout_constraintVertical_bias="0.0" />
@@ -88,10 +89,10 @@
         android:id="@+id/tv_username_ep"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
+        android:layout_marginStart="52dp"
         android:layout_marginBottom="4dp"
-        android:text="Username"
         android:fontFamily="@font/poppins_semibold"
+        android:text="Username"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/iv_username_ep"
@@ -130,8 +131,9 @@
         android:id="@+id/iv_num_ep"
         android:layout_width="322dp"
         android:layout_height="72dp"
-        android:layout_marginStart="44dp"
         android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_email_ep"
         app:srcCompat="@drawable/long_rect_pp" />
@@ -160,18 +162,15 @@
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="@+id/iv_email_ep"
         app:layout_constraintEnd_toEndOf="@+id/iv_email_ep"
-        app:layout_constraintHorizontal_bias="0.34"
         app:layout_constraintStart_toStartOf="@+id/iv_email_ep"
-        app:layout_constraintTop_toTopOf="@+id/iv_email_ep"
-        app:layout_constraintVertical_bias="0.8" />
+        app:layout_constraintTop_toTopOf="@+id/iv_email_ep" />
 
     <ImageView
         android:id="@+id/iv_email_ep"
-        android:layout_width="318dp"
+        android:layout_width="322dp"
         android:layout_height="58dp"
         android:layout_marginTop="36dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_username_ep"
         app:srcCompat="@drawable/long_rect_pp" />
@@ -183,21 +182,21 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/short_rect_pp"
-        android:text="back"
         android:fontFamily="@font/poppins_semibold"
+        android:text="back"
         android:textColor="#4B4444"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn_save_ep"
+        style="@style/CustomUnitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:background="@drawable/short_rect_pp"
         android:fontFamily="@font/poppins_semibold"
         android:text="Save"
-        style="@style/CustomUnitButton"
         android:textColor="#4B4444"
         app:layout_constraintBottom_toTopOf="@+id/blt_dlt_ep"
         app:layout_constraintEnd_toEndOf="parent"
@@ -206,6 +205,7 @@
 
     <Button
         android:id="@+id/blt_dlt_ep"
+        style="@style/CustomUnitButton"
         android:layout_width="211dp"
         android:layout_height="48dp"
         android:layout_marginStart="88dp"
@@ -214,12 +214,10 @@
         android:background="@drawable/long_rect_pp"
         android:fontFamily="@font/poppins_semibold"
         android:text="Delete Account"
-        style="@style/CustomUnitButton"
         android:textColor="#AFBA0404"
         android:textColorLink="#B6BAB4B4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
@@ -263,9 +261,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
-        android:layout_marginBottom="12dp"
         android:fontFamily="@font/poppins_semibold"
         android:text="Bio"
+        android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/imageView5"
         app:layout_constraintStart_toStartOf="parent" />
@@ -286,11 +284,10 @@
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="315dp"
+        android:layout_width="322dp"
         android:layout_height="73dp"
         android:layout_marginTop="36dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.458"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_num_ep"
         app:srcCompat="@drawable/long_rect_pp" />

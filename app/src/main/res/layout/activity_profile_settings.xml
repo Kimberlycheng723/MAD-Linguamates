@@ -37,16 +37,15 @@
 
     <Button
         android:id="@+id/btn_pref_s"
+        style="@style/CustomUnitButton"
         android:layout_width="265dp"
         android:layout_height="48dp"
         android:layout_marginTop="88dp"
         android:background="@drawable/long_rect_pp"
-        android:text="Preferences"
-        style="@style/CustomUnitButton"
         android:fontFamily="@font/poppins_semibold"
+        android:text="Preferences"
         android:textColor="#242222"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_settings_s" />
 

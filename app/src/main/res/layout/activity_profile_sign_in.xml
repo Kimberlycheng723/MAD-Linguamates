@@ -94,18 +94,20 @@
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="288dp"
+        android:layout_width="295dp"
         android:layout_height="56dp"
         android:layout_marginTop="4dp"
-        android:layout_marginEnd="64dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_userName_si"
         app:srcCompat="@drawable/long_rect_pp" />
 
     <EditText
         android:id="@+id/et_username_si"
-        android:layout_width="262dp"
-        android:layout_height="48dp"
+        android:layout_width="257dp"
+        android:layout_height="53dp"
+        android:layout_marginEnd="24dp"
         android:background="@android:color/transparent"
         android:ems="10"
         android:fontFamily="@font/poppins_regular"
@@ -118,12 +120,11 @@
 
     <ImageView
         android:id="@+id/iv_password_si"
-        android:layout_width="298dp"
+        android:layout_width="295dp"
         android:layout_height="63dp"
         android:layout_marginBottom="288dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.537"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
         app:layout_constraintVertical_bias="0.111"
@@ -194,11 +195,10 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="294dp"
+        android:layout_width="295dp"
         android:layout_height="67dp"
         android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.463"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_name_si"
         app:srcCompat="@drawable/long_rect_pp" />
@@ -244,7 +244,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="44dp"
         android:layout_marginEnd="1dp"
         app:layout_constraintEnd_toStartOf="@+id/iv_clam_si"
         app:layout_constraintHorizontal_bias="1.0"
@@ -254,14 +254,14 @@
 
     <Button
         android:id="@+id/btn_login_si"
+        style="@style/CustomUnitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="240dp"
+        android:layout_marginBottom="295dp"
         android:background="@drawable/short_rect_pp"
         android:backgroundTint="#00AF2121"
         android:fontFamily="@font/poppins_semibold"
         android:text="@string/log_in"
-        style="@style/CustomUnitButton"
         android:textColor="#646060"
         android:textColorLink="#9B8B8B"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -291,12 +291,12 @@
 
     <Button
         android:id="@+id/btn_signup_si"
+        style="@style/CustomUnitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:background="@drawable/long_rect_pp"
         android:fontFamily="@font/poppins_semibold"
-        style="@style/CustomUnitButton"
         android:text="@string/sign_up"
         android:textColor="#5B5656"
         app:layout_constraintEnd_toEndOf="parent"
@@ -308,8 +308,8 @@
         android:id="@+id/tv_alr_si"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginBottom="248dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginBottom="308dp"
         android:fontFamily="@font/poppins_semibold"
         android:text="@string/already_have_account"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -320,7 +320,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="34dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_signup_si"
         app:srcCompat="@drawable/bubble" />
