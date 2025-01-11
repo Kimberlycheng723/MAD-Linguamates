@@ -28,7 +28,7 @@ public class SplashActivity extends AppCompatActivity {
         // Use Handler to add a delay after the animation ends
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
             // Navigate to MainActivity after the delay
-            startActivity(new Intent(SplashActivity.this, SignInActivity.class));
+            startActivity(new Intent(SplashActivity.this, LogInActivity.class));
             finish();
         }, 3000); // 5000ms = 5 seconds delay
     }

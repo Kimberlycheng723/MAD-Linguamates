@@ -82,6 +82,7 @@
         android:layout_marginTop="27dp"
         android:layout_marginEnd="177dp"
         android:text="save"
+        style="@style/CustomUnitButton"
         android:background="@drawable/short_rect_pp"
         android:textColor="#242222"
         android:fontFamily="@font/poppins_semibold"

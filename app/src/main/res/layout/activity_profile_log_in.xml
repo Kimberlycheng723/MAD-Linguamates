@@ -21,45 +21,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Existing Layout Components -->
-    <TextView
-        android:id="@+id/tv_email_li"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="65dp"
-        android:layout_marginTop="140dp"
-        android:fontFamily="@font/poppins_semibold"
-        android:text="@string/email"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_pass_li"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="65dp"
-        android:layout_marginBottom="12dp"
-        android:fontFamily="@font/poppins_semibold"
-        android:text="@string/password"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/et_pass_li"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/et_email_li"
-        android:layout_width="285dp"
-        android:layout_height="50dp"
-        android:background="@android:color/transparent"
-        android:ems="10"
-        android:fontFamily="@font/poppins_regular"
-        android:hint="@string/enter_email"
-        android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_email_li"
-        app:layout_constraintEnd_toEndOf="@+id/iv_email_li"
-        app:layout_constraintStart_toStartOf="@+id/iv_email_li"
-        app:layout_constraintTop_toTopOf="@+id/iv_email_li" />
 
     <TextView
         android:id="@+id/tv_hello_si"
@@ -74,11 +35,161 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/iv_dophin_li"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/dolphin_finish_flash" />
+
+    <ImageView
+        android:id="@+id/iv_firework_li"
+        android:layout_width="124dp"
+        android:layout_height="132dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="180dp"
+        app:layout_constraintStart_toEndOf="@+id/iv_bubble2_li"
+        app:layout_constraintTop_toBottomOf="@+id/btn_login_li"
+        app:srcCompat="@drawable/firework1" />
+
+    <ImageView
+        android:id="@+id/iv_bubble_li"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="224dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_login_li"
+        app:srcCompat="@drawable/bubble" />
+
+    <ImageView
+        android:id="@+id/iv_bubble3_li"
+        android:layout_width="46dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="44dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_bubble_li"
+        app:srcCompat="@drawable/bubble" />
+
+    <ImageView
+        android:id="@+id/iv_treasure_li"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/levels_treasure" />
+
+    <ImageView
+        android:id="@+id/iv_bubble2_li"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="260dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_login_li"
+        app:srcCompat="@drawable/bubble" />
+
+    <ImageView
+        android:id="@+id/iv_diamond_li"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="76dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/diamond" />
+
+    <!-- Added Forgot Password Button -->
+
+    <!-- Added Password Visibility Toggle -->
+    <Button
+        android:id="@+id/btn_forgot_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:background="@android:color/transparent"
+        android:text="Forgot Password"
+        android:textColor="#3030A4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_login_li" />
+
+    <TextView
+        android:id="@+id/tv_email_li"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="108dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="@string/email"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_login_li"
+        style="@style/CustomUnitButton"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="159dp"
+        android:layout_marginEnd="164dp"
+        android:layout_marginBottom="476dp"
+        android:background="@drawable/log_in_button"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="@string/log_in"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.511"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_pass_li"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="@string/password"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/et_pass_li"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_email_li"
+        android:layout_width="329dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="44dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_hello_si"
+        app:srcCompat="@drawable/long_rect_pp" />
+
+    <ImageView
+        android:id="@+id/iv_pass_li"
+        android:layout_width="339dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="56dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_email_li"
+        app:srcCompat="@drawable/long_rect_pp" />
+
     <EditText
         android:id="@+id/et_pass_li"
         android:layout_width="279dp"
         android:layout_height="53dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginBottom="12dp"
         android:background="@android:color/transparent"
         android:ems="10"
         android:fontFamily="@font/poppins_regular"
@@ -90,130 +201,21 @@
         app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toStartOf="@+id/iv_pass_li" />
 
-    <ImageView
-        android:id="@+id/iv_email_li"
-        android:layout_width="329dp"
-        android:layout_height="63dp"
-        android:layout_marginTop="76dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_hello_si"
-        app:srcCompat="@drawable/long_rect_pp" />
-
-    <ImageView
-        android:id="@+id/iv_pass_li"
-        android:layout_width="339dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="60dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_email_li"
-        app:srcCompat="@drawable/long_rect_pp" />
-
-    <Button
-        android:id="@+id/btn_login_li"
-        android:layout_width="260dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="159dp"
-        android:layout_marginEnd="164dp"
-        android:layout_marginBottom="450dp"
-        android:background="@drawable/log_in_button"
-        style="@style/CustomUnitButton"
-
-        android:fontFamily="@font/poppins_semibold"
-        android:text="@string/log_in"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-        android:id="@+id/iv_dophin_li"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="44dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/dolphin_finish_flash" />
-
-    <ImageView
-        android:id="@+id/iv_diamond_li"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="112dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/diamond" />
-
-    <ImageView
-        android:id="@+id/iv_treasure_li"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="27dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/levels_treasure" />
-
-    <ImageView
-        android:id="@+id/iv_bubble_li"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="106dp"
-        android:layout_marginTop="189dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_login_li"
-        app:srcCompat="@drawable/bubble" />
-
-    <ImageView
-        android:id="@+id/iv_bubble2_li"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="226dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_login_li"
-        app:srcCompat="@drawable/bubble" />
-
-    <ImageView
-        android:id="@+id/iv_bubble3_li"
-        android:layout_width="46dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="87dp"
-        android:layout_marginTop="45dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_bubble_li"
-        app:srcCompat="@drawable/bubble" />
-
-    <ImageView
-        android:id="@+id/iv_firework_li"
-        android:layout_width="124dp"
-        android:layout_height="132dp"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="120dp"
-        app:layout_constraintStart_toEndOf="@+id/iv_bubble2_li"
-        app:layout_constraintTop_toBottomOf="@+id/btn_login_li"
-        app:srcCompat="@drawable/firework1" />
-
-    <!-- Added Forgot Password Button -->
-    <Button
-        android:id="@+id/btn_forgot_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
+    <EditText
+        android:id="@+id/et_email_li"
+        android:layout_width="285dp"
+        android:layout_height="50dp"
         android:background="@android:color/transparent"
-        android:text="Forgot Password"
-        android:textColor="#3030A4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_login_li" />
+        android:ems="10"
+        android:fontFamily="@font/poppins_regular"
+        android:hint="@string/enter_email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_email_li"
+        app:layout_constraintEnd_toEndOf="@+id/iv_email_li"
+        app:layout_constraintStart_toStartOf="@+id/iv_email_li"
+        app:layout_constraintTop_toTopOf="@+id/iv_email_li"
+        app:layout_constraintVertical_bias="0.692" />
 
-    <!-- Added Password Visibility Toggle -->
     <ImageView
         android:id="@+id/iv_toggle_password"
         android:layout_width="30dp"
@@ -223,7 +225,20 @@
         app:layout_constraintBottom_toBottomOf="@+id/et_pass_li"
         app:layout_constraintEnd_toEndOf="@+id/et_pass_li"
         app:layout_constraintTop_toTopOf="@+id/et_pass_li"
-        app:layout_constraintVertical_bias="0.434" />
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/btn_signUp_li"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="308dp"
+        android:background="@android:color/transparent"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Sign Up"
+        android:textColor="#050505"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <!-- Added Language Selection Dropdown -->
 

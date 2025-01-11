@@ -67,7 +67,7 @@ public class LanguageSelectPage extends AppCompatActivity {
                     .addOnSuccessListener(aVoid -> {
                         Toast.makeText(LanguageSelectPage.this, "Language saved successfully", Toast.LENGTH_SHORT).show();
                         // Navigate to Login Page
-                        Intent intent = new Intent(LanguageSelectPage.this, LessonUnit.class);
+                        Intent intent = new Intent(LanguageSelectPage.this, VerifyEmailActivity.class);
                         startActivity(intent);
                         finish();
                     })
