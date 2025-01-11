@@ -1,4 +1,4 @@
-package com.example.madasignment.profile;
+package com.example.madasignment.profile.settings;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,7 +7,9 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.madasignment.R;
+import com.example.madasignment.profile.ProfilePageActivity;
 import com.example.madasignment.profile.SaveSharedPreference;
+import com.example.madasignment.profile.signin_login.LogInActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class SettingsActivity extends AppCompatActivity {
@@ -15,7 +17,7 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
+        setContentView(R.layout.activity_profile_settings);
 
         Button btnPreferences = findViewById(R.id.btn_pref_s);
         Button btnPrivacy = findViewById(R.id.btn_privacy_s);

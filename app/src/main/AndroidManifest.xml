@@ -16,18 +16,22 @@
         android:theme="@style/Theme.MADAsignment"
         tools:targetApi="31">
         <activity
-            android:name=".profile.SplashActivity"
+            android:name=".profile.signin_login.SplashActivity"
             android:exported="true">
+
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
              <!-- Home -->
         <activity android:name=".home.lesson_unit.test.TestCompletionActivity" />
         <activity android:name=".home.lesson_unit.test.TestSplashScreen" />
-        <activity android:name=".home.lesson_unit.test.LessonTestActivity" />
+        <activity android:name=".home.lesson_unit.test.LessonTestActivity"/>
+
         <activity android:name=".home.lesson_unit.lesson_quiz.LessonCompletionActivity" />
         <activity android:name=".home.lesson_unit.lesson_unit.LessonUnit"/>
 
@@ -36,7 +40,8 @@
         <activity android:name=".home.lesson_unit.flashcard.Flashcard" />
         <activity android:name=".home.lesson_unit.test.ResultActivity" />
         <activity android:name=".home.lesson_unit.test.TestResult" />
-        <activity android:name=".home.lesson_unit.test.AnswerBreakdownActivity" />
+        <activity android:name=".home.lesson_unit.test.AnswerBreakdownActivity"/>
+
         <activity android:name=".home.lesson_unit.lesson_quiz.LessonQuestionActivity" />
         <activity android:name=".home.lesson_unit.flashcard.FlashcardSplashScreenActivity" />
         <activity android:name=".home.lesson_unit.flashcard.FinishSplashActivity" /> <!-- Lessons -->
@@ -45,30 +50,31 @@
         <activity android:name=".gamification.AchievementSplash" />
         <activity android:name=".gamification.AchievementOverviewActivity" />
         <activity android:name=".gamification.badge.MyBadgesActivity" />
-        <activity android:name=".gamification.LeaderboardActivity" />
+        <activity android:name=".gamification.leaderboard.LeaderboardActivity" />
         <activity android:name=".gamification.dailystreak.DailyStreakActivity" />
         <activity
-            android:name=".lessons.Module.module.Module"
-            android:exported="false" /> <!-- Community -->
-        <activity android:name=".community.FriendRequestsActivity" />
-        <activity android:name=".community.ReportSubmitActivity" />
-        <activity android:name=".community.ReportDiscussionActivity" />
-        <activity android:name=".community.AddFriendActivity" />
-        <activity android:name=".community.FriendlistActivity" />
-        <activity android:name=".community.SpecificDiscussionActivity" />
-        <activity android:name=".community.NewPostActivity" />
-        <activity android:name=".community.DiscussionForumActivity" />
+            android:name=".lessons.Module.module.Module"/>
+
+        <!-- Community -->
+        <activity android:name=".community.friendlist.FriendRequestsActivity" />
+        <activity android:name=".community.discussion_forum.ReportSubmitActivity" />
+        <activity android:name=".community.discussion_forum.ReportDiscussionActivity" />
+        <activity android:name=".community.friendlist.AddFriendActivity" />
+        <activity android:name=".community.friendlist.FriendlistActivity" />
+        <activity android:name=".community.discussion_forum.SpecificDiscussionActivity" />
+        <activity android:name=".community.discussion_forum.NewPostActivity" />
+        <activity android:name=".community.discussion_forum.DiscussionForumActivity" />
         <activity android:name=".community.CommunityFrontPageActivity" /> <!-- Profile -->
-        <activity android:name=".profile.LogInActivity" />
+        <activity android:name=".profile.signin_login.LogInActivity" />
         <activity android:name=".profile.ProfilePageActivity" />
-        <activity android:name=".profile.SettingsActivity" />
-        <activity android:name=".profile.EditProfileActivity" />
-        <activity android:name=".profile.PreferencesActivity" />
-        <activity android:name=".profile.PrivacyActivity" />
-        <activity android:name=".profile.CoursesActivity" />
-        <activity android:name=".profile.SignInActivity" />
-        <activity android:name=".profile.VerifyEmailActivity" />
-        <activity android:name=".profile.LanguageSelectPage" />
+        <activity android:name=".profile.settings.SettingsActivity" />
+        <activity android:name=".profile.settings.EditProfileActivity" />
+        <activity android:name=".profile.settings.PreferencesActivity" />
+        <activity android:name=".profile.settings.PrivacyActivity" />
+        <activity android:name=".profile.settings.CoursesActivity" />
+        <activity android:name=".profile.signin_login.SignInActivity" />
+        <activity android:name=".profile.signin_login.VerifyEmailActivity" />
+        <activity android:name=".profile.signin_login.LanguageSelectPage" />
 
 
     </application>
