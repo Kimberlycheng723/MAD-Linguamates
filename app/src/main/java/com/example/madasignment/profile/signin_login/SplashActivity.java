@@ -25,11 +25,10 @@ public class SplashActivity extends AppCompatActivity {
         titleText.startAnimation(fadeInAnimation);
         titleText.setVisibility(View.VISIBLE);
 
-        // Use Handler to add a delay after the animation ends
+        // Add a delay to navigate to LogInActivity
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
-            // Navigate to MainActivity after the delay
-            startActivity(new Intent(SplashActivity.this, LogInActivity.class));
+            Intent intent = new Intent(SplashActivity.this, LogInActivity.class);
+            startActivity(intent);
             finish();
-        }, 3000); // 5000ms = 5 seconds delay
-    }
-}
+        }, 3000); // 3-second delay
+    }}
