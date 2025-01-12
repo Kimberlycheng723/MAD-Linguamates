@@ -10,7 +10,7 @@
     <string name="email">E-mel</string>
     <string name="enter_email">Sila massukan e-mel anda</string>
     <string name="password">Kata Laluan</string>
-    <string name="enter_password">Sila masukkan kata laluan anda</string>
+    <string name="enter_password">Sila masukkan kata laluan</string>
     <string name="already_have_account">Sudah mempunyai akaun?</string>
     <string name="log_in">Log Masuk</string>
     <string name="sign_up">Daftar</string>
@@ -22,5 +22,10 @@
     <string name="email_required">E-mel diperlukan</string>
     <string name="password_required">Kata laluan diperlukan</string>
     <string name="password_minimum">Kata laluan mesti sekurang-kurangnya 6 aksara</string>
+    <string name="forgot_password">Lupa Kata Laluan</string>
+    <string name="number">Nombor</string>
+    <string name="enter_number">Sila masukkan telefon nombor anda</string>
+    <string name="username">Nama Pengguna</string>
+    <string name="enter_username">Sila masukkan nama pengguna</string>
 </resources>
 

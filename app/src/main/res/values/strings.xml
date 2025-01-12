@@ -5,6 +5,7 @@
         <item>Medium</item>
         <item>Hard</item>
     </string-array>
+
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
@@ -19,11 +20,16 @@
     <string name="enter_email">Enter your email</string>
     <string name="password">Password</string>
     <string name="enter_password">Enter your password</string>
+    <string name="username">Username</string>
+    <string name="enter_username">Enter your username</string>
+    <string name="number">Number</string>
+    <string name="enter_number">Enter your phone number</string>
     <string name="already_have_account">Already have an account?</string>
     <string name="log_in">Log In</string>
+    <string name="forgot_password">Forgot Password</string>
     <string name="sign_up">Sign Up</string>
     <string name="hello_friend">Hello, Friend!</string>
-    <string name="welcome_back">Welcome Back</string>
+    <string name="welcome_back">Welcome Back !</string>
 
     <string name="email_password_required">Email and Password are required</string>
     <string name="name_required">Name is required</string>

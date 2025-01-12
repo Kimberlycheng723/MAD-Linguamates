@@ -185,6 +185,7 @@
         android:fontFamily="@font/poppins_semibold"
         android:text="back"
         android:textColor="#4B4444"
+        style="@style/CustomUnitButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
